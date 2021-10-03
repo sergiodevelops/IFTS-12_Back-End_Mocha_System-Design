@@ -1,0 +1,10 @@
+{
+    "apps": [
+        {
+            "name": "ifts12-backend",
+            "script": "yarn",
+            "args": "start",
+            "interpreter": "none"
+        }
+    ]
+}
