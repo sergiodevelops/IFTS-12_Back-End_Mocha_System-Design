@@ -1,0 +1,35 @@
+{
+  "name": "ifts12-backend",
+  "version": "1.0.0",
+  "description": "IFTS 12 backend",
+  "main": "index.js",
+  "repository": "git@github.com:sergioarieljuarez/system-design-ifts12.git",
+  "author": "Danlois Sergio Sandra",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "ts-node ./dist/app.js",
+    "dev": "tsc && nodemon ./src/dist/app.js",
+    "prod": "yarn global add pm2 ts-node typescript && pm2 start pm2.json && pm2 logs",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.6",
+    "@types/express": "^4.17.7",
+    "@types/json2csv": "^5.0.1",
+    "@types/md5": "^2.2.0",
+    "@types/node": "^14.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "json2csv": "^5.0.3",
+    "md5": "^2.3.0",
+    "module-alias": "^2.2.2",
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.4",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.3.3",
+    "sequelize-cli": "^6.2.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.6"
+  }
+}

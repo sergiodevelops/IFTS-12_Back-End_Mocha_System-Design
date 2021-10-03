@@ -1,0 +1,15 @@
+version: '3'
+services:
+    # ifts12-frontend --> puerto 3306(pc):3306(docker)
+    ifts12-frontend:
+        container_name: ifts12-frontend
+        image: node
+        volumes: 
+            - .:/var/www/html
+        ports:  
+            - ${APP_PORT}:3000
+        command: bash -c "yarn && yarn start"
+        tty: true
+        working_dir: /var/www/html
+        env_file: 
+            - .env
