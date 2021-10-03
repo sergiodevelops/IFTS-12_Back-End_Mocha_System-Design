@@ -60,3 +60,5 @@ editar el codigo dejando lo que debería estar y...
 (solicitar que tus cambios sean integrados a la rama principal) === PULL REQUEST
 solicitar pull-request de tu rama hacia donde nacio:
   dev <-- hacer-api (tu trabajo "hacer-api" se integraría a la rama principal compartida "dev")
+
+YO GENERO UN CONFLICTO PORQUE VOY A MERGEAR ANTES QUE DANLOIS
