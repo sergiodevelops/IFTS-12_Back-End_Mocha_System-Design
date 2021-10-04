@@ -85,6 +85,9 @@ editar el codigo dejando lo que debería estar y...
 **FINALMENTE ir a GITHUB y...**
 (solicitar que tus cambios sean integrados a la rama principal) === PULL REQUEST
 solicitar pull-request de tu rama hacia donde nacio:
+
 dev <-- hacer-api (tu trabajo "hacer-api" se integraría a la rama principal compartida "dev")
 
 ##practicando...
+
+YO GENERO UN CONFLICTO PORQUE VOY A MERGEAR ANTES QUE DANLOIS
