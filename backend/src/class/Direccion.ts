@@ -18,12 +18,12 @@ export default class Direccion {
         this.ciudad = ciudad;
     }
 
-    create(): void {};
+    /*create(): void {};
     read(): Direccion {
         return this;
     };
     update(direccion: Direccion): void {
         this.update(direccion)
     };
-    delete(): void {};
+    delete(): void {};*/
 }

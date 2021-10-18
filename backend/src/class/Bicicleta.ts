@@ -22,7 +22,7 @@ export default class Bicicleta {
         this.stock = stock;
     }
 
-    read(): Bicicleta {
+    /*read(): Bicicleta {
         return this;
-    };
+    };*/
 }

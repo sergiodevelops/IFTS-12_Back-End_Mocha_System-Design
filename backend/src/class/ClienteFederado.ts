@@ -24,11 +24,11 @@ export default class ClienteFederado extends Cliente {
         this.agrupacion = agrupacion;
     }
 
-    update(clienteFederado: ClienteFederado): void {
+    /*update(clienteFederado: ClienteFederado): void {
         this.update(clienteFederado)
     };
 
     read(): ClienteFederado {
         return this;
-    };
+    };*/
 }
