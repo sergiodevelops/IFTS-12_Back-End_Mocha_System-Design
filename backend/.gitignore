@@ -1,6 +1,6 @@
 /node_modules
 /mysql
 yarn.lock
-.env
+*/*.env
 /dist
 .idea

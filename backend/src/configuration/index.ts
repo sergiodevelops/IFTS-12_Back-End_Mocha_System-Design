@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 
 type CONNECTION_OPTIONS = "mysql" | "postgres" | "sqlite" | "mariadb" | "mssql" | undefined;
 
-const DB_CONNECTION: CONNECTION_OPTIONS = process.env.DB_CONNECTION === "mysql" ? "mysql" : undefined;
+const DB_DIALECT: CONNECTION_OPTIONS = process.env.DB_DIALECT === "mysql" ? "mysql" : undefined;
 const DB_HOST: string = process.env.DB_HOST || "";
 const DB_PORT: string = process.env.DB_PORT || "";
 const DB_DATABASE: string = process.env.DB_DATABASE || "";
@@ -11,7 +11,7 @@ const DB_PASSWORD: string = process.env.DB_PASSWORD || "";
 
 const sequelize = new Sequelize(DB_DATABASE, DB_USERNAME, DB_PASSWORD, {
     host: DB_HOST,
-    dialect: DB_CONNECTION
+    dialect: DB_DIALECT
 });
 
 try {
