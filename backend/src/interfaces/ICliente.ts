@@ -1,4 +1,4 @@
-import Cliente from "../class/Cliente";
+import Cliente from '../class/Cliente';
 
 export default interface ICliente {
     nombre: string;

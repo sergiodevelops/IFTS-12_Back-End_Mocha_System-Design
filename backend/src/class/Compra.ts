@@ -1,8 +1,8 @@
-import Bicicleta from "./Bicicleta";
-import Cliente from "./Cliente";
-import ClienteFederado from "./ClienteFederado";
-import ClienteComun from "./ClienteComun";
-import Pedido from "./Pedido";
+import Bicicleta from './Bicicleta';
+import Cliente from './Cliente';
+import ClienteFederado from './ClienteFederado';
+import ClienteComun from './ClienteComun';
+import Pedido from './Pedido';
 
 export default class Compra {
     private cliente: ClienteFederado | ClienteComun;

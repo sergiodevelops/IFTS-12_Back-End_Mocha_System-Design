@@ -19,9 +19,11 @@ export default class Cliente {
         this.dni = dni;
     }
 
-    setNombre(nombre: string): void{
+    setNombre(nombre: string): void {
         this.nombre = nombre;
     }
 
-    read(): Cliente{return this};
+    read(): Cliente {
+        return this;
+    }
 }

@@ -1,4 +1,4 @@
-import Cliente from "./Cliente";
+import Cliente from './Cliente';
 
 export default class Direccion {
     private calle: string;
@@ -6,12 +6,7 @@ export default class Direccion {
     private barrio: string;
     private ciudad: string;
 
-    constructor(
-        calle: string,
-        altura: number,
-        barrio: string,
-        ciudad: string,
-    ) {
+    constructor(calle: string, altura: number, barrio: string, ciudad: string) {
         this.calle = calle;
         this.altura = altura;
         this.barrio = barrio;
