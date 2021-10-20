@@ -1,19 +1,37 @@
 import Cliente from './Cliente';
 
 export default class Tarjeta {
-    private esCredito: boolean;
-    private numero: number;
-    private vencimiento: string;
+    private _esCredito: boolean;
+    private _numero: number;
+    private _vencimiento: string;
 
     constructor(esCredito: boolean, numero: number, vencimiento: string) {
-        this.esCredito = esCredito;
-        this.numero = numero;
-        this.vencimiento = vencimiento;
+        this._esCredito = esCredito;
+        this._numero = numero;
+        this._vencimiento = vencimiento;
     }
-    /*create():void;
-    read(): Pedido {
-        return this;
-    };
-    update(): void {};
-    delete():void{};*/
+
+    get esCredito(): boolean {
+        return this._esCredito;
+    }
+
+    set esCredito(value: boolean) {
+        this._esCredito = value;
+    }
+
+    get numero(): number {
+        return this._numero;
+    }
+
+    set numero(value: number) {
+        this._numero = value;
+    }
+
+    get vencimiento(): string {
+        return this._vencimiento;
+    }
+
+    set vencimiento(value: string) {
+        this._vencimiento = value;
+    }
 }

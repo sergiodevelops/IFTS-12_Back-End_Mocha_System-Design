@@ -1,24 +1,45 @@
-import Cliente from './Cliente';
-
 export default class Direccion {
-    private calle: string;
-    private altura: number;
-    private barrio: string;
-    private ciudad: string;
+    private _calle: string;
+    private _altura: number;
+    private _barrio: string;
+    private _ciudad: string;
 
     constructor(calle: string, altura: number, barrio: string, ciudad: string) {
-        this.calle = calle;
-        this.altura = altura;
-        this.barrio = barrio;
-        this.ciudad = ciudad;
+        this._calle = calle;
+        this._altura = altura;
+        this._barrio = barrio;
+        this._ciudad = ciudad;
     }
 
-    /*create(): void {};
-    read(): Direccion {
-        return this;
-    };
-    update(direccion: Direccion): void {
-        this.update(direccion)
-    };
-    delete(): void {};*/
+    get calle(): string {
+        return this._calle;
+    }
+
+    set calle(value: string) {
+        this._calle = value;
+    }
+
+    get altura(): number {
+        return this._altura;
+    }
+
+    set altura(value: number) {
+        this._altura = value;
+    }
+
+    get barrio(): string {
+        return this._barrio;
+    }
+
+    set barrio(value: string) {
+        this._barrio = value;
+    }
+
+    get ciudad(): string {
+        return this._ciudad;
+    }
+
+    set ciudad(value: string) {
+        this._ciudad = value;
+    }
 }

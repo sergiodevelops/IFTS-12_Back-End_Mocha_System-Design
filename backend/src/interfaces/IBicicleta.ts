@@ -5,6 +5,4 @@ export default interface IBicicleta {
     tipo: string;
     especialidad: string;
     stock: number;
-
-    read(): IBicicleta;
 }
