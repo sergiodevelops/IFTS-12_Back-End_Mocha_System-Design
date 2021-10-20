@@ -11,14 +11,14 @@ import store from "../../store/store";
 import { layoutActions } from "../../actions/allActions";
 
 const structure = [
-  { id: 0, label: "Dashboard", link: "/itm/dashboard", icon: <HomeIcon /> },
-  { id: 1, label: "Carreras", link: "/itm/carreras", icon: <School /> },
-  { id: 2, label: "Materias", link: "/itm/materias", icon: <MenuBook /> },  
-  { id: 3, label: "Alumnos", link: "/itm/alumnos", icon: <People /> },  
-  { id: 4, label: "Docentes", link: "/itm/docentes", icon: <PeopleOutline /> },  
-  { id: 5, label: "Carreras/Materias", link: "/itm/carreras_materias", icon: <AccountTreeIcon /> },  
-  { id: 6, label: "Cursos", link: "/itm/cursos", icon: <LocalLibrary /> },  
-  { id: 7, label: "Cursos/Alumnos", link: "/itm/cursos_alumnos", icon: <GroupAddSharp /> },  
+  { id: 0, label: "Dashboard", link: "/ifts/dashboard", icon: <HomeIcon /> },
+  { id: 1, label: "Carreras", link: "/ifts/carreras", icon: <School /> },
+  { id: 2, label: "Materias", link: "/ifts/materias", icon: <MenuBook /> },  
+  { id: 3, label: "Alumnos", link: "/ifts/alumnos", icon: <People /> },  
+  { id: 4, label: "Docentes", link: "/ifts/docentes", icon: <PeopleOutline /> },  
+  { id: 5, label: "Carreras/Materias", link: "/ifts/carreras_materias", icon: <AccountTreeIcon /> },  
+  { id: 6, label: "Cursos", link: "/ifts/cursos", icon: <LocalLibrary /> },  
+  { id: 7, label: "Cursos/Alumnos", link: "/ifts/cursos_alumnos", icon: <GroupAddSharp /> },  
 ];
 
 function Sidebar({ location }) {

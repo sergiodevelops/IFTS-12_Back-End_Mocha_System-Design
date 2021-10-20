@@ -51,33 +51,33 @@ function Layout() {
             <Notifier />
 
             <Switch>
-              <Route path="/itm/dashboard" component={Dashboard} />
-              <Route path="/itm/materias/alta" component={AltaMaterias} />
-              <Route path="/itm/materias/:id" component={ModificacionMaterias} />
-              <Route path="/itm/materias" component={ListadoMaterias} />
-              <Route path="/itm/carreras/alta" component={AltaCarreras} />
-              <Route path="/itm/carreras/:id" component={ModificacionCarreras} />
-              <Route path="/itm/carreras" component={ListadoCarreras} />        
-              <Route path="/itm/docentes/alta" component={AltaDocentes} />
-              <Route path="/itm/docentes/:id" component={ModificacionDocentes} />
-              <Route path="/itm/docentes" component={ListadoDocentes} />
-              <Route path="/itm/alumnos/alta" component={AltaAlumnos} />
-              <Route path="/itm/alumnos/:id" component={ModificacionAlumnos} />
-              <Route path="/itm/alumnos" component={ListadoAlumnos} />
-              <Route path="/itm/carreras_materias" exact component={ListadoCarrerasMaterias} />
-              <Route path="/itm/carreras_materias/alta" exact component={AltaCarrerasMaterias} />
-              {/* <Route path="/itm/carreras_materias/:carreraId/edit" exact component={AltaCarrerasMaterias} /> */}
-              <Route path="/itm/carreras_materias/:carreraId" exact component={MostrarCarrerasMaterias} />              
-              <Route path="/itm/correlativas/:carreraMateriaId/edit" exact component={AltaCorrelativas} />              
-              <Route path="/itm/correlativas/:carreraMateriaId" exact component={MostrarCorrelativas} />                            
-              <Route path="/itm/cursos/alta" exact component={AltaCursos} />                            
-              <Route path="/itm/cursos/:id/edit" exact component={ModificacionCursos} />                            
-              <Route path="/itm/cursos" exact component={ListadoCursos} />                
-              <Route path="/itm/cursos_alumnos/alta" exact component={AltaCursosAlumnos} />                            
-              <Route path="/itm/cursos_alumnos" exact component={ListadoCursosAlumnos} />                            
-              <Route path="/itm/asistencias/:id" exact component={AltaAsistencias} />                            
-              <Route path="/itm/evaluaciones/:id" exact component={AltaEvaluaciones} />                            
-              <Route path="/itm/evaluacionesFinales/:id" exact component={AltaEvaluacionesFinales} />                            
+              <Route path="/ifts/dashboard" component={Dashboard} />
+              <Route path="/ifts/materias/alta" component={AltaMaterias} />
+              <Route path="/ifts/materias/:id" component={ModificacionMaterias} />
+              <Route path="/ifts/materias" component={ListadoMaterias} />
+              <Route path="/ifts/carreras/alta" component={AltaCarreras} />
+              <Route path="/ifts/carreras/:id" component={ModificacionCarreras} />
+              <Route path="/ifts/carreras" component={ListadoCarreras} />        
+              <Route path="/ifts/docentes/alta" component={AltaDocentes} />
+              <Route path="/ifts/docentes/:id" component={ModificacionDocentes} />
+              <Route path="/ifts/docentes" component={ListadoDocentes} />
+              <Route path="/ifts/alumnos/alta" component={AltaAlumnos} />
+              <Route path="/ifts/alumnos/:id" component={ModificacionAlumnos} />
+              <Route path="/ifts/alumnos" component={ListadoAlumnos} />
+              <Route path="/ifts/carreras_materias" exact component={ListadoCarrerasMaterias} />
+              <Route path="/ifts/carreras_materias/alta" exact component={AltaCarrerasMaterias} />
+              {/* <Route path="/ifts/carreras_materias/:carreraId/edit" exact component={AltaCarrerasMaterias} /> */}
+              <Route path="/ifts/carreras_materias/:carreraId" exact component={MostrarCarrerasMaterias} />              
+              <Route path="/ifts/correlativas/:carreraMateriaId/edit" exact component={AltaCorrelativas} />              
+              <Route path="/ifts/correlativas/:carreraMateriaId" exact component={MostrarCorrelativas} />                            
+              <Route path="/ifts/cursos/alta" exact component={AltaCursos} />                            
+              <Route path="/ifts/cursos/:id/edit" exact component={ModificacionCursos} />                            
+              <Route path="/ifts/cursos" exact component={ListadoCursos} />                
+              <Route path="/ifts/cursos_alumnos/alta" exact component={AltaCursosAlumnos} />                            
+              <Route path="/ifts/cursos_alumnos" exact component={ListadoCursosAlumnos} />                            
+              <Route path="/ifts/asistencias/:id" exact component={AltaAsistencias} />                            
+              <Route path="/ifts/evaluaciones/:id" exact component={AltaEvaluaciones} />                            
+              <Route path="/ifts/evaluacionesFinales/:id" exact component={AltaEvaluacionesFinales} />                            
             </Switch>
           </div>
         </>

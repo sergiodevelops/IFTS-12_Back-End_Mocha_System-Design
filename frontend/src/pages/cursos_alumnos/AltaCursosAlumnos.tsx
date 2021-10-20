@@ -37,7 +37,7 @@ export default function AltaCursosAlumnos() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Carreras inexistentes')));
-        window.location.href = '/#/itm/cursos_alumnos';
+        window.location.href = '/#/ifts/cursos_alumnos';
         return;
     }
     
@@ -50,7 +50,7 @@ export default function AltaCursosAlumnos() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Alumnos inexistentes')));
-        window.location.href = '/#/itm/cursos_alumnos';
+        window.location.href = '/#/ifts/cursos_alumnos';
         return;
     }
     
@@ -81,7 +81,7 @@ export default function AltaCursosAlumnos() {
 
     store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Alta de curso alumno exitoso')));
     setTimeout(() => {
-      window.location.href = '/#/itm/cursos_alumnos';
+      window.location.href = '/#/ifts/cursos_alumnos';
     }, 5000);
   };    
 

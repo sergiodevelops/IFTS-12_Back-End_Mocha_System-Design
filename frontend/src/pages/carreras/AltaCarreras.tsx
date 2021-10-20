@@ -24,7 +24,7 @@ export default function AltaCarreras() {
     if (result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Alta de carrera exitosa')));
       setTimeout(() => {
-        window.location.href = '/#/itm/carreras';
+        window.location.href = '/#/ifts/carreras';
       }, 5000);
     }
   };    

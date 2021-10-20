@@ -32,7 +32,7 @@ export default function ModificacionDocentes() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Docente inexistente')));
-        window.location.href = '/#/itm/docentes';
+        window.location.href = '/#/ifts/docentes';
         return;
     }
     
@@ -53,7 +53,7 @@ export default function ModificacionDocentes() {
     if (result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Modificación del docente exitosa')));
       setTimeout(() => {
-        window.location.href = '/#/itm/docentes';
+        window.location.href = '/#/ifts/docentes';
       }, 5000);
     }
   };    

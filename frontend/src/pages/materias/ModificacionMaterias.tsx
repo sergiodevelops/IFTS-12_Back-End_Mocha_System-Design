@@ -31,7 +31,7 @@ export default function ModificacionMaterias() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Materia inexistente')));
-        window.location.href = '/#/itm/materias';
+        window.location.href = '/#/ifts/materias';
         return;
     }
     
@@ -52,7 +52,7 @@ export default function ModificacionMaterias() {
     if (result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Modificación de materia exitosa')));
       setTimeout(() => {
-        window.location.href = '/#/itm/materias';
+        window.location.href = '/#/ifts/materias';
       }, 5000);
     }
   };    
@@ -63,7 +63,7 @@ export default function ModificacionMaterias() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Hubo un error al recuperar los turnos de las materias')));
-        window.location.href = '/#/itm/materias';
+        window.location.href = '/#/ifts/materias';
         return;
     }
 

@@ -37,7 +37,7 @@ export default function ModificacionAlumnos() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Alumno inexistente')));
-        window.location.href = '/#/itm/alumnos';
+        window.location.href = '/#/ifts/alumnos';
         return;
     }
     
@@ -61,7 +61,7 @@ export default function ModificacionAlumnos() {
     if (result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Modificación del alumno exitoso')));
       setTimeout(() => {
-        window.location.href = '/#/itm/alumnos';
+        window.location.href = '/#/ifts/alumnos';
       }, 5000);
     }
   };      

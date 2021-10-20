@@ -30,7 +30,7 @@ export default function AltaCarrerasMateriasDocentes() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Curso inexistente')));
-        window.location.href = '/#/itm/cursos';
+        window.location.href = '/#/ifts/cursos';
         return;
     }
 
@@ -64,7 +64,7 @@ export default function AltaCarrerasMateriasDocentes() {
 
     store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Modificación de curso exitosa')));
     setTimeout(() => {
-      window.location.href = '/#/itm/cursos';
+      window.location.href = '/#/ifts/cursos';
     }, 5000);
   };    
 

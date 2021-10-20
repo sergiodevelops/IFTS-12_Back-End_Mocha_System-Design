@@ -93,7 +93,7 @@ export default function ListadoCarrerasMaterias() {
                 style={{color: 'white'}}
                 startIcon={<VisibilityIcon/>}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/correlativas/${idCarreraMateria}`}
+                onClick={() => window.location.href = `/#/ifts/correlativas/${idCarreraMateria}`}
               >Correlativas</Button>              
               <Button
                 variant="contained"
@@ -101,7 +101,7 @@ export default function ListadoCarrerasMaterias() {
                 style={{color: 'white', marginLeft: 20}}
                 startIcon={<PlusIcon/>}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/correlativas/${idCarreraMateria}/edit`}
+                onClick={() => window.location.href = `/#/ifts/correlativas/${idCarreraMateria}/edit`}
               >Correlativas</Button>                 
               <Button
                 variant="contained"
@@ -127,7 +127,7 @@ export default function ListadoCarrerasMaterias() {
           variant="contained"
           className={classes.buttonNewCarrera}
           startIcon={<AddCircleIcon />}
-          onClick={() => window.location.href = `/#/itm/carreras_materias/alta`}
+          onClick={() => window.location.href = `/#/ifts/carreras_materias/alta`}
         > 
         Asociación Carrera/Materia
         </Button>

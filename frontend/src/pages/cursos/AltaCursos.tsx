@@ -33,7 +33,7 @@ export default function AltaCursos() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Carreras inexistentes')));
-        window.location.href = '/#/itm/cursos';
+        window.location.href = '/#/ifts/cursos';
         return;
     }
     
@@ -46,7 +46,7 @@ export default function AltaCursos() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Docentes inexistentes')));
-        window.location.href = '/#/itm/cursos';
+        window.location.href = '/#/ifts/cursos';
         return;
     }
     
@@ -74,7 +74,7 @@ export default function AltaCursos() {
 
     store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Alta de curso exitoso')));
     setTimeout(() => {
-      window.location.href = '/#/itm/cursos';
+      window.location.href = '/#/ifts/cursos';
     }, 5000);
   };    
 

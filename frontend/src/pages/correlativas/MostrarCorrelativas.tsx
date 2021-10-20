@@ -28,7 +28,7 @@ export default function MostrarCorrelativas() {
 
     if (!result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Carrera/Materia inexistente')));
-      window.location.href = '/#/itm/carreras_materias';
+      window.location.href = '/#/ifts/carreras_materias';
       return;
     }
 

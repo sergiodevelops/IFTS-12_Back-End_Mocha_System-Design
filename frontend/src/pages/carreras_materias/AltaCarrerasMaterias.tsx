@@ -32,7 +32,7 @@ export default function AltaCarrerasMaterias() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Carreras inexistentes')));
-        window.location.href = '/#/itm/carreras_materias';
+        window.location.href = '/#/ifts/carreras_materias';
         return;
     }
 
@@ -45,7 +45,7 @@ export default function AltaCarrerasMaterias() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Materias inexistentes')));
-        window.location.href = '/#/itm/carreras_materias';
+        window.location.href = '/#/ifts/carreras_materias';
         return;
     }
 
@@ -69,7 +69,7 @@ export default function AltaCarrerasMaterias() {
     if (resultCarreraMateria) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Asociación de carrera con materias exitosa')));
       setTimeout(() => {
-        window.location.href = '/#/itm/carreras_materias';
+        window.location.href = '/#/ifts/carreras_materias';
       }, 5000);
     }    
   };   

@@ -109,7 +109,7 @@ export default function ListadoCursos() {
                 style={{ color: 'white', marginLeft: 20, marginTop: 5 }}
                 startIcon={<EventIcon />}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/asistencias/${idCurso}`}
+                onClick={() => window.location.href = `/#/ifts/asistencias/${idCurso}`}
               >Asistencias</Button>
               <Button
                 variant="contained"
@@ -117,7 +117,7 @@ export default function ListadoCursos() {
                 style={{ color: 'white', marginLeft: 20, marginTop: 5 }}
                 startIcon={<SchoolIcon />}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/evaluaciones/${idCurso}`}
+                onClick={() => window.location.href = `/#/ifts/evaluaciones/${idCurso}`}
               >Evaluaciones Parciales</Button>
               <Button
                 variant="contained"
@@ -125,7 +125,7 @@ export default function ListadoCursos() {
                 style={{ color: 'white', marginLeft: 20, marginTop: 5 }}
                 startIcon={<EditIcon />}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/cursos/${idCurso}/edit`}
+                onClick={() => window.location.href = `/#/ifts/cursos/${idCurso}/edit`}
               >Editar</Button>
               <Button
                 variant="contained"
@@ -161,7 +161,7 @@ export default function ListadoCursos() {
           variant="contained"
           className={classes.buttonNewCarrera}
           startIcon={<AddCircleIcon />}
-          onClick={() => window.location.href = `/#/itm/cursos/alta`}
+          onClick={() => window.location.href = `/#/ifts/cursos/alta`}
         >
           Alta de Cursos
         </Button>

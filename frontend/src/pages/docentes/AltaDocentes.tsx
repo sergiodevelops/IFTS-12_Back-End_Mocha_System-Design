@@ -33,7 +33,7 @@ export default function AltaDocentes() {
     if (result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Alta de docente exitoso')));
       setTimeout(() => {
-        window.location.href = '/#/itm/Docentes';
+        window.location.href = '/#/ifts/Docentes';
       }, 5000);
     }
   }; 

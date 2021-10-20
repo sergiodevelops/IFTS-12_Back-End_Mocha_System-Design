@@ -42,7 +42,7 @@ export default function AltaAlumnos() {
     if (result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Alta de alumno exitoso')));
       setTimeout(() => {
-        window.location.href = '/#/itm/alumnos';
+        window.location.href = '/#/ifts/alumnos';
       }, 5000);
     }
   };    

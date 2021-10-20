@@ -121,7 +121,7 @@ export default function ListadoAlumnos() {
                 style={{color: 'white'}}
                 startIcon={<EditIcon/>}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/alumnos/${idAlumno}`}
+                onClick={() => window.location.href = `/#/ifts/alumnos/${idAlumno}`}
               >Editar</Button>
               <Button
                 variant="contained"
@@ -147,7 +147,7 @@ export default function ListadoAlumnos() {
           variant="contained"
           className={classes.buttonNewAlumno}
           startIcon={<AddCircleIcon />}
-          onClick={() => window.location.href = `/#/itm/alumnos/alta`}
+          onClick={() => window.location.href = `/#/ifts/alumnos/alta`}
         > 
         Nuevo Alumno
         </Button>

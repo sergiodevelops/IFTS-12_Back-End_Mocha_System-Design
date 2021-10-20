@@ -53,7 +53,7 @@ export default function AltaEvaluacionesFinales() {
 
   //   if (!result) {
   //     store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Curso inexistente')));
-  //     window.location.href = '/#/itm/cursos';
+  //     window.location.href = '/#/ifts/cursos';
   //     return;
   //   }
 
@@ -66,7 +66,7 @@ export default function AltaEvaluacionesFinales() {
 
     if (!result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Curso alumno inexistente')));
-      window.location.href = '/#/itm/cursos_alumnos';
+      window.location.href = '/#/ifts/cursos_alumnos';
       return;
     }
     console.log(result.model);
@@ -112,7 +112,7 @@ export default function AltaEvaluacionesFinales() {
 
     store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Final cargado correctamente')));
     setTimeout(() => {
-      window.location.href = '/#/itm/cursos_alumnos';
+      window.location.href = '/#/ifts/cursos_alumnos';
     }, 5000);
   };
 

@@ -53,7 +53,7 @@ export default function AltaEvaluaciones() {
 
     if (!result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Curso inexistente')));
-      window.location.href = '/#/itm/cursos';
+      window.location.href = '/#/ifts/cursos';
       return;
     }
 
@@ -66,7 +66,7 @@ export default function AltaEvaluaciones() {
 
     if (!result || result.length === 0) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Curso sin alumnos asignados')));
-      window.location.href = '/#/itm/cursos';
+      window.location.href = '/#/ifts/cursos';
       return;
     }
 
@@ -110,7 +110,7 @@ export default function AltaEvaluaciones() {
 
     store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Evaluaciones cargadas correctamente')));
     setTimeout(() => {
-      window.location.href = '/#/itm/cursos';
+      window.location.href = '/#/ifts/cursos';
     }, 5000);
   };
 

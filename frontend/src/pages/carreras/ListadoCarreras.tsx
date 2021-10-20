@@ -91,7 +91,7 @@ export default function ListadoCarreras() {
                 style={{color: 'white'}}
                 startIcon={<VisibilityIcon/>}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/carreras_materias/${idCarrera}`}
+                onClick={() => window.location.href = `/#/ifts/carreras_materias/${idCarrera}`}
               >Materias</Button>              
               <Button
                 variant="contained"
@@ -99,7 +99,7 @@ export default function ListadoCarreras() {
                 style={{color: 'white', marginLeft: 20}}
                 startIcon={<PlusIcon/>}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/carreras_materias/${idCarrera}/edit`}
+                onClick={() => window.location.href = `/#/ifts/carreras_materias/${idCarrera}/edit`}
               >Materias</Button>         */}
               <Button
                 variant="contained"
@@ -107,7 +107,7 @@ export default function ListadoCarreras() {
                 style={{color: 'white', marginLeft: 20}}
                 startIcon={<EditIcon/>}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/carreras/${idCarrera}`}
+                onClick={() => window.location.href = `/#/ifts/carreras/${idCarrera}`}
               >Editar</Button>
               <Button
                 variant="contained"
@@ -133,7 +133,7 @@ export default function ListadoCarreras() {
           variant="contained"
           className={classes.buttonNewCarrera}
           startIcon={<AddCircleIcon />}
-          onClick={() => window.location.href = `/#/itm/carreras/alta`}
+          onClick={() => window.location.href = `/#/ifts/carreras/alta`}
         > 
         Nueva Carrera
         </Button>

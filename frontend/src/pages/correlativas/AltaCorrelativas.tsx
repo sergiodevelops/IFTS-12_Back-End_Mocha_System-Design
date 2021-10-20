@@ -30,7 +30,7 @@ export default function AltaCorrelativas() {
 
     if (!result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Carrera/Materia inexistente')));
-      window.location.href = '/#/itm/carreras_materias';
+      window.location.href = '/#/ifts/carreras_materias';
       return;
     }
 
@@ -49,7 +49,7 @@ export default function AltaCorrelativas() {
 
     if (!result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Hubo un error al recuperar las materias')));
-      window.location.href = '/#/itm/carreras_materias';
+      window.location.href = '/#/ifts/carreras_materias';
       return;
     }
 
@@ -74,7 +74,7 @@ export default function AltaCorrelativas() {
     if (result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Asociación de correlativas exitosa')));
       setTimeout(() => {
-        window.location.href = '/#/itm/carreras_materias';
+        window.location.href = '/#/ifts/carreras_materias';
       }, 5000);
     }
   };

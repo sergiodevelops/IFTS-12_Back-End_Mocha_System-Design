@@ -26,7 +26,7 @@ export default function ModificacionCarreras() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Carrera inexistente')));
-        window.location.href = '/#/itm/carreras';
+        window.location.href = '/#/ifts/carreras';
         return;
     }
     
@@ -44,7 +44,7 @@ export default function ModificacionCarreras() {
     if (result) {
       store.dispatch(notifierActions.enqueueNotification(new Notification('success', 'Success', 'Modificación de carrera exitosa')));
       setTimeout(() => {
-        window.location.href = '/#/itm/carreras';
+        window.location.href = '/#/ifts/carreras';
       }, 5000);
     }
   };    

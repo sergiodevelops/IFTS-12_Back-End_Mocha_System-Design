@@ -28,7 +28,7 @@ export default function MostrarCarrerasMaterias() {
 
     if (!result) {
         store.dispatch(notifierActions.enqueueNotification(new Notification('error', 'Error', 'Carrera inexistente')));
-        window.location.href = '/#/itm/carreras';
+        window.location.href = '/#/ifts/carreras';
         return;
     }
     

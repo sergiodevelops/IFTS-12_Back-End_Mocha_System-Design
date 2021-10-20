@@ -99,7 +99,7 @@ export default function ListadoMaterias() {
                 style={{color: 'white', marginLeft: 20}}
                 startIcon={<EditIcon/>}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/materias/${idMateria}`}
+                onClick={() => window.location.href = `/#/ifts/materias/${idMateria}`}
               >Editar</Button>
               <Button
                 variant="contained"
@@ -125,7 +125,7 @@ export default function ListadoMaterias() {
           variant="contained"
           className={classes.buttonNewMateria}
           startIcon={<AddCircleIcon />}
-          onClick={() => window.location.href = `/#/itm/materias/alta`}
+          onClick={() => window.location.href = `/#/ifts/materias/alta`}
         > 
         Nueva Materia
         </Button>

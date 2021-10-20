@@ -99,7 +99,7 @@ export default function ListadoCursosAlumnos() {
                 style={{color: 'white', marginLeft: 20}}
                 startIcon={<SchoolIcon />}
                 size="medium"
-                onClick={() => window.location.href = `/#/itm/evaluacionesFinales/${idCursoAlumno}`}
+                onClick={() => window.location.href = `/#/ifts/evaluacionesFinales/${idCursoAlumno}`}
               >Evaluaciones Finales</Button>
               <Button
                 variant="contained"
@@ -125,7 +125,7 @@ export default function ListadoCursosAlumnos() {
           variant="contained"
           className={classes.buttonNewCurso}
           startIcon={<AddCircleIcon />}
-          onClick={() => window.location.href = `/#/itm/cursos_alumnos/alta`}
+          onClick={() => window.location.href = `/#/ifts/cursos_alumnos/alta`}
         > 
         Alta de curso alumno
         </Button>
