@@ -1,4 +1,4 @@
-import Cliente from "./Cliente";
+import Cliente from './Cliente';
 
 export default class ClienteFederado extends Cliente {
     private matricula: number;
@@ -13,13 +13,7 @@ export default class ClienteFederado extends Cliente {
         matricula: number,
         agrupacion: string,
     ) {
-        super(
-            nombre,
-            apellido,
-            tipo,
-            fechaNacimiento,
-            dni,
-        )
+        super(nombre, apellido, tipo, fechaNacimiento, dni);
         this.matricula = matricula;
         this.agrupacion = agrupacion;
     }

@@ -1,4 +1,4 @@
-import Tarjeta from "./Tarjeta";
+import Tarjeta from './Tarjeta';
 
 export default class Pago {
     private tarjeta: Tarjeta;

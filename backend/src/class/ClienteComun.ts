@@ -1,7 +1,7 @@
-import Cliente from "./Cliente";
-import Direccion from "./Direccion";
+import Cliente from './Cliente';
+import Direccion from './Direccion';
 
-export default class ClienteComun extends Cliente{
+export default class ClienteComun extends Cliente {
     private direccion: Direccion;
 
     constructor(
@@ -12,13 +12,7 @@ export default class ClienteComun extends Cliente{
         dni: number,
         direccion: Direccion,
     ) {
-        super(
-            nombre,
-            apellido,
-            tipo,
-            fechaNacimiento,
-            dni,
-        )
+        super(nombre, apellido, tipo, fechaNacimiento, dni);
         this.direccion = direccion;
     }
 
