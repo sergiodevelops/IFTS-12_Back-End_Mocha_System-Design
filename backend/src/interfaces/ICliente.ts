@@ -1,4 +1,3 @@
-import Bicicleta from "../class/Bicicleta";
 import Cliente from "../class/Cliente";
 
 export default interface ICliente {
@@ -7,6 +6,4 @@ export default interface ICliente {
     tipo: string;
     fechaNacimiento: string;
     dni: number;
-
-    read(): Cliente;
 }

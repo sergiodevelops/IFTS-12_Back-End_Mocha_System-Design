@@ -1,6 +1,5 @@
 import Cliente from "./Cliente";
 import Direccion from "./Direccion";
-import ICliente from "../interfaces/ICliente";
 
 export default class ClienteComun extends Cliente{
     private direccion: Direccion;

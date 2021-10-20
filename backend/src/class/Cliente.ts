@@ -1,6 +1,4 @@
-import ICliente from "../interfaces/ICliente";
-
-export default class Cliente implements ICliente {
+export default class Cliente {
     private nombre: string;
     private apellido: string;
     private tipo: string;
@@ -19,6 +17,10 @@ export default class Cliente implements ICliente {
         this.tipo = tipo;
         this.fechaNacimiento = fechaNacimiento;
         this.dni = dni;
+    }
+
+    setNombre(nombre: string): void{
+        this.nombre = nombre;
     }
 
     read(): Cliente{return this};

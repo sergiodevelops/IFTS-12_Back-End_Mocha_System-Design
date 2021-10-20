@@ -14,7 +14,6 @@ export default class Tarjeta {
         this.numero = numero;
         this.vencimiento = vencimiento;
     }
-
     /*create():void;
     read(): Pedido {
         return this;

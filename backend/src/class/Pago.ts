@@ -14,11 +14,11 @@ export default class Pago {
         descuento: number,
         saldo: number,
     ) {
-        this.tarjeta = tarjeta,
-            this.conTarjeta = conTarjeta,
-            this.fechaPago = fechaPago,
-            this.descuento = descuento,
-            this.saldo = saldo
+        this.tarjeta = tarjeta;
+        this.conTarjeta = conTarjeta;
+        this.fechaPago = fechaPago;
+        this.descuento = descuento;
+        this.saldo = saldo;
     }
 
     /*create():void;
