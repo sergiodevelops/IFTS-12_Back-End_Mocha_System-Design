@@ -5,10 +5,10 @@ import ClienteComun from './ClienteComun';
 import Pedido from './Pedido';
 
 export default class Compra {
-    private cliente: ClienteFederado | ClienteComun;
-    private pedido: Pedido;
-    private conEnvio: boolean;
-    private pago: string;
+    private _cliente: ClienteFederado | ClienteComun;
+    private _pedido: Pedido;
+    private _conEnvio: boolean;
+    private _pago: string;
 
     constructor(
         cliente: ClienteFederado | ClienteComun,
@@ -16,16 +16,41 @@ export default class Compra {
         conEnvio: boolean,
         pago: string,
     ) {
-        this.cliente = cliente;
-        this.pedido = pedido;
-        this.conEnvio = conEnvio;
-        this.pago = pago;
+        this._cliente = cliente;
+        this._pedido = pedido;
+        this._conEnvio = conEnvio;
+        this._pago = pago;
     }
 
-    /*create():void;
-    read(): Compra {
-        return this;
-    };
-    update(): void {};
-    delete():void{};*/
+    get cliente(): ClienteFederado | ClienteComun {
+        return this._cliente;
+    }
+
+    set cliente(value: ClienteFederado | ClienteComun) {
+        this._cliente = value;
+    }
+
+    get pedido(): Pedido {
+        return this._pedido;
+    }
+
+    set pedido(value: Pedido) {
+        this._pedido = value;
+    }
+
+    get conEnvio(): boolean {
+        return this._conEnvio;
+    }
+
+    set conEnvio(value: boolean) {
+        this._conEnvio = value;
+    }
+
+    get pago(): string {
+        return this._pago;
+    }
+
+    set pago(value: string) {
+        this._pago = value;
+    }
 }

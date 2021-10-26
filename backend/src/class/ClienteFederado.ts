@@ -1,8 +1,8 @@
 import Cliente from './Cliente';
 
 export default class ClienteFederado extends Cliente {
-    private matricula: number;
-    private agrupacion: string;
+    private _matricula: number;
+    private _agrupacion: string;
 
     constructor(
         nombre: string,
@@ -14,15 +14,24 @@ export default class ClienteFederado extends Cliente {
         agrupacion: string,
     ) {
         super(nombre, apellido, tipo, fechaNacimiento, dni);
-        this.matricula = matricula;
-        this.agrupacion = agrupacion;
+
+        this._matricula = matricula;
+        this._agrupacion = agrupacion;
     }
 
-    /*update(clienteFederado: ClienteFederado): void {
-        this.update(clienteFederado)
-    };
+    get matricula(): number {
+        return this._matricula;
+    }
 
-    read(): ClienteFederado {
-        return this;
-    };*/
+    set matricula(value: number) {
+        this._matricula = value;
+    }
+
+    get agrupacion(): string {
+        return this._agrupacion;
+    }
+
+    set agrupacion(value: string) {
+        this._agrupacion = value;
+    }
 }

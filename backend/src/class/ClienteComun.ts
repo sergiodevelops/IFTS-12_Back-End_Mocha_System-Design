@@ -2,7 +2,7 @@ import Cliente from './Cliente';
 import Direccion from './Direccion';
 
 export default class ClienteComun extends Cliente {
-    private direccion: Direccion;
+    private _direccion: Direccion;
 
     constructor(
         nombre: string,
@@ -10,16 +10,19 @@ export default class ClienteComun extends Cliente {
         tipo: string,
         fechaNacimiento: string,
         dni: number,
+
         direccion: Direccion,
     ) {
         super(nombre, apellido, tipo, fechaNacimiento, dni);
-        this.direccion = direccion;
+
+        this._direccion = direccion;
     }
 
-    /*update(clienteComun: ClienteComun): void {
-        this.update(clienteComun)
-    };
-    read(): ClienteComun {
-        return this;
-    };*/
+    get direccion(): Direccion {
+        return this._direccion;
+    }
+
+    set direccion(value: Direccion) {
+        this._direccion = value;
+    }
 }
