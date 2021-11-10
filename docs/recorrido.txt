@@ -2,6 +2,8 @@ prueba unitaria de su código TypeScript
 https://dev.to/matteobruni/mocha-chai-with-typescript-37f
 yarn add mocha chai @types/mocha @types/chai
 
+------------------------------------------------------
 
+------------------------------------------------------
 
 

@@ -1,0 +1,65 @@
+FLUJO DE EJECUCIÓN
+
+//creamos el cliente
+
+let currentClient;
+currentClient = newClienteComun(...);
+currentClient = newClienteFederado(...);
+
+// definir el pedido
+let pedidos: IPedido[] = [];
+
+const bici1 = newBicicleta(...);
+pedidos.push(newPedido(bici1-->"compet", 5)); <-- pedido 1
+
+const bici2 = newBicicleta(...);
+pedidos.push(newPedido(bici1-->"sport", 3)); <-- pedido 2
+
+const bici3 = newBicicleta(...);
+pedidos.push(newPedido(bici3-->"compet", 4)); <-- pedido 3
+
+
+// agrupar pedidos segun modelo de bicis
+
+const sportList = pedidos.filter((pedido)=>pedido.Bicicleta.modelo === sport);
+let canTotSport = 0; --> 3 bicis total
+sportList.map((pedido)=>canTotSport += pedido.cantidad);
+let totalSinDescuentoSport = canTotSport[0].precio * canTotSport;
+
+const competicionList = pedidos.filter((pedido)=>pedido.Bicicleta.modelo === compet);
+let canTotCompet = 0; --> 9 bicis total
+competicionList.map((pedido)=>canTotCompet += pedido.cantidad);
+let totalSinDescuentoCompet = canTotCompet[0].precio * canTotCompet;
+
+const restoList = pedidos.filter((pedido)=>pedido.Bicicleta.modelo !== sport && !== compet);
+let totalSinDescuentoResto = 0;
+restoList.map((pedido)=>totalSinDescuentoResto += pedido.precio * pedido.cantidad);
+
+
+// descontar segun forma de pago
+
+let totalSportConDescuento;
+let totalCompetConDescuento;
+
+let esConTarjeta = false; --> booleano hardcodeado
+let tarjeta = null;
+if(esConTarjeta) <-- pregunta como quieres pagar
+    tarjeta = newTarjeta(...)
+else
+    if (federado)
+        if (!!sportList.length) totalSportConDescuento = Pago.aplicarDescuento(-10, totalSinDescuentoSport);
+        if (!!competList.length) totalCompetConDescuento = aplicarDescuento(-25, totalSinDescuentoCompet);
+
+const sumaTotal = totalSinDescuentoResto + totalSportConDescuento + totalCompetConDescuento;
+
+
+
+// una vez definido los descuentos construye el pago
+
+const pago = newPago(sumaTotal, tarjeta) // aca ya sabemos que forma de pago para poder calcular desc
+
+/*
+anotaciones: ver responsabilidad de clase pago! tema descuento
+FEED1 PROFE:
+métodos que hacen los calculos del precio con el descuento, decremento de stock y esas cosas. Si tiene duda de donde ubicar eso me preguntan. Van bien, felicitaciones y Saludos
+*/
