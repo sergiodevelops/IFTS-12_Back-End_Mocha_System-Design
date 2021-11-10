@@ -1,4 +1,6 @@
-export default class Tarjeta {
+import ITarjeta from "../interfaces/ITarjeta";
+
+export default class Tarjeta implements ITarjeta{
     private _esCredito: boolean;
     private _numero: number;
     private _vencimiento: string;

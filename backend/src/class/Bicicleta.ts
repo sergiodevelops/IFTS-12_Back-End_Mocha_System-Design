@@ -1,4 +1,6 @@
-export default class Bicicleta {
+import IBicicleta from "../interfaces/IBicicleta";
+
+export default class Bicicleta implements IBicicleta{
     private _marca: string;
     private _modelo: string;
     private _rodado: string;

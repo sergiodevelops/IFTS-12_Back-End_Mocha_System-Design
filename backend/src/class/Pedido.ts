@@ -1,6 +1,7 @@
 import Bicicleta from './Bicicleta';
+import IPedido from "../interfaces/IPedido";
 
-export default class Pedido {
+export default class Pedido implements IPedido{
     private _id: string;
     private _bicicleta: Bicicleta;
     private _cantidad: number;

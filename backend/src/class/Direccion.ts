@@ -1,4 +1,6 @@
-export default class Direccion {
+import IDireccion from "../interfaces/IDireccion";
+
+export default class Direccion implements IDireccion{
     private _calle: string;
     private _altura: number;
     private _barrio: string;
