@@ -1,9 +1,14 @@
 prueba unitaria de su código TypeScript
 https://dev.to/matteobruni/mocha-chai-with-typescript-37f
 yarn add mocha chai @types/mocha @types/chai
-
-------------------------------------------------------
-
+https://gist.github.com/mrister/505700e6d27e2ff0a7aa8962fd911111#file-test-spec-js
+// describir pruebas test de lo que esperamos obtener al ejecutar cada funcionalidad
+https://www.youtube.com/watch?v=g3MislTPMMc
+// mocha es el framework de ejecución
+//chai es libreria de asersiones
+describe --> agrupa conjunto de pruebas que tengan algo en comun
+it --> valida algo especifico
+https://github.com/jdmesalosada/PocsJm/tree/master/chai-mocha
 ------------------------------------------------------
 
 
