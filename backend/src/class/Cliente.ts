@@ -1,4 +1,4 @@
-import ICliente from "../interfaces/ICliente";
+import ICliente from "../interface/ICliente";
 
 export default abstract class Cliente implements ICliente{
     private _nombre: string;

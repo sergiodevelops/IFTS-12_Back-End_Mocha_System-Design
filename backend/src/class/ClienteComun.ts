@@ -1,6 +1,6 @@
 import Cliente from './Cliente';
-import IDireccion from "../interfaces/IDireccion";
-import IClienteComun from "../interfaces/IClienteComun";
+import IDireccion from "../interface/IDireccion";
+import IClienteComun from "../interface/IClienteComun";
 
 export default class ClienteComun extends Cliente implements IClienteComun{
     private _direccion: IDireccion;

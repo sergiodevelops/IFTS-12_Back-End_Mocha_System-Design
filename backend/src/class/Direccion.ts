@@ -1,4 +1,4 @@
-import IDireccion from "../interfaces/IDireccion";
+import IDireccion from "../interface/IDireccion";
 
 export default class Direccion implements IDireccion{
     private _calle: string;

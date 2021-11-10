@@ -1,30 +1,20 @@
-import Bicicleta from './Bicicleta';
-import IPedido from "../interfaces/IPedido";
+import IPedido from "../interface/IPedido";
+import IBicicleta from "../interface/IBicicleta";
 
 export default class Pedido implements IPedido{
-    private _id: string;
-    private _bicicleta: Bicicleta;
+    private _bicicleta: IBicicleta;
     private _cantidad: number;
 
-    constructor(id: string, bicicleta: Bicicleta, cantidad: number) {
-        this._id = id;
+    constructor(bicicleta: IBicicleta, cantidad: number) {
         this._bicicleta = bicicleta;
         this._cantidad = cantidad;
     }
 
-    get id(): string {
-        return this._id;
-    }
-
-    set id(value: string) {
-        this._id = value;
-    }
-
-    get bicicleta(): Bicicleta {
+    get bicicleta(): IBicicleta {
         return this._bicicleta;
     }
 
-    set bicicleta(value: Bicicleta) {
+    set bicicleta(value: IBicicleta) {
         this._bicicleta = value;
     }
 

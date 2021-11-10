@@ -1,5 +1,5 @@
-import ITarjeta from '../interfaces/ITarjeta';
-import IPago from "../interfaces/IPago";
+import ITarjeta from '../interface/ITarjeta';
+import IPago from "../interface/IPago";
 
 export default class Pago implements IPago{
     private _tarjeta: ITarjeta | undefined;

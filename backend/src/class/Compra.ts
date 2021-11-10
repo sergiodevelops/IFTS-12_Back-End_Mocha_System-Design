@@ -1,7 +1,7 @@
-import IPedido from "../interfaces/IPedido";
-import IClienteFederado from "../interfaces/IClienteFederado";
-import IClienteComun from "../interfaces/IClienteComun";
-import ICompra from "../interfaces/ICompra";
+import IPedido from "../interface/IPedido";
+import IClienteFederado from "../interface/IClienteFederado";
+import IClienteComun from "../interface/IClienteComun";
+import ICompra from "../interface/ICompra";
 
 export default class Compra implements ICompra{
     private _cliente: IClienteFederado | IClienteComun;

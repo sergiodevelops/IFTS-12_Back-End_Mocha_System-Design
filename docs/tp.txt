@@ -62,4 +62,7 @@ const pago = newPago(sumaTotal, tarjeta) // aca ya sabemos que forma de pago par
 anotaciones: ver responsabilidad de clase pago! tema descuento
 FEED1 PROFE:
 métodos que hacen los calculos del precio con el descuento, decremento de stock y esas cosas. Si tiene duda de donde ubicar eso me preguntan. Van bien, felicitaciones y Saludos
+- ver metodos para
+obtener stock actual de la bici antes de agregar al pedido
+
 */

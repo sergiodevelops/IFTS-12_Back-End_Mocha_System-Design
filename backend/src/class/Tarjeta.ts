@@ -1,4 +1,4 @@
-import ITarjeta from "../interfaces/ITarjeta";
+import ITarjeta from "../interface/ITarjeta";
 
 export default class Tarjeta implements ITarjeta{
     private _esCredito: boolean;

@@ -1,4 +1,4 @@
-import IBicicleta from "../interfaces/IBicicleta";
+import IBicicleta from "../interface/IBicicleta";
 
 export default class Bicicleta implements IBicicleta{
     private _marca: string;
@@ -14,14 +14,12 @@ export default class Bicicleta implements IBicicleta{
         rodado: string,
         tipo: string,
         especialidad: string,
-        stock: number,
     ) {
         this._marca = marca;
         this._modelo = modelo;
         this._rodado = rodado;
         this._tipo = tipo;
         this._especialidad = especialidad;
-        this._stock = stock;
     }
 
 

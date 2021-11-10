@@ -1,5 +1,5 @@
 import Cliente from './Cliente';
-import IClienteFederado from "../interfaces/IClienteFederado";
+import IClienteFederado from "../interface/IClienteFederado";
 
 export default class ClienteFederado extends Cliente implements IClienteFederado{
     private _matricula: number;
