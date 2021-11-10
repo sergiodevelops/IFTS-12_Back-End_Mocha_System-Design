@@ -1322,6 +1322,29 @@
           44.19590554703471
         ]
       ]
+    },
+    {
+      "id": "kBxr-OH8QsONYYk2piqnm",
+      "type": "rectangle",
+      "x": 478.7429653679656,
+      "y": -187.10414585414583,
+      "width": 852.857142857143,
+      "height": 537.8571428571429,
+      "angle": 0,
+      "strokeColor": "#000000",
+      "backgroundColor": "transparent",
+      "fillStyle": "hachure",
+      "strokeWidth": 1,
+      "strokeStyle": "solid",
+      "roughness": 1,
+      "opacity": 100,
+      "groupIds": [],
+      "strokeSharpness": "sharp",
+      "seed": 1279044283,
+      "version": 85,
+      "versionNonce": 41222197,
+      "isDeleted": false,
+      "boundElementIds": null
     }
   ],
   "appState": {
