@@ -1,4 +1,4 @@
-export default class Cliente {
+export default abstract class Cliente {
     private _nombre: string;
     private _apellido: string;
     private _tipo: string;

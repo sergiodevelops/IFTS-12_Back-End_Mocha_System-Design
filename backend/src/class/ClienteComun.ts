@@ -1,8 +1,8 @@
 import Cliente from './Cliente';
-import Direccion from './Direccion';
+import IDireccion from "../interfaces/IDireccion";
 
 export default class ClienteComun extends Cliente {
-    private _direccion: Direccion;
+    private _direccion: IDireccion;
 
     constructor(
         nombre: string,
@@ -11,18 +11,18 @@ export default class ClienteComun extends Cliente {
         fechaNacimiento: string,
         dni: number,
 
-        direccion: Direccion,
+        direccion: IDireccion,
     ) {
         super(nombre, apellido, tipo, fechaNacimiento, dni);
 
         this._direccion = direccion;
     }
 
-    get direccion(): Direccion {
+    get direccion(): IDireccion {
         return this._direccion;
     }
 
-    set direccion(value: Direccion) {
+    set direccion(value: IDireccion) {
         this._direccion = value;
     }
 }

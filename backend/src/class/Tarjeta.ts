@@ -1,5 +1,3 @@
-import Cliente from './Cliente';
-
 export default class Tarjeta {
     private _esCredito: boolean;
     private _numero: number;

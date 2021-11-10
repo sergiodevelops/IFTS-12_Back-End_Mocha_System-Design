@@ -1,18 +1,17 @@
-import Bicicleta from './Bicicleta';
-import Cliente from './Cliente';
-import ClienteFederado from './ClienteFederado';
-import ClienteComun from './ClienteComun';
-import Pedido from './Pedido';
+import IPedido from "../interfaces/IPedido";
+import IClienteFederado from "../interfaces/IClienteFederado";
+import IClienteComun from "../interfaces/IClienteComun";
+import ICompra from "../interfaces/ICompra";
 
-export default class Compra {
-    private _cliente: ClienteFederado | ClienteComun;
-    private _pedido: Pedido;
+export default class Compra implements ICompra{
+    private _cliente: IClienteFederado | IClienteComun;
+    private _pedido: IPedido;
     private _conEnvio: boolean;
     private _pago: string;
 
     constructor(
-        cliente: ClienteFederado | ClienteComun,
-        pedido: Pedido,
+        cliente: IClienteFederado | IClienteComun,
+        pedido: IPedido,
         conEnvio: boolean,
         pago: string,
     ) {
@@ -22,19 +21,19 @@ export default class Compra {
         this._pago = pago;
     }
 
-    get cliente(): ClienteFederado | ClienteComun {
+    get cliente(): IClienteFederado | IClienteComun {
         return this._cliente;
     }
 
-    set cliente(value: ClienteFederado | ClienteComun) {
+    set cliente(value: IClienteFederado | IClienteComun) {
         this._cliente = value;
     }
 
-    get pedido(): Pedido {
+    get pedido(): IPedido {
         return this._pedido;
     }
 
-    set pedido(value: Pedido) {
+    set pedido(value: IPedido) {
         this._pedido = value;
     }
 

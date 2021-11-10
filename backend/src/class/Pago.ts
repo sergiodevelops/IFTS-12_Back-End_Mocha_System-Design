@@ -1,40 +1,29 @@
-import Tarjeta from './Tarjeta';
+import ITarjeta from '../interfaces/ITarjeta';
 
 export default class Pago {
-    private _tarjeta: Tarjeta;
-    private _conTarjeta: boolean;
+    private _tarjeta: ITarjeta | undefined;
     private _fechaPago: string;
     private _descuento: number;
     private _saldo: number;
 
     constructor(
-        tarjeta: Tarjeta,
-        conTarjeta: boolean,
+        tarjeta: ITarjeta,
         fechaPago: string,
         descuento: number,
         saldo: number,
     ) {
         this._tarjeta = tarjeta;
-        this._conTarjeta = conTarjeta;
         this._fechaPago = fechaPago;
         this._descuento = descuento;
         this._saldo = saldo;
     }
 
-    get tarjeta(): Tarjeta {
+    get tarjeta(): ITarjeta | undefined {
         return this._tarjeta;
     }
 
-    set tarjeta(value: Tarjeta) {
+    set tarjeta(value: ITarjeta | undefined) {
         this._tarjeta = value;
-    }
-
-    get conTarjeta(): boolean {
-        return this._conTarjeta;
-    }
-
-    set conTarjeta(value: boolean) {
-        this._conTarjeta = value;
     }
 
     get fechaPago(): string {
