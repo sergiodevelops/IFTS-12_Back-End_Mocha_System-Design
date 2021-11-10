@@ -14,18 +14,14 @@ class App {
 
 console.log("armando el flujo e interacción entre clases");
 
-function getCurrentStock() { // TODO ver este tema de stock
-    return 50;
-}
 let pedidos: IPedido[] = [],
     currentClientCom: IClienteComunDto,
     currentClientFede: IClienteFederadoDto,
     currentDir: IDireccion,
     currentPedido: IPedido,
     currentBici: IBicicleta,
-    hayStockDisponible: boolean = false,
-    currentCantidadSolicitada: number = 0,
-    currentStock: number; // TODO ver este tema de stock
+    hayStockDisponible: boolean,  // TODO ver este tema de stock
+    currentCantidadSolicitada: number;
 
 // 1 registrar Cliente que hara la compra
 
@@ -55,13 +51,13 @@ if(hayStockDisponible) {
 }
 
 // carga pedido 2
-currentBici = new Bicicleta('marca2', 'modelo2', 'rodado2', 'tipo2', 'especialidad2', currentStock);
-hayStock = currentBici.stock > 0;
+currentBici = new Bicicleta('marca2', 'modelo2', 'rodado2', 'tipo2', 'especialidad2');
+hayStockDisponible = currentBici.stock > 0;
 
 currentPedido = new Pedido(currentBici,3);
 pedidos.push(currentPedido);
 
-currentBici = new Bicicleta('marca3', 'modelo3', 'rodado3', 'tipo3', 'especialidad3', currentStock);
+currentBici = new Bicicleta('marca3', 'modelo3', 'rodado3', 'tipo3', 'especialidad3');
 currentPedido = new Pedido(currentBici,4);
 pedidos.push(currentPedido);
 
