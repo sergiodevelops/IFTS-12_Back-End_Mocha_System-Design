@@ -1,22 +1,21 @@
-import ICliente from "../interface/ICliente";
+//responsabilidad: heredar estructura base de cliente
+
+import ICliente from "../interfaces/ICliente";
 
 export default abstract class Cliente implements ICliente{
     private _nombre: string;
     private _apellido: string;
-    private _tipo: string;
     private _fechaNacimiento: string;
     private _dni: number;
 
     constructor(
         nombre: string,
         apellido: string,
-        tipo: string,
         fechaNacimiento: string,
         dni: number,
     ) {
         this._nombre = nombre;
         this._apellido = apellido;
-        this._tipo = tipo;
         this._fechaNacimiento = fechaNacimiento;
         this._dni = dni;
     }
@@ -35,14 +34,6 @@ export default abstract class Cliente implements ICliente{
 
     set apellido(value: string) {
         this._apellido = value;
-    }
-
-    get tipo(): string {
-        return this._tipo;
-    }
-
-    set tipo(value: string) {
-        this._tipo = value;
     }
 
     get fechaNacimiento(): string {

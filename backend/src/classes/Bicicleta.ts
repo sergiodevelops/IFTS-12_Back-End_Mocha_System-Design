@@ -1,4 +1,6 @@
-import IBicicleta from "../interface/IBicicleta";
+//responsabilidad: almacenar datos de bicicleta deseada
+
+import IBicicleta from "../interfaces/IBicicleta";
 
 export default class Bicicleta implements IBicicleta{
     private _marca: string;
@@ -6,7 +8,6 @@ export default class Bicicleta implements IBicicleta{
     private _rodado: string;
     private _tipo: string;
     private _especialidad: string;
-    private _stock: number;
 
     constructor(
         marca: string,
@@ -21,7 +22,6 @@ export default class Bicicleta implements IBicicleta{
         this._tipo = tipo;
         this._especialidad = especialidad;
     }
-
 
     get marca(): string {
         return this._marca;
@@ -61,13 +61,5 @@ export default class Bicicleta implements IBicicleta{
 
     set especialidad(value: string) {
         this._especialidad = value;
-    }
-
-    get stock(): number {
-        return this._stock;
-    }
-
-    set stock(value: number) {
-        this._stock = value;
     }
 }

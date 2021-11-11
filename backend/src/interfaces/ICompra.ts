@@ -4,7 +4,7 @@ import IPedido from "./IPedido";
 
 export default interface ICompra {
     cliente: IClienteFederado | IClienteComun;
-    pedido: IPedido;
+    pedidos: IPedido[];
     conEnvio: boolean;
     pago: string;
 }

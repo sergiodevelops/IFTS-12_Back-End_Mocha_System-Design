@@ -1,4 +1,6 @@
-import IDireccion from "../interface/IDireccion";
+//responsabilidad: almacenar dirección del cliente si es comun
+
+import IDireccion from "../interfaces/IDireccion";
 
 export default class Direccion implements IDireccion{
     private _calle: string;

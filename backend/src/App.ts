@@ -1,13 +1,21 @@
-import ClienteComun from "./class/ClienteComun";
-import ClienteFederado from "./class/ClienteFederado";
-import IPedido from "./interface/IPedido";
-import Bicicleta from "./class/Bicicleta";
-import IBicicleta from "./interface/IBicicleta";
-import Pedido from "./class/Pedido";
-import IDireccion from "./interface/IDireccion";
-import Direccion from "./class/Direccion";
-import IClienteComunDto from "./dto/IClienteComunDto";
-import IClienteFederadoDto from "./dto/IClienteFederadoDto";
+import ClienteComun from "./classes/ClienteComun";
+import ClienteFederado from "./classes/ClienteFederado";
+import IPedido from "./interfaces/IPedido";
+import Bicicleta from "./classes/Bicicleta";
+import IBicicleta from "./interfaces/IBicicleta";
+import Pedido from "./classes/Pedido";
+import IDireccion from "./interfaces/IDireccion";
+import Direccion from "./classes/Direccion";
+import StockBicicleta from "./classes/StockBicicleta";
+import IStockBicicleta from "./interfaces/IStockBicicleta";
+import Pago from "./classes/Pago";
+import Descuento from "./classes/Descuento";
+import IClienteComun from "./interfaces/IClienteComun";
+import IClienteFederado from "./interfaces/IClienteFederado";
+import IPago from "./interfaces/IPago";
+import IDescuento from "./interfaces/IDescuento";
+import ITarjeta from "./interfaces/ITarjeta";
+import Tarjeta from "./classes/Tarjeta";
 
 class App {
 }
@@ -15,50 +23,127 @@ class App {
 console.log("armando el flujo e interacción entre clases");
 
 let pedidos: IPedido[] = [],
-    currentClientCom: IClienteComunDto,
-    currentClientFede: IClienteFederadoDto,
-    currentDir: IDireccion,
+    currentDir: IDireccion, // para poder crear el cliente comun
+    currentClient: IClienteComun | IClienteFederado, // para almacenar cliente
+    currentClientType: string, // para almacenar cliente
+    // comun
+
+    bicicletaDeseada: IBicicleta, // para poder crear el pedido en caso de
+                                  // haber stock
+    cantidadDeseada: number, // para poder crear el pedido en caso de haber
+                             // stock
+    currentStockBici: IStockBicicleta, // para calculo stock
     currentPedido: IPedido,
-    currentBici: IBicicleta,
-    hayStockDisponible: boolean,  // TODO ver este tema de stock
-    currentCantidadSolicitada: number;
+    currentDatosPago: IPago,
+    currentTarjeta: ITarjeta,
+    currentMontoTotal: IDescuento;
 
-// 1 registrar Cliente que hara la compra
+// ----------------------------------------------------------------------------
+// 1a - crear nuevo "cliente comun" //registra cliente comun
+// ----------------------------------------------------------------------------
 
-// 1A solicita direccion
 currentDir = new Direccion('Estrada', 2240, 'Centenario', 'Pergamino');
-// 1B solicita tipo y crea
-currentClientCom = new ClienteComun('nombre1', 'ape1', 'tipo1', '08/02/1990', 34572323, currentDir);
-currentClientFede = new ClienteFederado('nombre2', 'ape2', 'tipo2', '08/02/1990', 34572323, 18253, 'Capos del rocket');
+console.log('crear "currentDir" (para cliente comun) de tipo', currentDir.constructor.name)
+currentClient = new ClienteComun(
+    'nombre1',
+    'ape1',
+    'tipo1',
+    '08/02/1990',
+    34572323,
 
-// 2 crear y acumular "pedidos" (a su vez cada pedido verifica si cantidad esta disponible en stock)
-// currentStock = getCurrentStock() || 0; // TODO ver este tema de stock
+    currentDir);
+console.log('crear "currentClientCom" de tipo', currentClient.constructor.name)
 
-// PEDIDO N°1
-//crear bici
-currentBici = new Bicicleta('marca1', 'modelo1', 'rodado1', 'tipo1', 'especialidad1');
-// cargar cantidad solicitada
-currentCantidadSolicitada = 5;
-// verificar stock
-hayStockDisponible = currentBici.stock > 0 && currentCantidadSolicitada <= currentBici.stock;
-if(hayStockDisponible) {
-    // SI hay stock crear cargar este pedido,
-    currentPedido = new Pedido(currentBici,5);
+// ----------------------------------------------------------------------------
+// 1b - crear nuevo "cliente federado" //registra cliente federado
+// ----------------------------------------------------------------------------
+
+currentClient = new ClienteFederado(
+    'nombre2',
+    'ape2',
+    'tipo2',
+    '08/02/1990',
+    34572323,
+
+    18253,
+    'Capos del rocket');
+console.log('crear "currentClientFede" de tipo', currentClient.constructor.name)
+
+// asignamos cliente que vamos a probar
+currentClientType = currentClient.constructor.name;
+// currentClient = currentClientFede;
+
+// ----------------------------------------------------------------------------
+// 2a - cargar producto y cantidad deseada //edición pedido 1
+// ----------------------------------------------------------------------------
+
+bicicletaDeseada = new Bicicleta(
+    'marca1',
+    'modelo1',
+    'rodado1',
+    'tipo1',
+    'especialidad1');
+console.log('crear "currentBici" de tipo', bicicletaDeseada.constructor.name)
+cantidadDeseada = 5;
+
+// ----------------------------------------------------------------------------
+// 2b - validar si "hay stock" //validación pedido 1
+// ----------------------------------------------------------------------------
+
+currentStockBici = new StockBicicleta(bicicletaDeseada, cantidadDeseada);
+console.log('crear "currentStockBici" de tipo', currentStockBici.constructor.name)
+if (currentStockBici.stock > 0 && cantidadDeseada <= currentStockBici.stock) {
+
+    // --------------------------------------
+    // 3a - crear nuevo "pedido" //creación de pedido
+    // --------------------------------------
+
+    currentPedido = new Pedido(bicicletaDeseada, 5);
+
+    // --------------------------------------
+    // 3b - añadir nuevo "pedido" a la "compra en proceso" (lista pedidos)
+    // //adición de pedido --------------------------------------
+
     pedidos.push(currentPedido);
 } else {
-    // si NO hay stock limpiar avisar que no hay para este producto y cantidad elegidos)
-    console.log(`No hay stock disponible para ${currentBici.marca} | ${currentBici.modelo} | ${currentBici.especialidad}`);
+
+    // --------------------------------------
+    // 3c - informar si no hay stock disponible para la cantidad solicitada
+    // //rechazo de pedido --------------------------------------
+
+    console.log(`No hay stock disponible para ${bicicletaDeseada.marca} | ${bicicletaDeseada.modelo} | ${bicicletaDeseada.especialidad}, vuelva a intentar con otro producto o cantidad diferente`);
 }
 
-// carga pedido 2
-currentBici = new Bicicleta('marca2', 'modelo2', 'rodado2', 'tipo2', 'especialidad2');
-hayStockDisponible = currentBici.stock > 0;
+// ----------------------------------------------------------------------------
+// 3 - cargar datos de forma de pago // creación de pago
+// ----------------------------------------------------------------------------
+currentDatosPago = new Pago('efectivo', undefined)
 
-currentPedido = new Pedido(currentBici,3);
-pedidos.push(currentPedido);
+currentTarjeta = new Tarjeta('debito','4652 2564 8999 8644','05/25')
+currentDatosPago = new Pago('tarjeta', undefined)
 
-currentBici = new Bicicleta('marca3', 'modelo3', 'rodado3', 'tipo3', 'especialidad3');
-currentPedido = new Pedido(currentBici,4);
-pedidos.push(currentPedido);
+// ----------------------------------------------------------------------------
+// 4a - calcular "subtotal con descuento" filtrando por "especialidad
+// competición && pago efectivo"
+// ----------------------------------------------------------------------------
+currentMontoTotal = new Descuento(currentClientType, currentDatosPago.metodoPago,pedidos);
+//si hay algun cambio se debe actualizar el monto total por ende
+// let updateOk = currentMontoTotal.update(currentClientType, currentDatosPago.metodoPago)
+// currentMontoTotal = currentMontoTotal.update(currentClientType, currentDatosPago.metodoPago,pedidos)
+
+// ----------------------------------------------------------------------------
+// 4a - calcular "subtotal con descuento" filtrando por "especialidad
+// competición && pago efectivo"
+// ----------------------------------------------------------------------------
+let subTotalPedidos;
+
+// ----------------------------------------------------------------------------
+// 4b - calcular "subtotal con descuento" filtrando por "especialidad sport"
+// ----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
+// 4c - calcular "subtotal sin descuento" filtrando por "restante"
+// ----------------------------------------------------------------------------
+
 
 export default new App();

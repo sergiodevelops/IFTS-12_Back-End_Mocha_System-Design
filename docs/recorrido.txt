@@ -9,6 +9,10 @@ https://www.youtube.com/watch?v=g3MislTPMMc
 describe --> agrupa conjunto de pruebas que tengan algo en comun
 it --> valida algo especifico
 https://github.com/jdmesalosada/PocsJm/tree/master/chai-mocha
+
+https://stackoverflow.com/questions/1249531/how-to-get-a-javascript-objects-class?rq=1
+mocha y chai
+https://journal.artfuldev.com/write-tests-for-typescript-projects-with-mocha-and-chai-in-typescript-86e053bdb2b6
 ------------------------------------------------------
 
 

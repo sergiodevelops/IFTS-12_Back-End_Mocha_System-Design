@@ -1,6 +1,8 @@
+//responsabilidad: almacenar datos de cliente si es comun
+
 import Cliente from './Cliente';
-import IDireccion from "../interface/IDireccion";
-import IClienteComun from "../interface/IClienteComun";
+import IDireccion from "../interfaces/IDireccion";
+import IClienteComun from "../interfaces/IClienteComun";
 
 export default class ClienteComun extends Cliente implements IClienteComun{
     private _direccion: IDireccion;
@@ -14,7 +16,7 @@ export default class ClienteComun extends Cliente implements IClienteComun{
 
         direccion: IDireccion,
     ) {
-        super(nombre, apellido, tipo, fechaNacimiento, dni);
+        super(nombre, apellido, fechaNacimiento, dni);
 
         this._direccion = direccion;
     }

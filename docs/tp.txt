@@ -66,3 +66,24 @@ métodos que hacen los calculos del precio con el descuento, decremento de stock
 obtener stock actual de la bici antes de agregar al pedido
 
 */
+
+
+// api TEST
+
+si es CLIENTE COMUN:
+1a - crear nuevo "cliente comun" //registra cliente comun
+
+si es CLIENTE FEDERADO:
+1b - crear nuevo "cliente federado" //registra cliente federado
+4a - calcular "subtotal con descuento" filtrando por "especialidad competición && pago efectivo"
+4b - calcular "subtotal con descuento" filtrando por "especialidad sport"
+4c - calcular "subtotal sin descuento" filtrando por "restante"
+5 - calcular "total a pagar" //suma subtotales
+
+para AMBOS CLIENTES:
+2a - cargar producto y cantidad deseada //edición pedido
+2b - validar si "hay stock" //validación pedido
+    3a - crear nuevo "pedido" //creación de pedido
+    3b - añadir nuevo "pedido" a la "compra en proceso" (lista pedidos) //adición de pedido
+    3c - informar si no hay stock disponible para la cantidad solicitada //rechazo de pedido
+3 - cargar datos de forma de pago // creación de pago

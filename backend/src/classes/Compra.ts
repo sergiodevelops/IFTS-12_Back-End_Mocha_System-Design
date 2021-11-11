@@ -1,22 +1,24 @@
-import IPedido from "../interface/IPedido";
-import IClienteFederado from "../interface/IClienteFederado";
-import IClienteComun from "../interface/IClienteComun";
-import ICompra from "../interface/ICompra";
+//responsabilidad: almacenar datos para hacer la compra
+
+import IPedido from "../interfaces/IPedido";
+import IClienteFederado from "../interfaces/IClienteFederado";
+import IClienteComun from "../interfaces/IClienteComun";
+import ICompra from "../interfaces/ICompra";
 
 export default class Compra implements ICompra{
     private _cliente: IClienteFederado | IClienteComun;
-    private _pedido: IPedido;
+    private _pedidos: IPedido[];
     private _conEnvio: boolean;
     private _pago: string;
 
     constructor(
         cliente: IClienteFederado | IClienteComun,
-        pedido: IPedido,
+        pedidos: IPedido[],
         conEnvio: boolean,
         pago: string,
     ) {
         this._cliente = cliente;
-        this._pedido = pedido;
+        this._pedidos = pedidos;
         this._conEnvio = conEnvio;
         this._pago = pago;
     }
@@ -29,12 +31,12 @@ export default class Compra implements ICompra{
         this._cliente = value;
     }
 
-    get pedido(): IPedido {
-        return this._pedido;
+    get pedidos(): IPedido[] {
+        return this._pedidos;
     }
 
-    set pedido(value: IPedido) {
-        this._pedido = value;
+    set pedidos(value: IPedido[]) {
+        this._pedidos = value;
     }
 
     get conEnvio(): boolean {

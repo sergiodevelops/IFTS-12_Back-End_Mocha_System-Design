@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "mocha -r ts-node/register 'tests/**/*.ts'",
+    "test": "mocha --file foo.js --exclude '**/*.js'",
     "start": "ts-node ./dist/App.js",
     "dev": "tsc && nodemon ./src/dist/App.js",
     "prod": "ts-node ./dist/App.js",
