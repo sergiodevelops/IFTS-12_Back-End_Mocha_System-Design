@@ -6,19 +6,8 @@ import IDescuento from "../interfaces/IDescuento";
 export default class Descuento implements IDescuento {
 
     private _tipoCliente: string;
-    private _pedidosCargados: IPedido[];
+    private _pedidos: IPedido[];
     private _metodoPago: string;
-
-    constructor(
-        tipoCliente: string,
-        metodoPago: string,
-        pedidosCargados: IPedido[],
-    ) {
-        this._tipoCliente = tipoCliente;
-        this._pedidosCargados = pedidosCargados;
-        this._metodoPago = metodoPago;
-    }
-
 
     get tipoCliente(): string {
         return this._tipoCliente;
@@ -28,12 +17,12 @@ export default class Descuento implements IDescuento {
         this._tipoCliente = value;
     }
 
-    get pedidosCargados(): IPedido[] {
-        return this._pedidosCargados;
+    get pedidos(): IPedido[] {
+        return this._pedidos;
     }
 
-    set pedidosCargados(value: IPedido[]) {
-        this._pedidosCargados = value;
+    set pedidos(value: IPedido[]) {
+        this._pedidos = value;
     }
 
     get metodoPago(): string {
@@ -44,24 +33,11 @@ export default class Descuento implements IDescuento {
         this._metodoPago = value;
     }
 
-    public getMontoConDescuento=(
-        tipoCliente: string,
-        newPedidosCargados: IPedido[],
+    public getDiscount=(
+        pedidos: IPedido[],
         newMetodoPago?: string
     ): number =>{
-        this._tipoCliente = tipoCliente;
-        this._pedidosCargados = newPedidosCargados;
-        this._metodoPago = !!newMetodoPago ? newMetodoPago : this._metodoPago;
-        return 0;
-    }
-
-    public updateMontoConDescuento=(
-        tipoCliente: string,
-        newPedidosCargados: IPedido[],
-        newMetodoPago?: string
-    ): number =>{
-        this._tipoCliente = tipoCliente;
-        this._pedidosCargados = newPedidosCargados;
+        this._pedidos = pedidos;
         this._metodoPago = !!newMetodoPago ? newMetodoPago : this._metodoPago;
         return 0;
     }

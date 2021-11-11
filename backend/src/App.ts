@@ -34,12 +34,15 @@ let pedidos: IPedido[] = [],
     currentOrder: IPedido,
     currentPaymentDetails: IPago,
     currentCardData: ITarjeta,
-    currentTotalAmountToPay: IDescuento;
+    currentCalculoMontoTotal: IDescuento,
+    currentTotalAmountToPay: number;
 
 // ----------------------------------------------------------------------------
-// 1a - crear nuevo "cliente comun" //registra cliente comun
+// 1] Cliente:
 // ----------------------------------------------------------------------------
 
+// 1a) - crear nuevo "cliente comun"
+// ---------------------------------------
 currentDir = new Direccion('Estrada', 2240, 'Centenario', 'Pergamino');
 currentCustomer = new ClienteComun(
     'nombre1',
@@ -50,9 +53,8 @@ currentCustomer = new ClienteComun(
 
     currentDir);
 
-// ----------------------------------------------------------------------------
-// 1b - crear nuevo "cliente federado" //registra cliente federado
-// ----------------------------------------------------------------------------
+// 1b) - crear nuevo "cliente federado"
+// ---------------------------------------
 currentCustomer = new ClienteFederado(
     'nombre2',
     'ape2',
@@ -63,12 +65,12 @@ currentCustomer = new ClienteFederado(
     18253,
     'Capos del rocket');
 
-// asignamos cliente que vamos a probar
-currentCustomerType = currentCustomer.constructor.name;
+// ----------------------------------------------------------------------------
+// 2] Pedido y validación Stock:
+// ----------------------------------------------------------------------------
 
-// ----------------------------------------------------------------------------
-// 2a - cargar producto y cantidad deseada //edición pedido 1
-// ----------------------------------------------------------------------------
+// 2a) - establecer pedido (producto y cantidad deseada)
+// ---------------------------------------
 desiredBike = new Bicicleta(
     'marca1',
     'modelo1',
@@ -77,47 +79,46 @@ desiredBike = new Bicicleta(
     'especialidad1');
 desiredQuantity = 5;
 
-// ----------------------------------------------------------------------------
-// 2b - validar si "hay stock" //validación pedido 1
-// ----------------------------------------------------------------------------
-
+// 2b) - validar stock del pedido antes de ser creado
+// ---------------------------------------
 currentStockOfThisBike = new StockBicicleta(desiredBike, desiredQuantity);
 if (currentStockOfThisBike.stock > 0 &&
     desiredQuantity <= currentStockOfThisBike.stock) {
-    // actualiza el stock que hay disponible para esta bici (reserva para este pedido)
+
+    // 2c) - (SI) --> crear y añadir "pedido" a lista pedidos
+    // ---------------------------------------
     currentStockOfThisBike.stock = currentStockOfThisBike.stock - desiredQuantity;
-    // --------------------------------------
-    // 3a - crear nuevo "pedido" //creación de pedido
-    // --------------------------------------
     currentOrder = new Pedido(desiredBike, 5);
-    // --------------------------------------
-    // 3b - añadir nuevo "pedido" a la "compra en proceso" (lista pedidos)
-    // //adición de pedido --------------------------------------
     pedidos.push(currentOrder);
 } else {
-    // --------------------------------------
-    // 3c - no hay stock disponible para este pedido //edición de pedido
-    // --------------------------------------
+    // 2d) - (NO) --> informar falta de stock
+    // ---------------------------------------
     console.log(`No hay stock disponible para ${desiredBike.marca} | ${desiredBike.modelo} | ${desiredBike.especialidad}, vuelva a intentar con otro producto o cantidad diferente`);
 }
 
 // ----------------------------------------------------------------------------
-// 3 - cargar datos de forma de pago // creación de pago
+// 3] Pago:
 // ----------------------------------------------------------------------------
-// currentPaymentDetails = new Pago('efectivo', undefined)
+
+// cargar datos de forma de pago
+// ---------------------------------------
+currentPaymentDetails = new Pago('efectivo', undefined)
 currentCardData = new Tarjeta('debito', '4652 2564 8999 8644', '05/25')
 currentPaymentDetails = new Pago('tarjeta', undefined)
 
 // ----------------------------------------------------------------------------
-// 4a - calcular "subtotal con descuento" filtrando por "especialidad
-// competición && pago efectivo"
+// 4] Descuento segun "tipo cliente, especialidad, metodo pago"
 // ----------------------------------------------------------------------------
-currentTotalAmountToPay = new Descuento(currentCustomerType, currentPaymentDetails.metodo, pedidos);
-//y si hay algun cambio se debe obtener nuevamente el total a pagar
-// let updateOk = currentTotalAmountToPay.update(currentClientType,
-// currentPaymentDetails.metodo) currentTotalAmountToPay =
-// currentTotalAmountToPay.update(currentClientType,
-// currentPaymentDetails.metodo,pedidos)
+
+// calcular "total a pagar"
+// ---------------------------------------
+currentCustomerType = currentCustomer.constructor.name;
+console.log('currentCustomerType',currentCustomerType);
+
+if(currentCustomerType === 'IClienteFederado'){
+    currentCalculoMontoTotal = new Descuento();
+    currentTotalAmountToPay = currentCalculoMontoTotal.getDiscount(pedidos, currentPaymentDetails.metodo);
+}
 
 // ----------------------------------------------------------------------------
 // 4a - calcular "subtotal con descuento" filtrando por "especialidad

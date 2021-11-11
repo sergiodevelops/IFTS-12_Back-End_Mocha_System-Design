@@ -68,21 +68,21 @@ obtener stock actual de la bici antes de agregar al pedido
 */
 
 ----------------------------------
-1] Cliente:
+// 1] Cliente:
 ----------------
-1a) - crear nuevo "cliente comun"
-1b) - crear nuevo "cliente federado"
+// 1a) - crear nuevo "cliente comun"
+// 1b) - crear nuevo "cliente federado"
 ----------------------------------
-2] Pedido y validación Stock:
+// 2] Pedido y validación Stock:
 ----------------
-2a) - establecer pedido (producto y cantidad deseada)
-2b) - validar stock del pedido antes de ser creado
-2c) - SI --> crear y añadir "pedido" a la lista de pedidos
-2d) - NO --> informar falta de stock para la cantidad o producto solicitado
+// 2a) - establecer pedido (producto y cantidad deseada)
+// 2b) - validar stock del pedido antes de ser creado
+// 2c) - (SI) --> crear y añadir "pedido" a la lista de pedidos
+// 2d) - (NO) --> informar falta de stock para la cantidad o producto solicitado
 ----------------------------------
-3] Pago:
-- cargar datos de forma de pago
+// 3] Pago:
+// cargar datos de forma de pago
 ----------------------------------
-4] Descuento segun "tipo cliente, especialidad, metodo pago"
-- calcular "total a pagar"
+// 4] Descuento segun "tipo cliente, especialidad, metodo pago"
+// calcular "total a pagar"
 ----------------------------------
