@@ -107,7 +107,7 @@ currentCardData = new Tarjeta('debito', '4652 2564 8999 8644', '05/25')
 currentPaymentDetails = new Pago('tarjeta', undefined)
 
 // ----------------------------------------------------------------------------
-// 4] Descuento segun "tipo cliente, especialidad, metodo pago"
+// 4] Descuento segun "tipo cliente, especialidad, formaDePago pago"
 // ----------------------------------------------------------------------------
 
 // calcular "total a pagar"
@@ -115,9 +115,10 @@ currentPaymentDetails = new Pago('tarjeta', undefined)
 currentCustomerType = currentCustomer.constructor.name;
 console.log('currentCustomerType',currentCustomerType);
 
-if(currentCustomerType === 'IClienteFederado'){
+if(currentCustomerType === 'ClienteFederado'){
+    console.log(`El tipo de cliente es ${currentCustomerType} por tanto se procesara descuento si aplica`)
     currentCalculoMontoTotal = new Descuento();
-    currentTotalAmountToPay = currentCalculoMontoTotal.getDiscount(pedidos, currentPaymentDetails.metodo);
+    currentTotalAmountToPay = currentCalculoMontoTotal.getDiscount(pedidos, currentPaymentDetails.formaDePago);
 }
 
 // ----------------------------------------------------------------------------

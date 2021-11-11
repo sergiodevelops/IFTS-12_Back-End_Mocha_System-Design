@@ -5,23 +5,23 @@ import IPago from "../interfaces/IPago";
 
 export default class Pago implements IPago{
 
-    private _metodoPago: string;
+    private _formaDePago: string;
     private _tarjeta?: ITarjeta | undefined;
 
     constructor(
-        metodoPago: string,
+        formaDePago: string,
         tarjeta: ITarjeta | undefined,
     ) {
-        this._metodoPago = metodoPago;
+        this._formaDePago = formaDePago;
         this._tarjeta = tarjeta;
     }
 
-    get metodo(): string {
-        return this._metodoPago;
+    get formaDePago(): string {
+        return this._formaDePago;
     }
 
-    set metodo(value: string) {
-        this._metodoPago = value;
+    set formaDePago(value: string) {
+        this._formaDePago = value;
     }
 
     get tarjeta(): ITarjeta | undefined {

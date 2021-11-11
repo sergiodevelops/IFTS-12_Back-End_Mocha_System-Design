@@ -2,10 +2,10 @@ import IPedido from "./IPedido";
 
 export default interface IDescuento {
     pedidos: IPedido[];
-    metodoPago: string;
+    formaDePago: string;
 
     getDiscount(
         pedidos: IPedido[],
-        metodoPago?: string,
+        formaDePago?: string,
     ): number;
 }

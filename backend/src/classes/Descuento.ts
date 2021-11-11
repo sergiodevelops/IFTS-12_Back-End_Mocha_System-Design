@@ -5,17 +5,9 @@ import IDescuento from "../interfaces/IDescuento";
 
 export default class Descuento implements IDescuento {
 
-    private _tipoCliente: string;
     private _pedidos: IPedido[];
-    private _metodoPago: string;
+    private _formaDePago: string;
 
-    get tipoCliente(): string {
-        return this._tipoCliente;
-    }
-
-    set tipoCliente(value: string) {
-        this._tipoCliente = value;
-    }
 
     get pedidos(): IPedido[] {
         return this._pedidos;
@@ -25,12 +17,12 @@ export default class Descuento implements IDescuento {
         this._pedidos = value;
     }
 
-    get metodoPago(): string {
-        return this._metodoPago;
+    get formaDePago(): string {
+        return this._formaDePago;
     }
 
-    set metodoPago(value: string) {
-        this._metodoPago = value;
+    set formaDePago(value: string) {
+        this._formaDePago = value;
     }
 
     public getDiscount=(
@@ -38,7 +30,7 @@ export default class Descuento implements IDescuento {
         newMetodoPago?: string
     ): number =>{
         this._pedidos = pedidos;
-        this._metodoPago = !!newMetodoPago ? newMetodoPago : this._metodoPago;
+        this._formaDePago = !!newMetodoPago ? newMetodoPago : this._formaDePago;
         return 0;
     }
 }

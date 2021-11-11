@@ -1,6 +1,6 @@
 import ITarjeta from "./ITarjeta";
 
 export default interface IPago {
-    metodo: string;
+    formaDePago: string;
     tarjeta?: ITarjeta | undefined;
 }
