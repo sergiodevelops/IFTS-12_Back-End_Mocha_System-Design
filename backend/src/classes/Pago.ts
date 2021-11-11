@@ -16,11 +16,11 @@ export default class Pago implements IPago{
         this._tarjeta = tarjeta;
     }
 
-    get metodoPago(): string {
+    get metodo(): string {
         return this._metodoPago;
     }
 
-    set metodoPago(value: string) {
+    set metodo(value: string) {
         this._metodoPago = value;
     }
 

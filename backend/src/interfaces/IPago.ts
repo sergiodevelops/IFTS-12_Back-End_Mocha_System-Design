@@ -1,7 +1,6 @@
-import IBicicleta from "./IBicicleta";
 import ITarjeta from "./ITarjeta";
 
 export default interface IPago {
-    metodoPago: string;
+    metodo: string;
     tarjeta?: ITarjeta | undefined;
 }
