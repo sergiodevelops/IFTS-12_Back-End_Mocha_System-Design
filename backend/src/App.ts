@@ -5,7 +5,7 @@ import Bicicleta from "./classes/Bicicleta/Bicicleta";
 import IBicicleta from "./interfaces/IBicicleta/IBicicleta";
 import Pedido from "./classes/Compra/Pedido";
 import IDireccionEnvio from "./interfaces/ICompra/IDireccionEnvio";
-import Direccion from "./classes/Cliente/Direccion";
+import DireccionEnvio from "./classes/Cliente/DireccionEnvio";
 import StockBicicleta from "./classes/Bicicleta/StockBicicleta";
 import IStockBicicleta from "./interfaces/IBicicleta/IStockBicicleta";
 import Pago from "./classes/Pago/Pago";
@@ -18,6 +18,7 @@ import TarjetaDebito from "./classes/Pago/TarjetaPago/TarjetaDebito";
 import ITarjetaCredito from "./interfaces/IPago/ITarjetaPago/ITarjetaCredito";
 import ITarjetaDebito from "./interfaces/IPago/ITarjetaPago/ITarjetaDebito";
 import TarjetaCredito from "./classes/Pago/TarjetaPago/TarjetaCredito";
+// import {direccionesMock} from "./constants/cliente/direccionesMock";
 
 class App {}
 
@@ -44,15 +45,17 @@ let pedidos: IPedido[] = [],
 
 // 1a) - crear nuevo "cliente comun"
 // ---------------------------------------
-currentDir = new Direccion('Estrada', 2240, 'Centenario', 'Pergamino');
+// carga una direccion
+currentDir = new DireccionEnvio('Pergamino','Centenario', 'Estrada', 2249, 'PB','4');
+// currentDir = new DireccionEnvio(Object.values(direccionesMock[0]));
 currentCustomer = new ClienteComun(
     'nombre1',
     'ape1',
     'tipo1',
     '08/02/1990',
     34572323,
-
-    currentDir);
+    currentDir
+);
 
 // 1b) - crear nuevo "cliente federado"
 // ---------------------------------------
@@ -103,13 +106,18 @@ if (currentStockOfThisBike.stock > 0 &&
 
 // cargar datos de forma de pago
 // ---------------------------------------
-currentPaymentDetails = new Pago('efectivo', undefined)
+
+// PAGO EFECTIVO
+currentPaymentDetails = new Pago('tarjeta')
+// PAGO DEBITO
 currentCardData = new TarjetaDebito('4652 2564 8999 8644')
+currentPaymentDetails = new Pago('tarjeta', currentCardData)
+// PAGO CREDITO
 currentCardData = new TarjetaCredito('4652 2564 8999 8644', '05/24')
-currentPaymentDetails = new Pago('tarjeta', undefined)
+currentPaymentDetails = new Pago('tarjeta', currentCardData)
 
 // ----------------------------------------------------------------------------
-// 4] DescuentoPago segun "tipo cliente, especialidad, formaDePago pago"
+// 4] DescuentoPago segun "cliente, especialidad bici y forma pago"
 // ----------------------------------------------------------------------------
 
 // calcular "total a pagar"

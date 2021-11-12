@@ -1,16 +1,17 @@
 //responsabilidad: almacenar preferencias de pago del cliente
-
 import ITarjetaPago from '../../interfaces/IPago/ITarjetaPago/ITarjetaPago';
 import IPago from "../../interfaces/IPago/IPago";
+import ITarjetaCredito
+    from "../../interfaces/IPago/ITarjetaPago/ITarjetaCredito";
+import ITarjetaDebito from "../../interfaces/IPago/ITarjetaPago/ITarjetaDebito";
 
 export default class Pago implements IPago{
-
     private _formaDePago: string;
-    private _tarjeta?: ITarjetaPago | undefined;
+    private _tarjeta?: undefined | ITarjetaDebito | ITarjetaCredito;
 
     constructor(
         formaDePago: string,
-        tarjeta: ITarjetaPago | undefined,
+        tarjeta?: undefined | ITarjetaDebito | ITarjetaCredito,
     ) {
         this._formaDePago = formaDePago;
         this._tarjeta = tarjeta;
@@ -24,11 +25,11 @@ export default class Pago implements IPago{
         this._formaDePago = value;
     }
 
-    get tarjeta(): ITarjetaPago | undefined {
+    get tarjeta(): ITarjetaDebito | ITarjetaCredito | undefined {
         return this._tarjeta;
     }
 
-    set tarjeta(value: ITarjetaPago | undefined) {
+    set tarjeta(value: ITarjetaDebito | ITarjetaCredito | undefined) {
         this._tarjeta = value;
     }
 }

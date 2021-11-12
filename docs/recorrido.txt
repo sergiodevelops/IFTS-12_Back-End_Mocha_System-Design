@@ -20,3 +20,4 @@ yarn global add mocha
 npx mocha
 
 https://www.tutorialsteacher.com/typescript/typescript-enum
+https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Functions
