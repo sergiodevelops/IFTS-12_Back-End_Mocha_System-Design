@@ -4,12 +4,11 @@
   "description": "IFTS 12 backend",
   "main": "index.js",
   "repository": "git@github.com:sergioarieljuarez/system-design-ifts12.git",
-  "author": "Danlois Sergio Sandra",
+  "author": "Danlois, Sergio, Sandra",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "mocha --file foo.js --exclude '**/*.js'",
-    "start": "ts-node ./dist/App.js",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha",
     "dev": "tsc && nodemon ./src/dist/App.js",
     "prod": "ts-node ./dist/App.js",
     "build": "yarn test && tsc"
@@ -31,7 +30,7 @@
     "module-alias": "^2.2.2",
     "nodemon": "^2.0.4",
     "reflect-metadata": "^0.1.13",
-    "ts-node": "^8.10.2",
+    "ts-node": "^10.4.0",
     "typescript": "^3.9.6"
   }
 }

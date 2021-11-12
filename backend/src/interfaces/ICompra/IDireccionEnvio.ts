@@ -1,4 +1,4 @@
-export default interface IDireccion {
+export default interface IDireccionEnvio {
     calle: string;
     altura: number;
     barrio: string;

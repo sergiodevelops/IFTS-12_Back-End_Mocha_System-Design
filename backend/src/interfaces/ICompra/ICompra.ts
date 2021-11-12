@@ -1,5 +1,5 @@
-import IClienteFederado from "./IClienteFederado";
-import IClienteComun from "./IClienteComun";
+import IClienteFederado from "../ICliente/IClienteFederado";
+import IClienteComun from "../ICliente/IClienteComun";
 import IPedido from "./IPedido";
 
 export default interface ICompra {

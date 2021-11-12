@@ -7,8 +7,8 @@
  el stock del producto para mantenerlo separado y poder validar el mismo
  */
 
-import IBicicleta from "../interfaces/IBicicleta";
-import IStockBicicleta from "../interfaces/IStockBicicleta";
+import IBicicleta from "../../interfaces/IBicicleta/IBicicleta";
+import IStockBicicleta from "../../interfaces/IBicicleta/IStockBicicleta";
 // nos asocia producto con pedido
 export default class StockBicicleta implements IStockBicicleta {
 

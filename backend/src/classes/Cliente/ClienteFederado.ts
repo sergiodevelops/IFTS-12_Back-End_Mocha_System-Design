@@ -1,7 +1,7 @@
 //responsabilidad: almacenar datos de cliente si es federado
 
 import Cliente from './Cliente';
-import IClienteFederado from "../interfaces/IClienteFederado";
+import IClienteFederado from "../../interfaces/ICliente/IClienteFederado";
 
 export default class ClienteFederado extends Cliente implements IClienteFederado{
     private _matricula: number;

@@ -1,9 +1,9 @@
 //responsabilidad: almacenar datos para hacer la compra
 
-import IPedido from "../interfaces/IPedido";
-import IClienteFederado from "../interfaces/IClienteFederado";
-import IClienteComun from "../interfaces/IClienteComun";
-import ICompra from "../interfaces/ICompra";
+import IPedido from "../../interfaces/ICompra/IPedido";
+import IClienteFederado from "../../interfaces/ICliente/IClienteFederado";
+import IClienteComun from "../../interfaces/ICliente/IClienteComun";
+import ICompra from "../../interfaces/ICompra/ICompra";
 
 export default class Compra implements ICompra{
     private _cliente: IClienteFederado | IClienteComun;

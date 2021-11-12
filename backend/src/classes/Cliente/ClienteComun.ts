@@ -1,11 +1,11 @@
 //responsabilidad: almacenar datos de cliente si es comun
 
 import Cliente from './Cliente';
-import IDireccion from "../interfaces/IDireccion";
-import IClienteComun from "../interfaces/IClienteComun";
+import IDireccionEnvio from "../../interfaces/ICompra/IDireccionEnvio";
+import IClienteComun from "../../interfaces/ICliente/IClienteComun";
 
 export default class ClienteComun extends Cliente implements IClienteComun{
-    private _direccion: IDireccion;
+    private _direccion: IDireccionEnvio;
 
     constructor(
         nombre: string,
@@ -14,18 +14,18 @@ export default class ClienteComun extends Cliente implements IClienteComun{
         fechaNacimiento: string,
         dni: number,
 
-        direccion: IDireccion,
+        direccion: IDireccionEnvio,
     ) {
         super(nombre, apellido, fechaNacimiento, dni);
 
         this._direccion = direccion;
     }
 
-    get direccion(): IDireccion {
+    get direccion(): IDireccionEnvio {
         return this._direccion;
     }
 
-    set direccion(value: IDireccion) {
+    set direccion(value: IDireccionEnvio) {
         this._direccion = value;
     }
 }

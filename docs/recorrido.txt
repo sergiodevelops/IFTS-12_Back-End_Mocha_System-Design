@@ -13,6 +13,10 @@ https://github.com/jdmesalosada/PocsJm/tree/master/chai-mocha
 https://stackoverflow.com/questions/1249531/how-to-get-a-javascript-objects-class?rq=1
 mocha y chai
 https://journal.artfuldev.com/write-tests-for-typescript-projects-with-mocha-and-chai-in-typescript-86e053bdb2b6
-------------------------------------------------------
+https://github.com/mochajs/mocha-examples/tree/master/packages/typescript
+https://stackoverflow.com/questions/40910864/cannot-find-module-ts-node-register
 
+yarn global add mocha
+npx mocha
 
+https://www.tutorialsteacher.com/typescript/typescript-enum

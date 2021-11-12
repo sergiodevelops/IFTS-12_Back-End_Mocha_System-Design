@@ -1,9 +1,8 @@
 //responsabilidad: calcular descuento segun condiciones
+import IPedido from "../../interfaces/ICompra/IPedido";
+import IDescuentoPago from "../../interfaces/IPago/IDescuentoPago";
 
-import IPedido from "../interfaces/IPedido";
-import IDescuento from "../interfaces/IDescuento";
-
-export default class Descuento implements IDescuento {
+export default class DescuentoPago implements IDescuentoPago {
 
     private _pedidos: IPedido[];
     private _formaDePago: string;

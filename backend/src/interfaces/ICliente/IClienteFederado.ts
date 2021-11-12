@@ -1,4 +1,4 @@
-import IBicicleta from "./IBicicleta";
+import IBicicleta from "../IBicicleta/IBicicleta";
 
 export default interface IClienteFederado {
     matricula: number;

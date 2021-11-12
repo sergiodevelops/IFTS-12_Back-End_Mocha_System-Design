@@ -83,6 +83,6 @@ obtener stock actual de la bici antes de agregar al pedido
 // 3] Pago:
 // cargar datos de forma de pago
 ----------------------------------
-// 4] Descuento segun "tipo cliente, especialidad, formaDePago pago"
+// 4] DescuentoPago segun "tipo cliente, especialidad, formaDePago pago"
 // calcular "total a pagar"
 ----------------------------------

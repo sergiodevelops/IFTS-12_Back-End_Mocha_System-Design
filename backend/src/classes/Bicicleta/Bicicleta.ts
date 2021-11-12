@@ -1,8 +1,8 @@
 //responsabilidad: almacenar datos de bicicleta deseada
-
-import IBicicleta from "../interfaces/IBicicleta";
+import IBicicleta from "../../interfaces/IBicicleta/IBicicleta";
 
 export default class Bicicleta implements IBicicleta{
+
     private _marca: string;
     private _modelo: string;
     private _rodado: string;

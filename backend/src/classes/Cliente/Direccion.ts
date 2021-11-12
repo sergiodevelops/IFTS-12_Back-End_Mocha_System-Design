@@ -1,8 +1,8 @@
 //responsabilidad: almacenar dirección del cliente si es comun
 
-import IDireccion from "../interfaces/IDireccion";
+import IDireccionEnvio from "../../interfaces/ICompra/IDireccionEnvio";
 
-export default class Direccion implements IDireccion{
+export default class Direccion implements IDireccionEnvio{
     private _calle: string;
     private _altura: number;
     private _barrio: string;

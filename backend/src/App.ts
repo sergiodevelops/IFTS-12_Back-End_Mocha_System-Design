@@ -1,29 +1,30 @@
-import ClienteComun from "./classes/ClienteComun";
-import ClienteFederado from "./classes/ClienteFederado";
-import IPedido from "./interfaces/IPedido";
-import Bicicleta from "./classes/Bicicleta";
-import IBicicleta from "./interfaces/IBicicleta";
-import Pedido from "./classes/Pedido";
-import IDireccion from "./interfaces/IDireccion";
-import Direccion from "./classes/Direccion";
-import StockBicicleta from "./classes/StockBicicleta";
-import IStockBicicleta from "./interfaces/IStockBicicleta";
-import Pago from "./classes/Pago";
-import Descuento from "./classes/Descuento";
-import IClienteComun from "./interfaces/IClienteComun";
-import IClienteFederado from "./interfaces/IClienteFederado";
-import IPago from "./interfaces/IPago";
-import IDescuento from "./interfaces/IDescuento";
-import ITarjeta from "./interfaces/ITarjeta";
-import Tarjeta from "./classes/Tarjeta";
+import ClienteComun from "./classes/Cliente/ClienteComun";
+import ClienteFederado from "./classes/Cliente/ClienteFederado";
+import IPedido from "./interfaces/ICompra/IPedido";
+import Bicicleta from "./classes/Bicicleta/Bicicleta";
+import IBicicleta from "./interfaces/IBicicleta/IBicicleta";
+import Pedido from "./classes/Compra/Pedido";
+import IDireccionEnvio from "./interfaces/ICompra/IDireccionEnvio";
+import Direccion from "./classes/Cliente/Direccion";
+import StockBicicleta from "./classes/Bicicleta/StockBicicleta";
+import IStockBicicleta from "./interfaces/IBicicleta/IStockBicicleta";
+import Pago from "./classes/Pago/Pago";
+import DescuentoPago from "./classes/Pago/DescuentoPago";
+import IClienteComun from "./interfaces/ICliente/IClienteComun";
+import IClienteFederado from "./interfaces/ICliente/IClienteFederado";
+import IPago from "./interfaces/IPago/IPago";
+import IDescuentoPago from "./interfaces/IPago/IDescuentoPago";
+import TarjetaDebito from "./classes/Pago/TarjetaPago/TarjetaDebito";
+import ITarjetaCredito from "./interfaces/IPago/ITarjetaPago/ITarjetaCredito";
+import ITarjetaDebito from "./interfaces/IPago/ITarjetaPago/ITarjetaDebito";
+import TarjetaCredito from "./classes/Pago/TarjetaPago/TarjetaCredito";
 
-class App {
-}
+class App {}
 
 console.log("armando el flujo e interacción entre clases");
 
 let pedidos: IPedido[] = [],
-    currentDir: IDireccion, // para poder crear el cliente comun
+    currentDir: IDireccionEnvio, // para poder crear el cliente comun
     currentCustomer: IClienteComun | IClienteFederado, // para almacenar cliente
     currentCustomerType: string, // para almacenar cliente
     // comun
@@ -33,8 +34,8 @@ let pedidos: IPedido[] = [],
     currentStockOfThisBike: IStockBicicleta, // para calculo stock
     currentOrder: IPedido,
     currentPaymentDetails: IPago,
-    currentCardData: ITarjeta,
-    currentCalculoMontoTotal: IDescuento,
+    currentCardData: ITarjetaCredito | ITarjetaDebito,
+    currentCalculoMontoTotal: IDescuentoPago,
     currentTotalAmountToPay: number;
 
 // ----------------------------------------------------------------------------
@@ -103,11 +104,12 @@ if (currentStockOfThisBike.stock > 0 &&
 // cargar datos de forma de pago
 // ---------------------------------------
 currentPaymentDetails = new Pago('efectivo', undefined)
-currentCardData = new Tarjeta('debito', '4652 2564 8999 8644', '05/25')
+currentCardData = new TarjetaDebito('4652 2564 8999 8644')
+currentCardData = new TarjetaCredito('4652 2564 8999 8644', '05/24')
 currentPaymentDetails = new Pago('tarjeta', undefined)
 
 // ----------------------------------------------------------------------------
-// 4] Descuento segun "tipo cliente, especialidad, formaDePago pago"
+// 4] DescuentoPago segun "tipo cliente, especialidad, formaDePago pago"
 // ----------------------------------------------------------------------------
 
 // calcular "total a pagar"
@@ -117,23 +119,8 @@ console.log('currentCustomerType',currentCustomerType);
 
 if(currentCustomerType === 'ClienteFederado'){
     console.log(`El tipo de cliente es ${currentCustomerType} por tanto se procesara descuento si aplica`)
-    currentCalculoMontoTotal = new Descuento();
+    currentCalculoMontoTotal = new DescuentoPago();
     currentTotalAmountToPay = currentCalculoMontoTotal.getDiscount(pedidos, currentPaymentDetails.formaDePago);
 }
-
-// ----------------------------------------------------------------------------
-// 4a - calcular "subtotal con descuento" filtrando por "especialidad
-// competición && pago efectivo"
-// ----------------------------------------------------------------------------
-let subTotalPedidos;
-
-// ----------------------------------------------------------------------------
-// 4b - calcular "subtotal con descuento" filtrando por "especialidad sport"
-// ----------------------------------------------------------------------------
-
-// ----------------------------------------------------------------------------
-// 4c - calcular "subtotal sin descuento" filtrando por "restante"
-// ----------------------------------------------------------------------------
-
 
 export default new App();

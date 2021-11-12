@@ -1,6 +1,6 @@
-import IPedido from "./IPedido";
+import IPedido from "../ICompra/IPedido";
 
-export default interface IDescuento {
+export default interface IDescuentoPago {
     pedidos: IPedido[];
     formaDePago: string;
 

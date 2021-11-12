@@ -835,7 +835,7 @@
       "boundElementIds": [],
       "fontSize": 20,
       "fontFamily": 1,
-      "text": "new Tarjeta",
+      "text": "new TarjetaPago",
       "baseline": 18,
       "textAlign": "left",
       "verticalAlign": "top"

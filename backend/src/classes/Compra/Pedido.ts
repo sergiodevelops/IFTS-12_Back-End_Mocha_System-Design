@@ -1,7 +1,7 @@
 //responsabilidad: almacenar pedido a ser agregado en la compra
 
-import IPedido from "../interfaces/IPedido";
-import IBicicleta from "../interfaces/IBicicleta";
+import IPedido from "../../interfaces/ICompra/IPedido";
+import IBicicleta from "../../interfaces/IBicicleta/IBicicleta";
 
 export default class Pedido implements IPedido{
     private _bicicleta: IBicicleta;
