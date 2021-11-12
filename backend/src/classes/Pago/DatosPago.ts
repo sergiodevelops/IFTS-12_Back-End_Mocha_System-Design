@@ -1,17 +1,17 @@
 //responsabilidad: almacenar preferencias de pago del cliente
-import ITarjetaPago from '../../interfaces/IPago/ITarjetaPago/ITarjetaPago';
+import IDatosTarjetaPago from '../../interfaces/IPago/ITarjetaPago/IDatosTarjetaPago';
 import IDatosPago from "../../interfaces/IPago/IDatosPago";
-import ITarjetaCredito
-    from "../../interfaces/IPago/ITarjetaPago/ITarjetaCredito";
-import ITarjetaDebito from "../../interfaces/IPago/ITarjetaPago/ITarjetaDebito";
+import IDatosTarjetaCredito
+    from "../../interfaces/IPago/ITarjetaPago/IDatosTarjetaCredito";
+import IDatosTarjetaDebito from "../../interfaces/IPago/ITarjetaPago/IDatosTarjetaDebito";
 
 export default class DatosPago implements IDatosPago{
     private _formaDePago: string;
-    private _tarjeta?: undefined | ITarjetaDebito | ITarjetaCredito;
+    private _tarjeta?: undefined | IDatosTarjetaDebito | IDatosTarjetaCredito;
 
     constructor(
         formaDePago: string,
-        tarjeta?: undefined | ITarjetaDebito | ITarjetaCredito,
+        tarjeta?: undefined | IDatosTarjetaDebito | IDatosTarjetaCredito,
     ) {
         this._formaDePago = formaDePago;
         this._tarjeta = tarjeta;
@@ -25,11 +25,11 @@ export default class DatosPago implements IDatosPago{
         this._formaDePago = value;
     }
 
-    get tarjeta(): ITarjetaDebito | ITarjetaCredito | undefined {
+    get tarjeta(): IDatosTarjetaDebito | IDatosTarjetaCredito | undefined {
         return this._tarjeta;
     }
 
-    set tarjeta(value: ITarjetaDebito | ITarjetaCredito | undefined) {
+    set tarjeta(value: IDatosTarjetaDebito | IDatosTarjetaCredito | undefined) {
         this._tarjeta = value;
     }
 }

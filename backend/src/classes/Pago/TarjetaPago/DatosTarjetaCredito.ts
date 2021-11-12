@@ -1,8 +1,8 @@
 //responsabilidad: almacenar datos de tarjeta para el pago
-import ITarjetaCredito from "../../../interfaces/IPago/ITarjetaPago/ITarjetaCredito";
-import TarjetaPago from "./TarjetaPago";
+import IDatosTarjetaCredito from "../../../interfaces/IPago/ITarjetaPago/IDatosTarjetaCredito";
+import DatosTarjetaPago from "./DatosTarjetaPago";
 
-export default class TarjetaCredito extends TarjetaPago implements ITarjetaCredito {
+export default class DatosTarjetaCredito extends DatosTarjetaPago implements IDatosTarjetaCredito {
     private _fechaVencimiento: string;
 
     constructor(

@@ -9,7 +9,7 @@ export const productosMock: IProducto[] = [
     {
         bicicleta: bicicletasMock[0],
         precio: 35200,
-        stock: 3,
+        stock: 5,
     },
     {
         bicicleta: bicicletasMock[1],

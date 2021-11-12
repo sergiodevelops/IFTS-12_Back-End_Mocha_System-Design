@@ -1,8 +1,8 @@
 //responsabilidad: almacenar datos de tarjeta para el pago
 
-import ITarjetaPago from "../../../interfaces/IPago/ITarjetaPago/ITarjetaPago";
+import IDatosTarjetaPago from "../../../interfaces/IPago/ITarjetaPago/IDatosTarjetaPago";
 
-export default abstract class TarjetaPago implements ITarjetaPago{
+export default abstract class DatosTarjetaPago implements IDatosTarjetaPago{
     private _numeroTarjeta: string;
 
     protected constructor(

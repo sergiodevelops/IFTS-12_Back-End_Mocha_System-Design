@@ -18,8 +18,9 @@ export default class StockBicicleta implements IStockBicicleta {
         bicicleta: IBicicleta,
     ) {
         this._bicicleta = bicicleta;
-        this.stock = productosMock.find((bici)=>
-            bici.bicicleta === this._bicicleta)?.stock || 0;
+        this.stock = productosMock.find((producto)=>
+            producto.bicicleta.marca === this._bicicleta.marca &&
+            producto.bicicleta.modelo === this._bicicleta.modelo)?.stock || 0;
     }
 
     get bicicleta(): IBicicleta {
