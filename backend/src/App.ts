@@ -8,11 +8,11 @@ import IDireccionEnvio from "./interfaces/ICompra/IDireccionEnvio";
 import DireccionEnvio from "./classes/Cliente/DireccionEnvio";
 import StockBicicleta from "./classes/Bicicleta/StockBicicleta";
 import IStockBicicleta from "./interfaces/IBicicleta/IStockBicicleta";
-import Pago from "./classes/Pago/Pago";
+import DatosPago from "./classes/Pago/DatosPago";
 import DescuentoPago from "./classes/Pago/DescuentoPago";
 import IClienteComun from "./interfaces/ICliente/IClienteComun";
 import IClienteFederado from "./interfaces/ICliente/IClienteFederado";
-import IPago from "./interfaces/IPago/IPago";
+import IDatosPago from "./interfaces/IPago/IDatosPago";
 import IDescuentoPago from "./interfaces/IPago/IDescuentoPago";
 import TarjetaDebito from "./classes/Pago/TarjetaPago/TarjetaDebito";
 import ITarjetaCredito from "./interfaces/IPago/ITarjetaPago/ITarjetaCredito";
@@ -35,12 +35,10 @@ let pedidos: IPedido[] = [],
     currentCustomerType: string,
     // comun
 
-    selectedBicicleta: IBicicleta, // para crear el pedido en caso de  haber stock
-    selectedQuantity: number, // para crear el pedido en caso de haber stock
-    currentStockOfThisBike: number, // para calculo stock
+    bicicletaDeseada: IBicicleta, // para crear el pedido en caso de  haber stock
+    cantidadDeseada: number, // para crear el pedido en caso de haber stock
     currentPriceOfThisBike: number, // para calculo stock
-    currentPedido: IPedido,
-    currentPago: IPago,
+    datosPago: IDatosPago,
     currentTarjeta: ITarjetaCredito | ITarjetaDebito,
     currentMontoTotal: number,
     currentDescuentoPago: IDescuentoPago,
@@ -82,55 +80,53 @@ currentCustomer = new ClienteFederado(
 
 // 2a) - establecer pedido (producto y cantidad deseada)
 // ---------------------------------------
-selectedBicicleta = new Bicicleta(
+bicicletaDeseada = new Bicicleta(
     'marca1',
     'modelo1',
     'rodado1',
     'tipo1',
     'especialidad1',
 );
-selectedQuantity = 5;
+cantidadDeseada = 5;
 
 // 2b) - validar stock del pedido antes de ser creado
 // ---------------------------------------
 
 // pedimos que stock disponible hay
-const stockBicicleta = new StockBicicleta(selectedBicicleta);
-currentStockOfThisBike = stockBicicleta.stock;
+const stockBicicleta = new StockBicicleta(bicicletaDeseada);
 
-if (!!currentStockOfThisBike && selectedQuantity <= currentStockOfThisBike) {
-    // recien si hay stock me traigo el precio de la bici seleccionada
-    const precioBicicleta = new PrecioBicicleta(selectedBicicleta);
-    currentPriceOfThisBike = precioBicicleta.precio;
+if (!!stockBicicleta.stock && cantidadDeseada <= stockBicicleta.stock) {
 
     // 2c) - (SI) --> crear y añadir "pedido" a lista pedidos
     // ---------------------------------------
-    currentStockOfThisBike = currentStockOfThisBike - selectedQuantity;
-    currentPedido = new Pedido(selectedBicicleta, selectedQuantity, currentPrice);
-    pedidos.push(currentPedido);
-    const stockRestante = currentStockOfThisBike-selectedQuantity;
-    stockBicicleta.stock(stockRestante);
+    // recien si hay stock me traigo el precio de la bici seleccionada
+    const precioBicicleta = new PrecioBicicleta(bicicletaDeseada);
+    const pedido = new Pedido(bicicletaDeseada, cantidadDeseada);
+    pedidos.push(pedido);
+
+    const updatedStock = stockBicicleta.stock - cantidadDeseada;
+    stockBicicleta.stock = updatedStock;
 } else {
     // 2d) - (NO) --> informar falta de stock
     // ---------------------------------------
-    console.log(`No hay stock disponible para ${selectedBicicleta.marca} | ${selectedBicicleta.modelo} | ${selectedBicicleta.especialidad}, vuelva a intentar con otro producto o cantidad diferente`);
+    console.log(`No hay stock disponible para ${bicicletaDeseada.marca} | ${bicicletaDeseada.modelo} | ${bicicletaDeseada.especialidad}, vuelva a intentar con otro producto o cantidad diferente`);
 }
 
 // ----------------------------------------------------------------------------
-// 3] Pago:
+// 3] DatosPago:
 // ----------------------------------------------------------------------------
 
 // cargar datos de forma de pago
 // ---------------------------------------
 
 // PAGO EFECTIVO
-currentPago = new Pago('tarjeta')
+datosPago = new DatosPago('tarjeta')
 // PAGO DEBITO
 currentTarjeta = new TarjetaDebito('4652 2564 8999 8644')
-currentPago = new Pago('tarjeta', currentTarjeta)
+datosPago = new DatosPago('tarjeta', currentTarjeta)
 // PAGO CREDITO
 currentTarjeta = new TarjetaCredito('4652 2564 8999 8644', '05/24')
-currentPago = new Pago('tarjeta', currentTarjeta)
+datosPago = new DatosPago('tarjeta', currentTarjeta)
 
 // ----------------------------------------------------------------------------
 // 4] DescuentoPago segun "cliente, especialidad bici y forma pago"
@@ -144,7 +140,7 @@ console.log('currentCustomerType', currentCustomerType);
 switch (currentCustomerType) {
     case('ClienteFederado'):
         console.log(`El tipo de cliente es ${currentCustomerType} por tanto se procesara descuento si aplica`)
-        currentDescuentoPago = new DescuentoPago(pedidos,currentCustomerType, currentPago.formaDePago); //100*0.25
+        currentDescuentoPago = new DescuentoPago(pedidos,currentCustomerType, datosPago.formaDePago); //100*0.25
         currentMontoTotal = currentDescuentoPago.getTotalWithDiscount();
             // currentTotalAmountToPay - currentDescuento;//100-(100*0.25)
         break;

@@ -47,7 +47,7 @@ if(esConTarjeta) <-- pregunta como quieres pagar
     tarjeta = newTarjeta(...)
 else
     if (federado)
-        if (!!sportList.length) totalSportConDescuento = Pago.aplicarDescuento(-10, totalSinDescuentoSport);
+        if (!!sportList.length) totalSportConDescuento = DatosPago.aplicarDescuento(-10, totalSinDescuentoSport);
         if (!!competList.length) totalCompetConDescuento = aplicarDescuento(-25, totalSinDescuentoCompet);
 
 const sumaTotal = totalSinDescuentoResto + totalSportConDescuento + totalCompetConDescuento;
@@ -80,7 +80,7 @@ obtener stock actual de la bici antes de agregar al pedido
 // 2c) - (SI) --> crear y añadir "pedido" a la lista de pedidos
 // 2d) - (NO) --> informar falta de stock para la cantidad o producto solicitado
 ----------------------------------
-// 3] Pago:
+// 3] DatosPago:
 // cargar datos de forma de pago
 ----------------------------------
 // 4] DescuentoPago segun "tipo cliente, especialidad, formaDePago pago"

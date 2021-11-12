@@ -1,11 +1,11 @@
 //responsabilidad: almacenar preferencias de pago del cliente
 import ITarjetaPago from '../../interfaces/IPago/ITarjetaPago/ITarjetaPago';
-import IPago from "../../interfaces/IPago/IPago";
+import IDatosPago from "../../interfaces/IPago/IDatosPago";
 import ITarjetaCredito
     from "../../interfaces/IPago/ITarjetaPago/ITarjetaCredito";
 import ITarjetaDebito from "../../interfaces/IPago/ITarjetaPago/ITarjetaDebito";
 
-export default class Pago implements IPago{
+export default class DatosPago implements IDatosPago{
     private _formaDePago: string;
     private _tarjeta?: undefined | ITarjetaDebito | ITarjetaCredito;
 

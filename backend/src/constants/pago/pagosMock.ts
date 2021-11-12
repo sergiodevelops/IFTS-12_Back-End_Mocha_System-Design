@@ -1,6 +1,6 @@
-import IPago from "../../interfaces/IPago/IPago";
+import IDatosPago from "../../interfaces/IPago/IDatosPago";
 
-export const pagosMock: IPago[] = [
+export const pagosMock: IDatosPago[] = [
     {
         formaDePago: "efectivo",
         tarjeta: undefined
