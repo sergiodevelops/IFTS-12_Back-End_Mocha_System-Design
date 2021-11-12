@@ -7,4 +7,6 @@ export default interface ICompra {
     pedidos: IPedido[];
     conEnvio: boolean;
     pago: string;
+
+    procesar():void;
 }

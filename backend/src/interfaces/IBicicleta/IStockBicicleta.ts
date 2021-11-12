@@ -3,4 +3,6 @@ import IBicicleta from "./IBicicleta";
 export default interface IStockBicicleta {
     bicicleta: IBicicleta;
     stock: number;
+
+    getCurrentStock():number
 }

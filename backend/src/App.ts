@@ -18,25 +18,30 @@ import TarjetaDebito from "./classes/Pago/TarjetaPago/TarjetaDebito";
 import ITarjetaCredito from "./interfaces/IPago/ITarjetaPago/ITarjetaCredito";
 import ITarjetaDebito from "./interfaces/IPago/ITarjetaPago/ITarjetaDebito";
 import TarjetaCredito from "./classes/Pago/TarjetaPago/TarjetaCredito";
+import Compra from "./classes/Compra/Compra";
+
 // import {direccionesMock} from "./constants/cliente/direccionesMock";
 
-class App {}
+class App {
+}
 
 console.log("armando el flujo e interacción entre clases");
 
 let pedidos: IPedido[] = [],
-    currentDir: IDireccionEnvio, // para poder crear el cliente comun
-    currentCustomer: IClienteComun | IClienteFederado, // para almacenar cliente
-    currentCustomerType: string, // para almacenar cliente
+    //
+    currentDir: IDireccionEnvio,
+    currentCustomer: IClienteComun | IClienteFederado,
+    currentCustomerType: string,
     // comun
 
-    desiredBike: IBicicleta, // para crear el pedido en caso de  haber stock
-    desiredQuantity: number, // para crear el pedido en caso de haber stock
-    currentStockOfThisBike: IStockBicicleta, // para calculo stock
+    selectedBike: IBicicleta, // para crear el pedido en caso de  haber stock
+    selectedQuantity: number, // para crear el pedido en caso de haber stock
+    currentStockOfThisBike: number, // para calculo stock
     currentOrder: IPedido,
     currentPaymentDetails: IPago,
     currentCardData: ITarjetaCredito | ITarjetaDebito,
-    currentCalculoMontoTotal: IDescuentoPago,
+    currentMontoTotal: number,
+    currentDescuento: IDescuentoPago,
     currentTotalAmountToPay: number;
 
 // ----------------------------------------------------------------------------
@@ -46,8 +51,8 @@ let pedidos: IPedido[] = [],
 // 1a) - crear nuevo "cliente comun"
 // ---------------------------------------
 // carga una direccion
-currentDir = new DireccionEnvio('Pergamino','Centenario', 'Estrada', 2249, 'PB','4');
-// currentDir = new DireccionEnvio(Object.values(direccionesMock[0]));
+currentDir = new DireccionEnvio('Pergamino', 'Centenario', 'Estrada', 2249, 'PB', '4');
+
 currentCustomer = new ClienteComun(
     'nombre1',
     'ape1',
@@ -75,29 +80,32 @@ currentCustomer = new ClienteFederado(
 
 // 2a) - establecer pedido (producto y cantidad deseada)
 // ---------------------------------------
-desiredBike = new Bicicleta(
+selectedBike = new Bicicleta(
     'marca1',
     'modelo1',
     'rodado1',
     'tipo1',
-    'especialidad1');
-desiredQuantity = 5;
+    'especialidad1',
+);
+selectedQuantity = 5;
 
 // 2b) - validar stock del pedido antes de ser creado
 // ---------------------------------------
-currentStockOfThisBike = new StockBicicleta(desiredBike, desiredQuantity);
-if (currentStockOfThisBike.stock > 0 &&
-    desiredQuantity <= currentStockOfThisBike.stock) {
+currentStockOfThisBike = new StockBicicleta(selectedBike).getCurrentStock();
+
+if (currentStockOfThisBike > 0 &&
+    selectedQuantity <= currentStockOfThisBike) {
 
     // 2c) - (SI) --> crear y añadir "pedido" a lista pedidos
     // ---------------------------------------
-    currentStockOfThisBike.stock = currentStockOfThisBike.stock - desiredQuantity;
-    currentOrder = new Pedido(desiredBike, 5);
+    currentStockOfThisBike = currentStockOfThisBike - selectedQuantity;
+    // currentPrice = new PrecioBicicleta
+    currentOrder = new Pedido(selectedBike, 5);
     pedidos.push(currentOrder);
 } else {
     // 2d) - (NO) --> informar falta de stock
     // ---------------------------------------
-    console.log(`No hay stock disponible para ${desiredBike.marca} | ${desiredBike.modelo} | ${desiredBike.especialidad}, vuelva a intentar con otro producto o cantidad diferente`);
+    console.log(`No hay stock disponible para ${selectedBike.marca} | ${selectedBike.modelo} | ${selectedBike.especialidad}, vuelva a intentar con otro producto o cantidad diferente`);
 }
 
 // ----------------------------------------------------------------------------
@@ -123,12 +131,27 @@ currentPaymentDetails = new Pago('tarjeta', currentCardData)
 // calcular "total a pagar"
 // ---------------------------------------
 currentCustomerType = currentCustomer.constructor.name;
-console.log('currentCustomerType',currentCustomerType);
+console.log('currentCustomerType', currentCustomerType);
 
-if(currentCustomerType === 'ClienteFederado'){
-    console.log(`El tipo de cliente es ${currentCustomerType} por tanto se procesara descuento si aplica`)
-    currentCalculoMontoTotal = new DescuentoPago();
-    currentTotalAmountToPay = currentCalculoMontoTotal.getDiscount(pedidos, currentPaymentDetails.formaDePago);
+switch (currentCustomerType) {
+    case('ClienteFederado'):
+        console.log(`El tipo de cliente es ${currentCustomerType} por tanto se procesara descuento si aplica`)
+        currentDescuento = new DescuentoPago(pedidos,currentCustomerType, currentPaymentDetails.formaDePago); //100*0.25
+        currentMontoTotal = currentDescuento.getTotalWithDiscount();
+            // currentTotalAmountToPay - currentDescuento;//100-(100*0.25)
+        break;
+    case('ClienteComun'):
+        break;
+    default:
+        console.error(`tipo de cliente actual ${currentCustomerType} no es válido`);
 }
+
+// ----------------------------------------------------------------------------
+// 5] Compra:
+// ----------------------------------------------------------------------------
+// const compra = new Compra(current)
+// procesar la compra pasando los "datos de compra"
+// ---------------------------------------
+
 
 export default new App();

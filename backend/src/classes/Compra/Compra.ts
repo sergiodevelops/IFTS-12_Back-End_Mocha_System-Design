@@ -1,11 +1,10 @@
 //responsabilidad: almacenar datos para hacer la compra
-
 import IPedido from "../../interfaces/ICompra/IPedido";
 import IClienteFederado from "../../interfaces/ICliente/IClienteFederado";
 import IClienteComun from "../../interfaces/ICliente/IClienteComun";
 import ICompra from "../../interfaces/ICompra/ICompra";
 
-export default class Compra implements ICompra{
+export default class Compra implements ICompra {
     private _cliente: IClienteFederado | IClienteComun;
     private _pedidos: IPedido[];
     private _conEnvio: boolean;
@@ -54,4 +53,6 @@ export default class Compra implements ICompra{
     set pago(value: string) {
         this._pago = value;
     }
+
+    public procesar = () =>{};
 }
