@@ -1,30 +1,30 @@
-import ClienteComun from "./classes/Cliente/ClienteComun";
-import ClienteFederado from "./classes/Cliente/ClienteFederado";
-import IPedido from "./interfaces/ICompra/IPedido";
-import IBicicleta from "./interfaces/IBicicleta/IBicicleta";
-import Pedido from "./classes/Compra/Pedido";
-import DireccionEnvio from "./classes/Cliente/DireccionEnvio";
-import StockBicicleta from "./classes/Bicicleta/StockBicicleta";
-import DatosPago from "./classes/Pago/DatosPago";
-import CalculoMontoTotal from "./classes/Pago/CalculoMontoTotal";
-import IClienteComun from "./interfaces/ICliente/IClienteComun";
-import IClienteFederado from "./interfaces/ICliente/IClienteFederado";
-import IDatosPago from "./interfaces/IPago/IDatosPago";
-import DatosTarjetaDebito from "./classes/Pago/TarjetaPago/DatosTarjetaDebito";
+import ClienteComun from "./classes/ClienteComun";
+import ClienteFederado from "./classes/ClienteFederado";
+import IPedido from "./interfaces/IPedido";
+import IBicicleta from "./interfaces/IBicicleta";
+import Pedido from "./classes/Pedido";
+import DireccionEnvio from "./classes/DireccionEnvio";
+import StockBicicleta from "./classes/StockBicicleta";
+import DatosPago from "./classes/DatosPago";
+import CalculoMontoTotal from "./classes/CalculoMontoTotal";
+import IClienteComun from "./interfaces/IClienteComun";
+import IClienteFederado from "./interfaces/IClienteFederado";
+import IDatosPago from "./interfaces/IDatosPago";
+import DatosTarjetaDebito from "./classes/DatosTarjetaDebito";
 import IDatosTarjetaCredito
-    from "./interfaces/IPago/ITarjetaPago/IDatosTarjetaCredito";
+    from "./interfaces/IDatosTarjetaCredito";
 import IDatosTarjetaDebito
-    from "./interfaces/IPago/ITarjetaPago/IDatosTarjetaDebito";
+    from "./interfaces/IDatosTarjetaDebito";
 import DatosTarjetaCredito
-    from "./classes/Pago/TarjetaPago/DatosTarjetaCredito";
-import {bicicletasMock} from "./constants/bicicleta/bicicletasMock";
-import {clientesFederadosMock} from "./constants/cliente/clientesFederadosMock";
-import {clientesComunesMock} from "./constants/cliente/clientesComunesMock";
-import {direccionesMock} from "./constants/cliente/direccionesMock";
-import {tarjetasDebitoMock} from "./constants/pago/tarjetasDebitoMock";
-import {tarjetasCreditoMock} from "./constants/pago/tarjetasCreditoMock";
-import IStockBicicleta from "./interfaces/IBicicleta/IStockBicicleta";
-import {formasDePagoEnum} from "./constants/pago/formasDePagoEnum";
+    from "./classes/DatosTarjetaCredito";
+import {bicicletasMock} from "./constants/bicicletasMock";
+import {clientesFederadosMock} from "./constants/clientesFederadosMock";
+import {clientesComunesMock} from "./constants/clientesComunesMock";
+import {direccionesMock} from "./constants/direccionesMock";
+import {tarjetasDebitoMock} from "./constants/tarjetasDebitoMock";
+import {tarjetasCreditoMock} from "./constants/tarjetasCreditoMock";
+import IStockBicicleta from "./interfaces/IStockBicicleta";
+import {formasDePagoEnum} from "./constants/formasDePagoEnum";
 
 let pedidos: IPedido[] = [],
     cliente: IClienteComun | IClienteFederado,
