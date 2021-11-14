@@ -75,10 +75,10 @@ obtener stock actual de la bici antes de agregar al pedido
 ----------------------------------
 // 2] Pedido y validación Stock:
 ----------------
-// 2a) - establecer pedido (producto y cantidad deseada)
+// 2a) - establecer pedido (item y cantidad deseada)
 // 2b) - validar stock del pedido antes de ser creado
 // 2c) - (SI) --> crear y añadir "pedido" a la lista de pedidos
-// 2d) - (NO) --> informar falta de stock para la cantidad o producto solicitado
+// 2d) - (NO) --> informar falta de stock para la cantidad o item solicitado
 ----------------------------------
 // 3] DatosPago:
 // cargar datos de forma de pago

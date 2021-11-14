@@ -1,9 +1,9 @@
-//responsabilidad: informar stock de bicicleta deseada
+//responsabilidad: informar stock de item deseada
 /*
- "de la bicicleta se conoce" dice el enunciado, lo cual no deja explicito
+ "de la item se conoce" dice el enunciado, lo cual no deja explicito
  la consigna si es obligación o no que el atributo stock este dentro o
  no de la clase Bicicleta por lo cual se procede a separar en esta clase
- el stock del producto para mantenerlo separado y poder validar el mismo
+ el stock del item para mantenerlo separado y poder validar el mismo
  */
 import IBicicleta from "../../interfaces/IBicicleta/IBicicleta";
 import IStockBicicleta from "../../interfaces/IBicicleta/IStockBicicleta";
@@ -19,8 +19,9 @@ export default class StockBicicleta implements IStockBicicleta {
     ) {
         this._bicicleta = bicicleta;
         this.stock = productosMock.find((producto)=>
-            producto.bicicleta.marca === this._bicicleta.marca &&
-            producto.bicicleta.modelo === this._bicicleta.modelo)?.stock || 0;
+            producto.item.marca === this._bicicleta.marca
+            &&
+            producto.item.modelo === this._bicicleta.modelo)?.stock || 0;
     }
 
     get bicicleta(): IBicicleta {
@@ -40,7 +41,7 @@ export default class StockBicicleta implements IStockBicicleta {
     }
 
     public getCurrentStock=()=>{
-        this._stock = productosMock.find((bici)=>bici.bicicleta === this._bicicleta)?.stock || 0;
+        this._stock = productosMock.find((bici)=>bici.item === this._bicicleta)?.stock || 0;
         return (this._stock);
     }
 }

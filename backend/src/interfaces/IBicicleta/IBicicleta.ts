@@ -4,4 +4,5 @@ export default interface IBicicleta {
     rodado: string;
     tipo: string;
     especialidad: string;
+    precio: number;
 }

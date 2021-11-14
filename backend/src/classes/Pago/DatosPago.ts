@@ -1,20 +1,20 @@
 //responsabilidad: almacenar preferencias de pago del cliente
-import IDatosTarjetaPago from '../../interfaces/IPago/ITarjetaPago/IDatosTarjetaPago';
 import IDatosPago from "../../interfaces/IPago/IDatosPago";
 import IDatosTarjetaCredito
     from "../../interfaces/IPago/ITarjetaPago/IDatosTarjetaCredito";
 import IDatosTarjetaDebito from "../../interfaces/IPago/ITarjetaPago/IDatosTarjetaDebito";
+import {formasDePagoEnum} from "../../constants/pago/formasDePagoEnum";
 
 export default class DatosPago implements IDatosPago{
     private _formaDePago: string;
-    private _tarjeta?: undefined | IDatosTarjetaDebito | IDatosTarjetaCredito;
+    private _tarjeta?: boolean | IDatosTarjetaDebito | IDatosTarjetaCredito;
 
     constructor(
         formaDePago: string,
-        tarjeta?: undefined | IDatosTarjetaDebito | IDatosTarjetaCredito,
+        tarjeta?: boolean | IDatosTarjetaDebito | IDatosTarjetaCredito,
     ) {
-        this._formaDePago = formaDePago;
-        this._tarjeta = tarjeta;
+        this._formaDePago = tarjeta ? formaDePago : formasDePagoEnum.EFECTIVO;
+        this._tarjeta = tarjeta ? tarjeta : false;
     }
 
     get formaDePago(): string {
@@ -25,11 +25,12 @@ export default class DatosPago implements IDatosPago{
         this._formaDePago = value;
     }
 
-    get tarjeta(): IDatosTarjetaDebito | IDatosTarjetaCredito | undefined {
-        return this._tarjeta;
+    get tarjeta(): boolean | IDatosTarjetaDebito | IDatosTarjetaCredito {
+        if(this._tarjeta) return this._tarjeta;
+        return false;
     }
 
-    set tarjeta(value: IDatosTarjetaDebito | IDatosTarjetaCredito | undefined) {
-        this._tarjeta = value;
+    set tarjeta(value: boolean | IDatosTarjetaDebito | IDatosTarjetaCredito) {
+        this._tarjeta = typeof(value) !== "boolean" ? value : false;
     }
 }

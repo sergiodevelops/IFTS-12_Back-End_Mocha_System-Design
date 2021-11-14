@@ -1,96 +1,46 @@
 //responsabilidad: calcular descuento segun condiciones
 import ICalculoMontoTotal from "../../interfaces/IPago/ICalculoMontoTotal";
 import IPedido from "../../interfaces/ICompra/IPedido";
-import {especialidadesEnum} from "../../constants/bicicleta/especialidadesEnum";
 import {tiposDeClienteEnum} from "../../constants/cliente/tiposDeClienteEnum";
-import PrecioBicicleta from "../Bicicleta/PrecioBicicleta";
+import {especialidadesEnum} from "../../constants/bicicleta/especialidadesEnum";
 import {formasDePagoEnum} from "../../constants/pago/formasDePagoEnum";
 
 export default class CalculoMontoTotal implements ICalculoMontoTotal {
-    private _tipoDeCliente: string;
-    private _formaDePago: string;
-    private _especialidadBicicleta: string;
-    private _pedidos: IPedido[];
+    private _pedido: IPedido;
 
-    constructor(tipoDeCliente: string, formaDePago: string, especialidadBicicleta: string, pedidos: IPedido[]) {
-        this._tipoDeCliente = tipoDeCliente;
-        this._formaDePago = formaDePago;
-        this._especialidadBicicleta = especialidadBicicleta;
-        this._pedidos = pedidos;
+    constructor(pedido: IPedido) {
+        this._pedido = pedido;
     }
 
-    get tipoDeCliente(): string {
-        return this._tipoDeCliente;
+    get pedido(): IPedido {
+        return this._pedido;
     }
 
-    set tipoDeCliente(value: string) {
-        this._tipoDeCliente = value;
-    }
-
-    get formaDePago(): string {
-        return this._formaDePago;
-    }
-
-    set formaDePago(value: string) {
-        this._formaDePago = value;
-    }
-
-    get especialidadBicicleta(): string {
-        return this._especialidadBicicleta;
-    }
-
-    set especialidadBicicleta(value: string) {
-        this._especialidadBicicleta = value;
-    }
-
-    get pedidos(): IPedido[] {
-        return this._pedidos;
-    }
-
-    set pedidos(value: IPedido[]) {
-        this._pedidos = value;
+    set pedido(value: IPedido) {
+        this._pedido = value;
     }
 
     public procesar = () => {
-        let subTotalCompet: number = 0,
-            subTotalSport: number = 0,
-            subTotalOtros: number = 0;
-        //filtra por COMPETICION
-        this._pedidos
-            .filter((pedido) =>
-                pedido.bicicleta.especialidad === especialidadesEnum.COMPETICION)
-            //acumula subtotales de pedidos COMPETICION
-            .map((pedido) => {
-                const precioBicicleta = new PrecioBicicleta(pedido.bicicleta)
-                subTotalSport += (pedido.cantidad * precioBicicleta.precio)
-            });
-        //filtra por SPORT
-        this._pedidos
-            .filter((pedido) =>
-                pedido.bicicleta.especialidad === especialidadesEnum.SPORT)
-            //acumula subtotales de pedidos SPORT
-            .map((pedido) => {
-                const precioBicicleta = new PrecioBicicleta(pedido.bicicleta)
-                subTotalCompet += (pedido.cantidad * precioBicicleta.precio)
-            });
-        //filtra por EL RESTO de bicis
-        this._pedidos
-            .filter((pedido) =>
-                pedido.bicicleta.especialidad !== especialidadesEnum.COMPETICION
-                &&
-                pedido.bicicleta.especialidad !== especialidadesEnum.SPORT)
-            //acumula subtotales de EL RESTO de pedidos
-            .map((pedido) => {
-                const precioBicicleta = new PrecioBicicleta(pedido.bicicleta)
-                subTotalOtros += (pedido.cantidad * precioBicicleta.precio)
-            });
+        let subtotal = this._pedido.cantidad * this._pedido.bicicleta.precio;
+        return subtotal;
+    }
 
-        if(tiposDeClienteEnum.FEDERADO){
-            if(this._formaDePago === formasDePagoEnum.EFECTIVO){
-                subTotalCompet *= 0.25;
+    public procesarConDescuento = () => {
+        if (this._pedido.cliente.constructor.name === tiposDeClienteEnum.FEDERADO) {
+            let subtotal = this.procesar();
+            if (this._pedido.bicicleta.especialidad === especialidadesEnum.COMPETICION
+                &&
+                this._pedido.datosPago.formaDePago === formasDePagoEnum.EFECTIVO){
+                console.log("FEDERADO y EFECTIVO y COMPETICION");
+                subtotal = subtotal - subtotal*0.25;
+                return subtotal;
             }
-            subTotalSport *= 0.10;
+            if (this._pedido.bicicleta.especialidad === especialidadesEnum.SPORT){
+                console.log("FEDERADO y SPORT");
+                subtotal = subtotal - subtotal*0.10;
+                return subtotal;
+            }
         }
-        return(subTotalCompet+subTotalSport+subTotalOtros);
+        return 0;
     }
 }

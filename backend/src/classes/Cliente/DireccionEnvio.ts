@@ -8,7 +8,7 @@ export default class DireccionEnvio implements IDireccionEnvio {
     private _calle: string;
     private _altura: number;
     private _piso: string | undefined;
-    private _dpto: string | undefined;
+    private _departamento: string | undefined;
 
 
     constructor(
@@ -17,14 +17,14 @@ export default class DireccionEnvio implements IDireccionEnvio {
         calle: string,
         altura: number,
         piso?: string | undefined,
-        dpto?: string | undefined
+        departamento?: string | undefined
     ) {
         this._ciudad = ciudad;
         this._barrio = barrio;
         this._calle = calle;
         this._altura = altura;
         this._piso = piso;
-        this._dpto = dpto;
+        this._departamento = departamento;
     }
 
     get calle(): string {
@@ -67,11 +67,11 @@ export default class DireccionEnvio implements IDireccionEnvio {
         this._piso = value;
     }
 
-    get dpto(): string | undefined {
-        return this._dpto;
+    get departamento(): string | undefined {
+        return this._departamento;
     }
 
-    set dpto(value: string | undefined) {
-        this._dpto = value;
+    set departamento(value: string | undefined) {
+        this._departamento = value;
     }
 }

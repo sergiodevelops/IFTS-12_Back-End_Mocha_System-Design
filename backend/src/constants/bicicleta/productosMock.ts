@@ -7,23 +7,19 @@ import IProducto from "../../interfaces/ICompra/IProducto";
 
 export const productosMock: IProducto[] = [
     {
-        bicicleta: bicicletasMock[0],
-        precio: 35200,
+        item: bicicletasMock[0],
         stock: 5,
     },
     {
-        bicicleta: bicicletasMock[1],
-        precio: 41300,
+        item: bicicletasMock[1],
         stock: 21,
     },
     {
-        bicicleta: bicicletasMock[2],
-        precio: 46800,
+        item: bicicletasMock[2],
         stock: 22,
     },
     {
-        bicicleta: bicicletasMock[3],
-        precio: 51355,
+        item: bicicletasMock[3],
         stock: 23,
     },
 ];

@@ -4,5 +4,5 @@ export default interface IDireccionEnvio {
     calle: string;
     altura: number;
     piso?: string | undefined;
-    dpto?: string | undefined;
+    departamento?: string | undefined;
 }

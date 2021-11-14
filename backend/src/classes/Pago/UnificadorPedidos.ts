@@ -2,7 +2,6 @@
 import IPedido from "../../interfaces/ICompra/IPedido";
 import IUnificadorPedidos from "../../interfaces/IPago/IUnificadorPedidos";
 import {especialidadesEnum} from "../../constants/bicicleta/especialidadesEnum";
-import PrecioBicicleta from "../Bicicleta/PrecioBicicleta";
 
 export default class UnificadorPedidos implements IUnificadorPedidos {
     private _pedidos: IPedido[];
@@ -27,7 +26,7 @@ export default class UnificadorPedidos implements IUnificadorPedidos {
             .filter((pedido)=>
             pedido.bicicleta.especialidad === especialidadesEnum.SPORT)
             // .map((pedido)=> {
-            //     const precioBicicleta = new PrecioBicicleta(pedido.bicicleta)
+            //     const precioBicicleta = new PrecioBicicleta(pedido.item)
             //     subTotalSport += (pedido.cantidad * precioBicicleta.precio)
             // });
 
@@ -36,7 +35,7 @@ export default class UnificadorPedidos implements IUnificadorPedidos {
             .filter((pedido)=>
             pedido.bicicleta.especialidad === especialidadesEnum.SPORT)
             // .map((pedido)=> {
-            //     const precioBicicleta = new PrecioBicicleta(pedido.bicicleta)
+            //     const precioBicicleta = new PrecioBicicleta(pedido.item)
             //     subTotalCompet += (pedido.cantidad * precioBicicleta.precio)
             // });
 
@@ -45,7 +44,7 @@ export default class UnificadorPedidos implements IUnificadorPedidos {
             .filter((pedido)=>
             pedido.bicicleta.especialidad === especialidadesEnum.SPORT)
             // .map((pedido)=> {
-            //     const precioBicicleta = new PrecioBicicleta(pedido.bicicleta)
+            //     const precioBicicleta = new PrecioBicicleta(pedido.item)
             //     subTotalOtros += (pedido.cantidad * precioBicicleta.precio)
             // });
 

@@ -1,7 +1,7 @@
 import IBicicleta from "./IBicicleta";
 
-// el precio que tiene el producto que solicita el cliente
+// el precio que tiene el item que solicita el cliente
 export default interface IPrecioBicicleta {
     bicicleta: IBicicleta;
-    precio: number;
+    precio: number | boolean;
 }

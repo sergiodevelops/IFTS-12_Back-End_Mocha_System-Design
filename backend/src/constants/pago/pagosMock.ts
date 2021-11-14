@@ -1,16 +1,18 @@
 import IDatosPago from "../../interfaces/IPago/IDatosPago";
+import {tarjetasDebitoMock} from "./tarjetasDebitoMock";
+import {formasDePagoEnum} from "./formasDePagoEnum";
 
 export const pagosMock: IDatosPago[] = [
     {
-        formaDePago: "efectivo",
+        formaDePago: formasDePagoEnum.EFECTIVO,
         tarjeta: undefined
     },
     {
-        formaDePago: "debito",
-        tarjeta: undefined
+        formaDePago: formasDePagoEnum.DEBITO,
+        tarjeta: tarjetasDebitoMock[0]
     },
     {
-        formaDePago: "efectivo",
-        tarjeta: undefined
+        formaDePago: formasDePagoEnum.CREDITO,
+        tarjeta: tarjetasDebitoMock[1]
     },
 ];

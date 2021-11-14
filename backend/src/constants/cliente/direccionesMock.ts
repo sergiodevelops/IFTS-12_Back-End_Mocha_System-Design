@@ -7,7 +7,7 @@ export const direccionesMock: IDireccionEnvio[] = [
         calle: "Estrada",
         altura: 2249,
         piso: "PB",
-        dpto: "4",
+        departamento: "4",
     },
     {
         ciudad: "CABA",
@@ -15,6 +15,22 @@ export const direccionesMock: IDireccionEnvio[] = [
         calle: "Av. Ángel Gallardo",
         altura: 886,
         piso: "3",
-        dpto: "C",
+        departamento: "C",
+    },
+    {
+        ciudad: "Pergamino",
+        barrio: "Centenario",
+        calle: "Estrada",
+        altura: 2249,
+        piso: "PB",
+        departamento: "4",
+    },
+    {
+        ciudad: "CABA",
+        barrio: "Centenario",
+        calle: "Av. Ángel Gallardo",
+        altura: 886,
+        piso: "3",
+        departamento: "C",
     },
 ];
