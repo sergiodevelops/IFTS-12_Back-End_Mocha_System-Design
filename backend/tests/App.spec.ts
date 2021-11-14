@@ -4,7 +4,7 @@ import {
     crearClienteFederado, crearDatosPago,
     crearTarjetaCredito,
     crearTarjetaDebito,
-} from "../App";
+} from "../src/App";
 
 describe("Typescript usage suite", () => {
     it("should be able to execute a test", () => {
