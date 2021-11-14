@@ -11,7 +11,7 @@
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha",
     "dev": "tsc && nodemon ./src/dist/App.js",
     "prod": "ts-node ./dist/App.js",
-    "build": "yarn test && tsc"
+    "build": "yarn src/tests && tsc"
   },
   "dependencies": {
     "@types/chai": "^4.2.22",

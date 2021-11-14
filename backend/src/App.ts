@@ -41,36 +41,42 @@ console.log(`
 
 console.log(`
 *******************************
-DEFINIR CLIENTE
+CREAR CLIENTES
 *******************************`);
 
-// cliente comun
-const clienteComunMock = clientesComunesMock[0];
-const direccionEnvioMock = direccionesMock[0]; // opciones 0 a 3
-const clienteComun = new ClienteComun(
-    clienteComunMock.nombre,
-    clienteComunMock.apellido,
-    clienteComunMock.dni,
-    clienteComunMock.fechaNacimiento,
-    new DireccionEnvio(
-        direccionEnvioMock.ciudad,
-        direccionEnvioMock.barrio,
-        direccionEnvioMock.calle,
-        direccionEnvioMock.altura,
-        direccionEnvioMock.piso,
-        direccionEnvioMock.departamento,
-    ),
-);
-// cliente federado
-const clienteFederadoMock = clientesFederadosMock[0]; // opciones 0 a 3
-const clienteFederado = new ClienteFederado(
-    clienteFederadoMock.nombre,
-    clienteFederadoMock.apellido,
-    clienteFederadoMock.dni,
-    clienteFederadoMock.fechaNacimiento,
-    clienteFederadoMock.matricula,
-    clienteFederadoMock.agrupacion,
-);
+export function crearClienteComun() {
+    const clienteComunMock = clientesComunesMock[0];
+    const direccionEnvioMock = direccionesMock[0]; // opciones 0 a 3
+    return new ClienteComun(
+        clienteComunMock.nombre,
+        clienteComunMock.apellido,
+        clienteComunMock.dni,
+        clienteComunMock.fechaNacimiento,
+        new DireccionEnvio(
+            direccionEnvioMock.ciudad,
+            direccionEnvioMock.barrio,
+            direccionEnvioMock.calle,
+            direccionEnvioMock.altura,
+            direccionEnvioMock.piso,
+            direccionEnvioMock.departamento,
+        ),
+    );
+}
+export function crearClienteFederado() {
+    const clienteFederadoMock = clientesFederadosMock[0]; // opciones 0 a 3
+    return new ClienteFederado(
+        clienteFederadoMock.nombre,
+        clienteFederadoMock.apellido,
+        clienteFederadoMock.dni,
+        clienteFederadoMock.fechaNacimiento,
+        clienteFederadoMock.matricula,
+        clienteFederadoMock.agrupacion,
+    );
+}
+
+// crear clientes
+const clienteComun = crearClienteComun();
+const clienteFederado = crearClienteFederado();
 
 cliente = clienteFederado;
 cliente = clienteComun;
@@ -83,26 +89,41 @@ console.log(`
 DEFINIR DATOS DE PAGO
 *******************************`);
 
-const tarjetaDebitoMock = tarjetasDebitoMock[0];
-const tarjetaDebito = new DatosTarjetaDebito(
-    tarjetaDebitoMock.numeroTarjeta,
-)
-const tarjetaCreditoMock = tarjetasCreditoMock[0];
-const tarjetaCredito = new DatosTarjetaCredito(
-    tarjetaCreditoMock.numeroTarjeta,
-    tarjetaCreditoMock.fechaVencimiento,
-);
+export function crearTarjetaDebito() {
+    const tarjetaDebitoMock = tarjetasDebitoMock[0];
+    return new DatosTarjetaDebito(
+        tarjetaDebitoMock.numeroTarjeta,
+    );
+}
+export function crearTarjetaCredito() {
+    const tarjetaCreditoMock = tarjetasCreditoMock[0];
+    return new DatosTarjetaCredito(
+        tarjetaCreditoMock.numeroTarjeta,
+        tarjetaCreditoMock.fechaVencimiento,
+    );
+}
 
-formaDePago = formasDePagoEnum.EFECTIVO;
-formaDePago = formasDePagoEnum.DEBITO;
-formaDePago = formasDePagoEnum.CREDITO;
-tarjeta = tarjetaDebito;
-tarjeta = tarjetaCredito;
-tarjeta = false;
-datosPago = new DatosPago(
-    formaDePago,
-    tarjeta,
-);
+// crear tarjetas
+const tarjetaDebito = crearTarjetaDebito();
+const tarjetaCredito = crearTarjetaCredito();
+
+export function crearDatosPago() {
+    formaDePago = formasDePagoEnum.EFECTIVO;
+    formaDePago = formasDePagoEnum.DEBITO;
+    formaDePago = formasDePagoEnum.CREDITO;
+    tarjeta = tarjetaDebito;
+    tarjeta = tarjetaCredito;
+    tarjeta = false;
+
+    return new DatosPago(
+        formaDePago,
+        tarjeta,
+    );
+}
+
+// crear datos de pago
+datosPago = crearDatosPago();
+
 console.log(`Tipo: ${datosPago.formaDePago}`);
 console.log(Object.entries(datosPago))
 

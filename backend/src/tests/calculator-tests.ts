@@ -1,7 +1,7 @@
 import {describe} from 'mocha';
 import chai from 'chai';
 // let chai = require('chai');
-import * as calculator from '../src/calculator';
+import * as calculator from '../calculator';
 // let calculator = require('../calculator');
 let assert = chai.assert;
 let should = chai.should();
