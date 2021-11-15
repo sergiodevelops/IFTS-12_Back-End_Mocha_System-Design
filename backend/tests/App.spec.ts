@@ -1,11 +1,12 @@
-import assert, {equal} from "assert";
+import {equal} from "assert";
 import {
     crearClienteComun,
     crearClienteFederado,
     crearTarjetaCredito,
     crearTarjetaDebito,
     crearDatosPago,
-    validacionPedido, crearPedido,
+    validacionPedido,
+    crearPedido,
 } from "../src/App";
 import {bicicletasMock} from "../src/constants/bicicletasMock";
 import {clientesFederadosMock} from "../src/constants/clientesFederadosMock";

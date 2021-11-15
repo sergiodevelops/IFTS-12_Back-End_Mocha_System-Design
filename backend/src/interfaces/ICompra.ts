@@ -4,6 +4,6 @@ export default interface ICompra {
     pedidos: IPedido[];
     conEnvio?: boolean;
 
-    actualizar(): boolean;
-    procesar(): boolean;
+    imprimir(): boolean;
+    procesar(pedidos: IPedido[],conEnvio?:boolean): boolean;
 }
