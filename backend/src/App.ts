@@ -24,6 +24,7 @@ import {direccionesMock} from "./constants/direccionesMock";
 import {tarjetasDebitoMock} from "./constants/tarjetasDebitoMock";
 import {tarjetasCreditoMock} from "./constants/tarjetasCreditoMock";
 import {formasDePagoEnum} from "./constants/formasDePagoEnum";
+import Compra from "./classes/Compra";
 
 let pedidos: IPedido[] = [],
     cliente: IClienteComun | IClienteFederado,
@@ -60,6 +61,7 @@ export function crearClienteComun() {
         ),
     );
 }
+
 export function crearClienteFederado() {
     const clienteFederadoMock = clientesFederadosMock[0]; // opciones 0 a 3
     return new ClienteFederado(
@@ -74,10 +76,11 @@ export function crearClienteFederado() {
 
 // crear clientes
 const clienteComun = crearClienteComun();
+const conEnvio = true;
 const clienteFederado = crearClienteFederado();
 
 cliente = clienteFederado;
-cliente = clienteComun;
+// cliente = clienteComun;
 
 console.log(`Tipo: ${cliente.constructor.name}`);
 console.log(Object.entries(cliente))
@@ -93,6 +96,7 @@ export function crearTarjetaDebito() {
         tarjetaDebitoMock.numeroTarjeta,
     );
 }
+
 export function crearTarjetaCredito() {
     const tarjetaCreditoMock = tarjetasCreditoMock[0];
     return new TarjetaCredito(
@@ -106,12 +110,12 @@ const tarjetaDebito = crearTarjetaDebito();
 const tarjetaCredito = crearTarjetaCredito();
 
 export function crearDatosPago() {
-    formaDePago = formasDePagoEnum.EFECTIVO;
     formaDePago = formasDePagoEnum.DEBITO;
-    formaDePago = formasDePagoEnum.CREDITO;
     tarjeta = tarjetaDebito;
-    tarjeta = tarjetaCredito;
-    tarjeta = false;
+    // formaDePago = formasDePagoEnum.CREDITO;
+    // tarjeta = tarjetaCredito;
+    // formaDePago = formasDePagoEnum.EFECTIVO;
+    // tarjeta = false;
 
     return new DatosPago(
         formaDePago,
@@ -138,34 +142,46 @@ export const validacionPedido = (bici: IBicicleta, cantidad: number) => {
 }
 const bici1 = bicicletasMock[0]; // opciones 0 a 3
 const cantidadBici1 = 1;
+
+export function crearPedido(
+    cliente: IClienteComun | IClienteFederado,
+    datosPago: IDatosPago,
+    bici: IBicicleta,
+    cantidad: number
+) {
+    return (new Pedido(cliente, datosPago, bici, cantidad));
+}
+
 validacionPedido(bici1, cantidadBici1) &&
-pedidos.push(new Pedido(cliente, datosPago, bici1, cantidadBici1));
+pedidos.push(crearPedido(cliente, datosPago, bici1, cantidadBici1));
 const bici2 = bicicletasMock[1]; // opciones 0 a 3
 const cantidadBici2 = 1;
 validacionPedido(bici2, cantidadBici2) &&
-pedidos.push(new Pedido(cliente, datosPago, bici2, cantidadBici2));
+pedidos.push(crearPedido(cliente, datosPago, bici2, cantidadBici2));
 const bici3 = bicicletasMock[2]; // opciones 0 a 3
 const cantidadBici3 = 1;
 validacionPedido(bici3, cantidadBici3) &&
-pedidos.push(new Pedido(cliente, datosPago, bici3, cantidadBici3));
+pedidos.push(crearPedido(cliente, datosPago, bici3, cantidadBici3));
 const bici4 = bici3;
 const cantidadBici4 = cantidadBici3;
 validacionPedido(bici4, cantidadBici4) &&
-pedidos.push(new Pedido(cliente, datosPago, bici4, cantidadBici4));
+pedidos.push(crearPedido(cliente, datosPago, bici4, cantidadBici4));
 
-let totalCompra = 0;
-let totalCompraConDescuento = 0;
+
+const compra = new Compra(pedidos,conEnvio);
+let totalCompra = 0, totalCompraConDescuento = 0;
 pedidos.forEach((pedido: IPedido, index: number) => {
     const calculoMontoTotal = new CalculoMontoTotal(pedido)
     const totPedido = calculoMontoTotal.procesar();
     totalCompra += totPedido;
     const totPedidoConDescuento = calculoMontoTotal.procesarConDescuento();
     totalCompraConDescuento += totPedidoConDescuento;
-    console.log(
-`Pedido ${index + 1}: 
+    console.log(`
+Pedido ${index + 1}: 
 Bici "${pedido.bicicleta.especialidad}" | Cantidad "${pedido.cantidad}"
-Total pedido = ${totPedido}`);
-console.log(totPedidoConDescuento ? `Total pedido CON DESCUENTO! = ${totPedidoConDescuento}`:'')
+Total pedido = ${totPedido.toFixed(2)}`);
+    console.log(totPedidoConDescuento ? `Total pedido CON DESCUENTO! = ${totPedidoConDescuento.toFixed(2)}` : '-----no se aplica descuentos-----');
+    console.log(totPedido-totPedidoConDescuento>0 ? `Se aplico un descuento de $${(totPedido-totPedidoConDescuento).toFixed(2)} (pesos argentinos)` : '');
 });
 
 console.log(`
@@ -178,4 +194,5 @@ totalCompraConDescuento && console.log(`Total compra CON DESCUENTO! = ${totalCom
 
 class App {
 }
+
 export default new App();

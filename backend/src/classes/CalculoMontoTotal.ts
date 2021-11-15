@@ -31,12 +31,12 @@ export default class CalculoMontoTotal implements ICalculoMontoTotal {
             if (this._pedido.bicicleta.especialidad === especialidadesEnum.COMPETICION
                 &&
                 this._pedido.datosPago.formaDePago === formasDePagoEnum.EFECTIVO){
-                console.log("FEDERADO y EFECTIVO y COMPETICION");
+                console.log("FEDERADO && EFECTIVO && COMPETICION  --> descuento 25%");
                 subtotal = subtotal - subtotal*0.25;
                 return subtotal;
             }
             if (this._pedido.bicicleta.especialidad === especialidadesEnum.SPORT){
-                console.log("FEDERADO y SPORT");
+                console.log("FEDERADO && SPORT --> descuento 10%");
                 subtotal = subtotal - subtotal*0.10;
                 return subtotal;
             }

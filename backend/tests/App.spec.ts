@@ -5,9 +5,11 @@ import {
     crearTarjetaCredito,
     crearTarjetaDebito,
     crearDatosPago,
-    validacionPedido,
+    validacionPedido, crearPedido,
 } from "../src/App";
 import {bicicletasMock} from "../src/constants/bicicletasMock";
+import {clientesFederadosMock} from "../src/constants/clientesFederadosMock";
+import {pagosMock} from "../src/constants/pagosMock";
 
 describe("Typescript usage suite", () => {
     it("should be able to execute a test", () => {
@@ -60,11 +62,16 @@ describe("Unit tests for purchasing bicycles", () => {
                 '\n' + objectDataTypeFails('DatosPago')
             );
         });
-        it(objectDataTypeDescribeMsg('DatosPago'), () => {
+        it(objectDataTypeDescribeMsg('Pedido'), () => {
             equal(
-                crearDatosPago().constructor.name,
-                'DatosPago',
-                '\n' + objectDataTypeFails('DatosPago')
+                crearPedido(
+                    clientesFederadosMock[0],
+                    pagosMock[0],
+                    bicicletasMock[0],
+                    1,
+                ).constructor.name,
+                'Pedido',
+                '\n' + objectDataTypeFails('Pedido')
             );
         });
     });
