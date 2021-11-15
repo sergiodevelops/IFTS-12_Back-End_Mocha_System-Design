@@ -1,10 +1,13 @@
-import {equal} from "assert";
+import assert, {equal} from "assert";
 import {
     crearClienteComun,
-    crearClienteFederado, crearDatosPago,
+    crearClienteFederado,
     crearTarjetaCredito,
     crearTarjetaDebito,
+    crearDatosPago,
+    validacionPedido,
 } from "../src/App";
+import {bicicletasMock} from "../src/constants/bicicletasMock";
 
 describe("Typescript usage suite", () => {
     it("should be able to execute a test", () => {
@@ -12,30 +15,74 @@ describe("Typescript usage suite", () => {
     });
 });
 
-describe("Tests unitarios 'compra de bicicletas'", () => {
+describe("Unit tests for purchasing bicycles", () => {
 
-    describe("Tests 'creación de objetos'", () => {
-        it("Test 'crear ClienteComun'", () => {
-            equal(crearClienteComun().constructor.name, 'ClienteComun');
+    describe('Test to return a correct data type', () => {
+        const objectDataTypeDescribeMsg = (objectType: string) => {
+            return (`when the "${objectType}" object is created`)
+        };
+        const objectDataTypeFails = (objectType: string) => {
+            return (`The expected data type is a "${objectType}"`)
+        };
+
+        it(objectDataTypeDescribeMsg('ClienteComun'), () => {
+            equal(
+                crearClienteComun().constructor.name,
+                'ClienteComun',
+                '\n' + objectDataTypeFails('ClienteComun')
+            );
         });
-        it("Test 'crear ClienteFederado'", () => {
-            equal(crearClienteFederado().constructor.name, 'ClienteFederado');
+        it(objectDataTypeDescribeMsg('ClienteFederado'), () => {
+            equal(
+                crearClienteFederado().constructor.name,
+                'ClienteFederado',
+                '\n' + objectDataTypeFails('ClienteFederado')
+            );
         });
-        it("Test 'crear DatosTarjetaDebito'", () => {
-            equal(crearTarjetaDebito().constructor.name, 'DatosTarjetaDebito');
+        it(objectDataTypeDescribeMsg('TarjetaDebito'), () => {
+            equal(
+                crearTarjetaDebito().constructor.name,
+                'TarjetaDebito',
+                '\n' + objectDataTypeFails('TarjetaDebito')
+            );
         });
-        it("Test 'crear DatosTarjetaCredito'", () => {
-            equal(crearTarjetaCredito().constructor.name, 'DatosTarjetaCredito');
+        it(objectDataTypeDescribeMsg('TarjetaCredito'), () => {
+            equal(
+                crearTarjetaCredito().constructor.name,
+                'TarjetaCredito',
+                '\n' + objectDataTypeFails('TarjetaCredito')
+            );
         });
-        it("Test 'crear DatosPago'", () => {
-            equal(crearDatosPago().constructor.name, 'DatosPago');
+        it(objectDataTypeDescribeMsg('DatosPago'), () => {
+            equal(
+                crearDatosPago().constructor.name,
+                'DatosPago',
+                '\n' + objectDataTypeFails('DatosPago')
+            );
+        });
+        it(objectDataTypeDescribeMsg('DatosPago'), () => {
+            equal(
+                crearDatosPago().constructor.name,
+                'DatosPago',
+                '\n' + objectDataTypeFails('DatosPago')
+            );
         });
     });
 
-    describe("Tests 'calculo descuentos'", () => {
-        it("Test 'ssssssssss'", () => {
-            equal(crearClienteComun().constructor.name, 'ClienteComun');
-        });
+    describe('Test correct operations of validators', () => {
+        const validatorsDescribeMsg = (objectType: string) => {
+            return (`when the "${objectType}" method is executed`)
+        };
+        const validatorsFails = (objectType: string) => {
+            return (`The expected validation result is a "${objectType}"`)
+        };
 
-    });
+        it(validatorsDescribeMsg('validacionPedido'), () => {
+            equal(
+                typeof(validacionPedido(bicicletasMock[0],1)),
+                'boolean',
+                '\n' + validatorsFails('boolean')
+            );
+        });
+    })
 });

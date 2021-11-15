@@ -10,28 +10,26 @@ import CalculoMontoTotal from "./classes/CalculoMontoTotal";
 import IClienteComun from "./interfaces/IClienteComun";
 import IClienteFederado from "./interfaces/IClienteFederado";
 import IDatosPago from "./interfaces/IDatosPago";
-import DatosTarjetaDebito from "./classes/DatosTarjetaDebito";
-import IDatosTarjetaCredito
-    from "./interfaces/IDatosTarjetaCredito";
-import IDatosTarjetaDebito
-    from "./interfaces/IDatosTarjetaDebito";
-import DatosTarjetaCredito
-    from "./classes/DatosTarjetaCredito";
+import TarjetaDebito from "./classes/TarjetaDebito";
+import ITarjetaCredito
+    from "./interfaces/ITarjetaCredito";
+import ITarjetaDebito
+    from "./interfaces/ITarjetaDebito";
+import TarjetaCredito
+    from "./classes/TarjetaCredito";
 import {bicicletasMock} from "./constants/bicicletasMock";
 import {clientesFederadosMock} from "./constants/clientesFederadosMock";
 import {clientesComunesMock} from "./constants/clientesComunesMock";
 import {direccionesMock} from "./constants/direccionesMock";
 import {tarjetasDebitoMock} from "./constants/tarjetasDebitoMock";
 import {tarjetasCreditoMock} from "./constants/tarjetasCreditoMock";
-import IStockBicicleta from "./interfaces/IStockBicicleta";
 import {formasDePagoEnum} from "./constants/formasDePagoEnum";
 
 let pedidos: IPedido[] = [],
     cliente: IClienteComun | IClienteFederado,
-    tarjeta: IDatosTarjetaDebito | IDatosTarjetaCredito | boolean,
+    tarjeta: ITarjetaDebito | ITarjetaCredito | boolean,
     formaDePago: string,
-    datosPago: IDatosPago,
-    stockBicicleta: IStockBicicleta;
+    datosPago: IDatosPago;
 
 console.log(`
 *****************
@@ -57,8 +55,8 @@ export function crearClienteComun() {
             direccionEnvioMock.barrio,
             direccionEnvioMock.calle,
             direccionEnvioMock.altura,
-            direccionEnvioMock.piso,
-            direccionEnvioMock.departamento,
+            // direccionEnvioMock.piso,
+            // direccionEnvioMock.departamento,
         ),
     );
 }
@@ -91,13 +89,13 @@ DEFINIR DATOS DE PAGO
 
 export function crearTarjetaDebito() {
     const tarjetaDebitoMock = tarjetasDebitoMock[0];
-    return new DatosTarjetaDebito(
+    return new TarjetaDebito(
         tarjetaDebitoMock.numeroTarjeta,
     );
 }
 export function crearTarjetaCredito() {
     const tarjetaCreditoMock = tarjetasCreditoMock[0];
-    return new DatosTarjetaCredito(
+    return new TarjetaCredito(
         tarjetaCreditoMock.numeroTarjeta,
         tarjetaCreditoMock.fechaVencimiento,
     );
@@ -132,11 +130,11 @@ console.log(`
 Pedidos: SUBTOTALES con y sin descuentos
 *******************************`);
 
-const validacionPedido = (bici: IBicicleta, cantidad: number) => {
-    stockBicicleta = new StockBicicleta(bici);
+export const validacionPedido = (bici: IBicicleta, cantidad: number) => {
+    const stockBicicleta = new StockBicicleta(bici);
     return (stockBicicleta.stock > 0 &&
         stockBicicleta.stock >= cantidad &&
-        bici.precio);
+        !!bici.precio);
 }
 const bici1 = bicicletasMock[0]; // opciones 0 a 3
 const cantidadBici1 = 1;
@@ -180,5 +178,4 @@ totalCompraConDescuento && console.log(`Total compra CON DESCUENTO! = ${totalCom
 
 class App {
 }
-
 export default new App();

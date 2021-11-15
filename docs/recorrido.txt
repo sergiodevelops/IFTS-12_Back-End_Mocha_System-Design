@@ -21,3 +21,6 @@ npx mocha
 
 https://www.tutorialsteacher.com/typescript/typescript-enum
 https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Functions
+https://www.youtube.com/watch?v=-sn3H0V3PuY
+https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/export
+

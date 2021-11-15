@@ -1,7 +1,7 @@
-import IDatosTarjetaDebito from "./IDatosTarjetaDebito";
-import IDatosTarjetaCredito from "./IDatosTarjetaCredito";
+import ITarjetaDebito from "./ITarjetaDebito";
+import ITarjetaCredito from "./ITarjetaCredito";
 
 export default interface IDatosPago {
     formaDePago: string;
-    tarjeta?: boolean | IDatosTarjetaDebito | IDatosTarjetaCredito;
+    tarjeta?: boolean | ITarjetaDebito | ITarjetaCredito;
 }

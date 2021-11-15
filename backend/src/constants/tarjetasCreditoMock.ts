@@ -1,8 +1,8 @@
-import IDatosTarjetaCredito
-    from "../interfaces/IDatosTarjetaCredito";
-import IDatosTarjetaDebito from "../interfaces/IDatosTarjetaDebito";
+import ITarjetaCredito
+    from "../interfaces/ITarjetaCredito";
+import ITarjetaDebito from "../interfaces/ITarjetaDebito";
 
-export const tarjetasCreditoMock: IDatosTarjetaCredito[] = [
+export const tarjetasCreditoMock: ITarjetaCredito[] = [
     {
         numeroTarjeta: "1164 2247 4678 2784", //credito
         fechaVencimiento: "05/24",
