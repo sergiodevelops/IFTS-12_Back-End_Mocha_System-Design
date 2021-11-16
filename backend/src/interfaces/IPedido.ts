@@ -9,4 +9,7 @@ export default interface IPedido {
     datosPago: IDatosPago,
     bicicleta: IBicicleta,
     cantidad: number,
+
+    getTotalSinDescuento(): number,
+    getTotalConDescuento(): number,
 }

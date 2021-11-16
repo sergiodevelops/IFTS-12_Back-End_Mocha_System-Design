@@ -9,7 +9,7 @@ export const bicicletasMock: IBicicleta[] = [
         modelo: "Modelo 1",
         rodado: "28",
         tipo: "MTB",
-        precio: 45366,
+        precio: 100000,
     },
     // SPORT Ruta
     {
@@ -18,7 +18,7 @@ export const bicicletasMock: IBicicleta[] = [
         modelo: "Modelo 2",
         rodado: "28",
         tipo: "Ruta",
-        precio: 45366,
+        precio: 100000,
     },
     // COMUN Triatlon
     {
@@ -27,7 +27,7 @@ export const bicicletasMock: IBicicleta[] = [
         modelo: "Modelo 3",
         rodado: "28",
         tipo: "Triatlon",
-        precio: 45366,
+        precio: 100000,
     },
     // COMUN Playera
     {
@@ -36,6 +36,6 @@ export const bicicletasMock: IBicicleta[] = [
         modelo: "Modelo 4",
         rodado: "28",
         tipo: "Playera",
-        precio: 45366,
+        precio: 100000,
     },
 ];

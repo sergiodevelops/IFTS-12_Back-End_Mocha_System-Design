@@ -4,6 +4,9 @@ import IBicicleta from "../interfaces/IBicicleta";
 import IClienteComun from "../interfaces/IClienteComun";
 import IDatosPago from "../interfaces/IDatosPago";
 import IClienteFederado from "../interfaces/IClienteFederado";
+import {tiposDeClienteEnum} from "../constants/tiposDeClienteEnum";
+import {especialidadesEnum} from "../constants/especialidadesEnum";
+import {formasDePagoEnum} from "../constants/formasDePagoEnum";
 
 export default class Pedido implements IPedido {
     private _cliente: IClienteComun | IClienteFederado;
@@ -53,5 +56,27 @@ export default class Pedido implements IPedido {
 
     set cantidad(value: number) {
         this._cantidad = value;
+    }
+
+    public getTotalConDescuento(): number {
+        let subtotal = this.getTotalSinDescuento();
+        if (this._cliente.constructor.name === tiposDeClienteEnum.FEDERADO) {
+            if (this._bicicleta.especialidad === especialidadesEnum.COMPETICION
+                &&
+                this._datosPago.formaDePago === formasDePagoEnum.EFECTIVO) {
+                console.log("FEDERADO && EFECTIVO && COMPETICION  --> descuento 25%");
+                subtotal = subtotal - subtotal * 0.25;
+            }
+            if (this._bicicleta.especialidad === especialidadesEnum.SPORT) {
+                console.log("FEDERADO && SPORT --> descuento 10%");
+                subtotal = subtotal - subtotal * 0.10;
+            }
+        }
+        return subtotal;
+    }
+
+    public getTotalSinDescuento(): number {
+        let subtotal = this._cantidad * this._bicicleta.precio;
+        return subtotal;
     }
 }

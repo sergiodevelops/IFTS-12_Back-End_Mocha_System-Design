@@ -1,12 +1,10 @@
 import ClienteComun from "./classes/ClienteComun";
 import ClienteFederado from "./classes/ClienteFederado";
-import IPedido from "./interfaces/IPedido";
 import IBicicleta from "./interfaces/IBicicleta";
 import Pedido from "./classes/Pedido";
 import DireccionEnvio from "./classes/DireccionEnvio";
 import StockBicicleta from "./classes/StockBicicleta";
 import DatosPago from "./classes/DatosPago";
-import MontoTotal from "./classes/MontoTotal";
 import IClienteComun from "./interfaces/IClienteComun";
 import IClienteFederado from "./interfaces/IClienteFederado";
 import IDatosPago from "./interfaces/IDatosPago";
@@ -25,6 +23,7 @@ import {tarjetasDebitoMock} from "./constants/tarjetasDebitoMock";
 import {tarjetasCreditoMock} from "./constants/tarjetasCreditoMock";
 import {formasDePagoEnum} from "./constants/formasDePagoEnum";
 import Compra from "./classes/Compra";
+import IPedido from "./interfaces/IPedido";
 
 let pedidos: IPedido[] = [],
     cliente: IClienteComun | IClienteFederado,
@@ -110,12 +109,12 @@ const tarjetaDebito = crearTarjetaDebito();
 const tarjetaCredito = crearTarjetaCredito();
 
 export function crearDatosPago() {
-    formaDePago = formasDePagoEnum.DEBITO;
-    tarjeta = tarjetaDebito;
+    // formaDePago = formasDePagoEnum.DEBITO;
+    // tarjeta = tarjetaDebito;
     // formaDePago = formasDePagoEnum.CREDITO;
     // tarjeta = tarjetaCredito;
-    // formaDePago = formasDePagoEnum.EFECTIVO;
-    // tarjeta = false;
+    formaDePago = formasDePagoEnum.EFECTIVO;
+    tarjeta = false;
 
     return new DatosPago(
         formaDePago,
@@ -149,7 +148,7 @@ export function crearPedido(
     bici: IBicicleta,
     cantidad: number
 ) {
-    return (new Pedido(cliente, datosPago, bici, cantidad));
+    return new Pedido(cliente, datosPago, bici, cantidad);
 }
 
 validacionPedido(bici1, cantidadBici1) &&
@@ -167,16 +166,15 @@ const cantidadBici4 = cantidadBici3;
 validacionPedido(bici4, cantidadBici4) &&
 pedidos.push(crearPedido(cliente, datosPago, bici4, cantidadBici4));
 
-
-const compra = new Compra(pedidos, conEnvio);
-// procesar la compra
-compra.procesar(pedidos, conEnvio);
-// imprimir la compra
-compra.imprimir();
-
-
-
-class App {
+export function crearCompra(
+    pedidos: IPedido[],
+    conEnvio?: boolean,
+) {
+    return new Compra(pedidos, conEnvio);
 }
 
-export default new App();
+const compra = crearCompra(pedidos, conEnvio);
+compra.procesar(pedidos, conEnvio); // procesar la compra
+compra.imprimir(); // imprimir la compra
+
+export default class App{}

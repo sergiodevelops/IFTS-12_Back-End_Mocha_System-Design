@@ -6,11 +6,14 @@ import {
     crearTarjetaDebito,
     crearDatosPago,
     validacionPedido,
-    crearPedido,
+    crearPedido, crearCompra,
 } from "../src/App";
 import {bicicletasMock} from "../src/constants/bicicletasMock";
 import {clientesFederadosMock} from "../src/constants/clientesFederadosMock";
 import {pagosMock} from "../src/constants/pagosMock";
+import {pedidosMock} from "../src/constants/pedidosMock";
+import Compra from "../src/classes/Compra";
+import Pedido from "../src/classes/Pedido";
 
 describe("Typescript usage suite", () => {
     it("should be able to execute a test", () => {
@@ -75,6 +78,13 @@ describe("Unit tests for purchasing bicycles", () => {
                 '\n' + objectDataTypeFails('Pedido')
             );
         });
+        it(objectDataTypeDescribeMsg('Compra'), () => {
+            equal(
+                crearCompra(pedidosMock).constructor.name,
+                'Compra',
+                '\n' + objectDataTypeFails('Compra')
+            );
+        });
     });
 
     describe('Test correct operations of validators', () => {
@@ -85,12 +95,113 @@ describe("Unit tests for purchasing bicycles", () => {
             return (`The expected validation result is a "${objectType}"`)
         };
 
-        it(validatorsDescribeMsg('validacionPedido'), () => {
+        it(validatorsDescribeMsg('Validador de Pedido'), () => {
             equal(
-                typeof(validacionPedido(bicicletasMock[0],1)),
+                typeof (validacionPedido(bicicletasMock[0], 1)),
                 'boolean',
                 '\n' + validatorsFails('boolean')
             );
         });
-    })
+    });
+
+    describe('Test correct operations of calculators', () => {
+        const calculatorsDescribeMsg = (objectType: string) => {
+            return (`when the "${objectType}" method is executed`)
+        };
+        const calculatorsFails = (resultType: number) => {
+            return (`The expected calculated result is --> "${resultType}"`)
+        };
+
+        describe('Test correct operations when calculate "Monto total PEDIDO CON DESCUENTO and..."', () => {
+
+            it(calculatorsDescribeMsg('...is "federado" && "compet" && "efectivo SI" [pedido mock 0]'), () => {
+                // federado && compet && "efectivo SI" [pedido mock 0]
+                const montoTotalCase0 = new Pedido(
+                    pedidosMock[0].cliente,
+                    pedidosMock[0].datosPago,
+                    pedidosMock[0].bicicleta,
+                    pedidosMock[0].cantidad,
+                );
+                const expectedResult = montoTotalCase0.getTotalSinDescuento() || 75000;
+                equal(
+                    montoTotalCase0.getTotalConDescuento(),
+                    expectedResult,
+                    '\n' + calculatorsFails(expectedResult)
+                );
+            });
+
+            it(calculatorsDescribeMsg('...is "federado" && "compet" && "efectivo NO" [pedido mock 1]'), () => {
+                // federado && compet && "efectivo NO" [pedido mock 1]
+                const montoTotalCase1 = new Pedido(
+                    pedidosMock[1].cliente,
+                    pedidosMock[1].datosPago,
+                    pedidosMock[1].bicicleta,
+                    pedidosMock[1].cantidad,
+                );
+                const expectedResult = montoTotalCase1.getTotalSinDescuento() || 100000;
+                equal(
+                    montoTotalCase1.getTotalConDescuento(),
+                    expectedResult,
+                    '\n' + calculatorsFails(expectedResult)
+                );
+            });
+
+            it(calculatorsDescribeMsg('...is "federado" && "sport" && "cualquier pago" [pedido mock 2]'), () => {
+                // federado && sport [pedido mock 2]
+                const montoTotalCase2 = new Pedido(
+                    pedidosMock[2].cliente,
+                    pedidosMock[2].datosPago,
+                    pedidosMock[2].bicicleta,
+                    pedidosMock[2].cantidad,
+                );
+                const expectedResult = montoTotalCase2.getTotalSinDescuento() || 90000;
+                equal(
+                    montoTotalCase2.getTotalConDescuento(),
+                    expectedResult,
+                    '\n' + calculatorsFails(expectedResult)
+                );
+            });
+
+            it(calculatorsDescribeMsg('...is "comun" && "sport" && "cualquier pago" [pedido mock 3]'), () => {
+                // comun && sport [pedido mock 3]
+                const montoTotalCase3 = new Pedido(
+                    pedidosMock[3].cliente,
+                    pedidosMock[3].datosPago,
+                    pedidosMock[3].bicicleta,
+                    pedidosMock[3].cantidad,
+                );
+                const expectedResult = montoTotalCase3.getTotalSinDescuento() || 100000;
+                equal(
+                    montoTotalCase3.getTotalConDescuento(),
+                    expectedResult,
+                    '\n' + calculatorsFails(expectedResult)
+                );
+            });
+        });
+
+        describe('Test correct operations when calculate "Monto total COMPRA and..."', () => {
+            //extra 5 pedidos = 500.000
+            it(calculatorsDescribeMsg('...is "descuento NO APLICADO" [pedido mock]'), () => {
+                // federado && compet && "efectivo SI" [pedido mock 0]
+                const montoTotalCase0 = new Compra(pedidosMock);
+                const expectedResult = 500000;
+                equal(
+                    montoTotalCase0.getTotalSinDescuento(),
+                    expectedResult,
+                    '\n' + calculatorsFails(expectedResult)
+                );
+            });
+
+            it(calculatorsDescribeMsg('...is "descuento SI APLICADO" [pedido mock]'), () => {
+                // federado && compet && "efectivo SI" [pedido mock 0]
+                const montoTotalCase1 = new Compra(pedidosMock);
+                const expectedResult = 500000;
+                equal(
+                    montoTotalCase1.getTotalConDescuento(),
+                    expectedResult,
+                    '\n' + calculatorsFails(expectedResult)
+                );
+            });
+        });
+    });
 });
