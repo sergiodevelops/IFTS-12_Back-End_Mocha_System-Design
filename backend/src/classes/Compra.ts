@@ -1,11 +1,11 @@
 //responsabilidad: almacenar datos para hacer la compra
 import IPedido from "../interfaces/IPedido";
 import ICompra from "../interfaces/ICompra";
-import CalculoMontoTotal from "./CalculoMontoTotal";
+import MontoTotal from "./MontoTotal";
 
 export default class Compra implements ICompra {
     private _pedidos: IPedido[];
-    private _conEnvio?: boolean;
+    private _conEnvio?: boolean | undefined;
 
     constructor(pedidos: IPedido[], conEnvio?: boolean) {
         this._pedidos = pedidos;
@@ -32,7 +32,7 @@ export default class Compra implements ICompra {
         if (!!this._pedidos.length) {
             let totalCompra = 0, totalCompraConDescuento = 0;
             this._pedidos.forEach((pedido: IPedido, index: number) => {
-                const calculoMontoTotal = new CalculoMontoTotal(pedido)
+                const calculoMontoTotal = new MontoTotal(pedido)
                 const totPedido = calculoMontoTotal.procesar();
                 totalCompra += totPedido;
                 const totPedidoConDescuento = calculoMontoTotal.procesarConDescuento();
@@ -58,7 +58,7 @@ Compra: TOTAL con y sin descuento
         return (!!this._pedidos.length);
     }; //  muestra datos actualizados de compra actual
 
-    public procesar = (pedidos: IPedido[], conEnvio?: boolean): boolean => {
+    public procesar = (pedidos: IPedido[], conEnvio?: boolean | undefined): boolean => {
         console.log()
         this._pedidos = pedidos;
         this._conEnvio = !!conEnvio;

@@ -5,13 +5,13 @@ import ITarjetaCredito
 import ITarjetaDebito from "../interfaces/ITarjetaDebito";
 import {formasDePagoEnum} from "../constants/formasDePagoEnum";
 
-export default class DatosPago implements IDatosPago{
+export default class DatosPago implements IDatosPago {
     private _formaDePago: string;
-    private _tarjeta?: boolean | ITarjetaDebito | ITarjetaCredito;
+    private _tarjeta?: boolean | undefined | ITarjetaDebito | ITarjetaCredito;
 
     constructor(
         formaDePago: string,
-        tarjeta?: boolean | ITarjetaDebito | ITarjetaCredito,
+        tarjeta?: boolean | undefined | ITarjetaDebito | ITarjetaCredito,
     ) {
         this._formaDePago = tarjeta ? formaDePago : formasDePagoEnum.EFECTIVO;
         this._tarjeta = tarjeta ? tarjeta : false;
@@ -26,11 +26,11 @@ export default class DatosPago implements IDatosPago{
     }
 
     get tarjeta(): boolean | ITarjetaDebito | ITarjetaCredito {
-        if(this._tarjeta) return this._tarjeta;
+        if (this._tarjeta) return this._tarjeta;
         return false;
     }
 
     set tarjeta(value: boolean | ITarjetaDebito | ITarjetaCredito) {
-        this._tarjeta = typeof(value) !== "boolean" ? value : false;
+        this._tarjeta = typeof (value) !== "boolean" ? value : false;
     }
 }

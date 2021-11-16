@@ -18,7 +18,7 @@ export default class StockBicicleta implements IStockBicicleta {
         bicicleta: IBicicleta,
     ) {
         this._bicicleta = bicicleta;
-        this.stock = productosMock.find((producto)=>
+        this.stock = productosMock.find((producto) =>
             producto.item.marca === this._bicicleta.marca
             &&
             producto.item.modelo === this._bicicleta.modelo)?.stock || 0;
@@ -40,8 +40,8 @@ export default class StockBicicleta implements IStockBicicleta {
         this._stock = value;
     }
 
-    public getCurrentStock=()=>{
-        this._stock = productosMock.find((bici)=>bici.item === this._bicicleta)?.stock || 0;
+    public getCurrentStock = () => {
+        this._stock = productosMock.find((bici) => bici.item === this._bicicleta)?.stock || 0;
         return (this._stock);
     }
 }

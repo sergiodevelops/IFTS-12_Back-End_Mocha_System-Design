@@ -3,7 +3,7 @@ import Cliente from './Cliente';
 import IDireccionEnvio from "../interfaces/IDireccionEnvio";
 import IClienteComun from "../interfaces/IClienteComun";
 
-export default class ClienteComun extends Cliente implements IClienteComun{
+export default class ClienteComun extends Cliente implements IClienteComun {
     private _direccion: IDireccionEnvio;
 
     constructor(

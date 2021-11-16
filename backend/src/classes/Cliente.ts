@@ -2,7 +2,7 @@
 
 import ICliente from "../interfaces/ICliente";
 
-export default abstract class Cliente implements ICliente{
+export default abstract class Cliente implements ICliente {
     private _nombre: string;
     private _apellido: string;
     private _dni: number;

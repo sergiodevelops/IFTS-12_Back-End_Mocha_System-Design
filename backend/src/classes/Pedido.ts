@@ -5,7 +5,7 @@ import IClienteComun from "../interfaces/IClienteComun";
 import IDatosPago from "../interfaces/IDatosPago";
 import IClienteFederado from "../interfaces/IClienteFederado";
 
-export default class Pedido implements IPedido{
+export default class Pedido implements IPedido {
     private _cliente: IClienteComun | IClienteFederado;
     private _datosPago: IDatosPago;
     private _bicicleta: IBicicleta;

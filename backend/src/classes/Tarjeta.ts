@@ -2,7 +2,7 @@
 
 import ITarjeta from "../interfaces/ITarjeta";
 
-export default abstract class Tarjeta implements ITarjeta{
+export default abstract class Tarjeta implements ITarjeta {
     private _numeroTarjeta: string;
 
     protected constructor(

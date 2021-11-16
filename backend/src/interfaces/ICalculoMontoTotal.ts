@@ -1,8 +1,8 @@
 import IPedido from "./IPedido";
 
 export default interface ICalculoMontoTotal {
-    pedido: IPedido;
+    pedido: IPedido,
 
-    procesar():number
-    procesarConDescuento():number
+    procesar():number,
+    procesarConDescuento():number,
 }

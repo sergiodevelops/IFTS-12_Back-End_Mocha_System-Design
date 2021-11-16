@@ -1,11 +1,11 @@
 //responsabilidad: calcular descuento segun condiciones
-import ICalculoMontoTotal from "../interfaces/ICalculoMontoTotal";
+import IMontoTotal from "../interfaces/ICalculoMontoTotal";
 import IPedido from "../interfaces/IPedido";
 import {tiposDeClienteEnum} from "../constants/tiposDeClienteEnum";
 import {especialidadesEnum} from "../constants/especialidadesEnum";
 import {formasDePagoEnum} from "../constants/formasDePagoEnum";
 
-export default class CalculoMontoTotal implements ICalculoMontoTotal {
+export default class MontoTotal implements IMontoTotal {
     private _pedido: IPedido;
 
     constructor(pedido: IPedido) {
@@ -30,14 +30,14 @@ export default class CalculoMontoTotal implements ICalculoMontoTotal {
             let subtotal = this.procesar();
             if (this._pedido.bicicleta.especialidad === especialidadesEnum.COMPETICION
                 &&
-                this._pedido.datosPago.formaDePago === formasDePagoEnum.EFECTIVO){
+                this._pedido.datosPago.formaDePago === formasDePagoEnum.EFECTIVO) {
                 console.log("FEDERADO && EFECTIVO && COMPETICION  --> descuento 25%");
-                subtotal = subtotal - subtotal*0.25;
+                subtotal = subtotal - subtotal * 0.25;
                 return subtotal;
             }
-            if (this._pedido.bicicleta.especialidad === especialidadesEnum.SPORT){
+            if (this._pedido.bicicleta.especialidad === especialidadesEnum.SPORT) {
                 console.log("FEDERADO && SPORT --> descuento 10%");
-                subtotal = subtotal - subtotal*0.10;
+                subtotal = subtotal - subtotal * 0.10;
                 return subtotal;
             }
         }

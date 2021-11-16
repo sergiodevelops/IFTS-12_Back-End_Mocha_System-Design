@@ -3,7 +3,7 @@
 import Cliente from './Cliente';
 import IClienteFederado from "../interfaces/IClienteFederado";
 
-export default class ClienteFederado extends Cliente implements IClienteFederado{
+export default class ClienteFederado extends Cliente implements IClienteFederado {
     private _matricula: number;
     private _agrupacion: string;
 

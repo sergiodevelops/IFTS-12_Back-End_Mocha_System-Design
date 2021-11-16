@@ -1,6 +1,6 @@
 export default interface ICliente {
-    nombre: string;
-    apellido: string;
-    dni: number;
-    fechaNacimiento: string;
+    nombre: string,
+    apellido: string,
+    dni: number,
+    fechaNacimiento: string,
 }

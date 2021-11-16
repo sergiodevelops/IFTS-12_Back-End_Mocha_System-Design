@@ -6,7 +6,7 @@ import Pedido from "./classes/Pedido";
 import DireccionEnvio from "./classes/DireccionEnvio";
 import StockBicicleta from "./classes/StockBicicleta";
 import DatosPago from "./classes/DatosPago";
-import CalculoMontoTotal from "./classes/CalculoMontoTotal";
+import MontoTotal from "./classes/MontoTotal";
 import IClienteComun from "./interfaces/IClienteComun";
 import IClienteFederado from "./interfaces/IClienteFederado";
 import IDatosPago from "./interfaces/IDatosPago";
