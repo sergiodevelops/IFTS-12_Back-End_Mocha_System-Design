@@ -5,8 +5,7 @@ import {
     crearTarjetaCredito,
     crearTarjetaDebito,
     crearDatosPago,
-    validacionPedido,
-    crearPedido, crearCompra,
+    crearCompra,
 } from "../src/App";
 import {bicicletasMock} from "../src/constants/bicicletasMock";
 import {clientesFederadosMock} from "../src/constants/clientesFederadosMock";
@@ -68,7 +67,7 @@ describe("Unit tests for purchasing bicycles", () => {
         });
         it(objectDataTypeDescribeMsg('Pedido'), () => {
             equal(
-                crearPedido(
+                new Pedido(
                     clientesFederadosMock[0],
                     pagosMock[0],
                     bicicletasMock[0],
@@ -97,9 +96,28 @@ describe("Unit tests for purchasing bicycles", () => {
 
         it(validatorsDescribeMsg('Validador de Pedido'), () => {
             equal(
-                typeof (validacionPedido(bicicletasMock[0], 1)),
+                typeof(new Pedido(
+                        clientesFederadosMock[0],
+                        pagosMock[0],
+                        bicicletasMock[0],
+                        1,
+                    ).validar()),
                 'boolean',
                 '\n' + validatorsFails('boolean')
+            );
+        });
+
+        it(validatorsDescribeMsg('Validadar que funcione bien cuando FALTA Stock para la bicicleta solicitada'), () => {
+            // new StockBicicleta(bicicletasMock[0]);
+            equal(
+                new Pedido(
+                    clientesFederadosMock[0],
+                    pagosMock[0],
+                    bicicletasMock[0],
+                    100000000000000,
+                ).validar(),
+                false,
+                '\n' + validatorsFails('false')
             );
         });
     });

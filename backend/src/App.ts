@@ -1,9 +1,7 @@
 import ClienteComun from "./classes/ClienteComun";
 import ClienteFederado from "./classes/ClienteFederado";
-import IBicicleta from "./interfaces/IBicicleta";
 import Pedido from "./classes/Pedido";
 import DireccionEnvio from "./classes/DireccionEnvio";
-import StockBicicleta from "./classes/StockBicicleta";
 import DatosPago from "./classes/DatosPago";
 import IClienteComun from "./interfaces/IClienteComun";
 import IClienteFederado from "./interfaces/IClienteFederado";
@@ -78,8 +76,8 @@ const clienteComun = crearClienteComun();
 const conEnvio = true;
 const clienteFederado = crearClienteFederado();
 
-cliente = clienteFederado;
 // cliente = clienteComun;
+cliente = clienteFederado;
 
 console.log(`Tipo: ${cliente.constructor.name}`);
 console.log(Object.entries(cliente))
@@ -133,38 +131,25 @@ console.log(`
 Pedidos: SUBTOTALES con y sin descuentos
 *******************************`);
 
-export const validacionPedido = (bici: IBicicleta, cantidad: number) => {
-    const stockBicicleta = new StockBicicleta(bici);
-    return (stockBicicleta.stock > 0 &&
-        stockBicicleta.stock >= cantidad &&
-        !!bici.precio);
-}
 const bici1 = bicicletasMock[0]; // opciones 0 a 3
 const cantidadBici1 = 1;
+const pedido1 = new Pedido(cliente, datosPago, bici1, cantidadBici1)
+pedido1.validar() && pedidos.push(pedido1);
 
-export function crearPedido(
-    cliente: IClienteComun | IClienteFederado,
-    datosPago: IDatosPago,
-    bici: IBicicleta,
-    cantidad: number
-) {
-    return new Pedido(cliente, datosPago, bici, cantidad);
-}
-
-validacionPedido(bici1, cantidadBici1) &&
-pedidos.push(crearPedido(cliente, datosPago, bici1, cantidadBici1));
 const bici2 = bicicletasMock[1]; // opciones 0 a 3
 const cantidadBici2 = 1;
-validacionPedido(bici2, cantidadBici2) &&
-pedidos.push(crearPedido(cliente, datosPago, bici2, cantidadBici2));
+const pedido2 = new Pedido(cliente, datosPago, bici2, cantidadBici2)
+pedido1.validar() && pedidos.push(pedido2);
+
 const bici3 = bicicletasMock[2]; // opciones 0 a 3
 const cantidadBici3 = 1;
-validacionPedido(bici3, cantidadBici3) &&
-pedidos.push(crearPedido(cliente, datosPago, bici3, cantidadBici3));
+const pedido3 = new Pedido(cliente, datosPago, bici3, cantidadBici3)
+pedido1.validar() && pedidos.push(pedido3);
+
 const bici4 = bici3;
 const cantidadBici4 = cantidadBici3;
-validacionPedido(bici4, cantidadBici4) &&
-pedidos.push(crearPedido(cliente, datosPago, bici4, cantidadBici4));
+const pedido4 = new Pedido(cliente, datosPago, bici4, cantidadBici4)
+pedido1.validar() && pedidos.push(pedido4);
 
 export function crearCompra(
     pedidos: IPedido[],

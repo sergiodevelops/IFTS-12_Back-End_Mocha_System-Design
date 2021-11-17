@@ -1,4 +1,4 @@
-//responsabilidad: informar stock de item deseada
+//responsabilidad: informar stock de item deseada solo si hay o no hay
 /*
  "de la item se conoce" dice el enunciado, lo cual no deja explicito
  la consigna si es obligación o no que el atributo stock este dentro o
@@ -17,11 +17,8 @@ export default class StockBicicleta implements IStockBicicleta {
     constructor(
         bicicleta: IBicicleta,
     ) {
-        this._bicicleta = bicicleta;
-        this.stock = productosMock.find((producto) =>
-            producto.item.marca === this._bicicleta.marca
-            &&
-            producto.item.modelo === this._bicicleta.modelo)?.stock || 0;
+        this._bicicleta = bicicleta; //setea la bicicleta que se esta preguntando si hay o no stock
+        this._stock = this.getCurrentStock() || 0; // trae el stock disponible de la base
     }
 
     get bicicleta(): IBicicleta {
@@ -43,5 +40,11 @@ export default class StockBicicleta implements IStockBicicleta {
     public getCurrentStock = () => {
         this._stock = productosMock.find((bici) => bici.item === this._bicicleta)?.stock || 0;
         return (this._stock);
+    }
+
+    public reservarStock = (cantidad: number) => {
+        const reservaPermitida = this._stock - cantidad >= 0;
+        if (reservaPermitida) this._stock -= cantidad; // actualiza el stock
+        return(reservaPermitida);
     }
 }

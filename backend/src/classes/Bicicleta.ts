@@ -1,5 +1,6 @@
 //responsabilidad: almacenar datos de item deseada
 import IBicicleta from "../interfaces/IBicicleta";
+import StockBicicleta from "./StockBicicleta";
 
 export default class Bicicleta implements IBicicleta {
 
@@ -10,7 +11,12 @@ export default class Bicicleta implements IBicicleta {
     private _especialidad: string;
     private _precio: number;
 
-    constructor(marca: string, modelo: string, rodado: string, tipo: string, especialidad: string, precio: number) {
+    constructor(marca: string,
+                modelo: string,
+                rodado: string,
+                tipo: string,
+                especialidad: string,
+                precio: number) {
         this._marca = marca;
         this._modelo = modelo;
         this._rodado = rodado;

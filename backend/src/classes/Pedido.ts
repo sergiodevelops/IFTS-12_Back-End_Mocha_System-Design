@@ -7,6 +7,7 @@ import IClienteFederado from "../interfaces/IClienteFederado";
 import {tiposDeClienteEnum} from "../constants/tiposDeClienteEnum";
 import {especialidadesEnum} from "../constants/especialidadesEnum";
 import {formasDePagoEnum} from "../constants/formasDePagoEnum";
+import StockBicicleta from "./StockBicicleta";
 
 export default class Pedido implements IPedido {
     private _cliente: IClienteComun | IClienteFederado;
@@ -20,10 +21,10 @@ export default class Pedido implements IPedido {
         bicicleta: IBicicleta,
         cantidad: number,
     ) {
-        this._cliente = cliente;
-        this._datosPago = datosPago;
-        this._bicicleta = bicicleta;
-        this._cantidad = cantidad;
+            this._cliente = cliente;
+            this._datosPago = datosPago;
+            this._bicicleta = bicicleta;
+            this._cantidad = cantidad;
     }
 
     get cliente(): IClienteComun | IClienteFederado {
@@ -56,6 +57,17 @@ export default class Pedido implements IPedido {
 
     set cantidad(value: number) {
         this._cantidad = value;
+    }
+
+    public validar(): boolean {
+        const stockBicicleta = new StockBicicleta(this._bicicleta);
+        return (
+            !!stockBicicleta.stock
+            &&
+            stockBicicleta.stock >= this._cantidad
+            &&
+            !!this._bicicleta.precio
+        );
     }
 
     public getTotalConDescuento(): number {

@@ -5,4 +5,5 @@ export default interface IStockBicicleta {
     stock: number,
 
     getCurrentStock(): number,
+    reservarStock(cantidad: number): boolean,
 }
